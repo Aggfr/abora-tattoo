@@ -227,6 +227,19 @@ html[lang="es"] .btn { text-transform: none; }
   color: var(--color-text);
 }
 
+/* Título del hero: marca + subtítulo con la ubicación (SEO local) */
+.hero__brand { display: block; }
+.hero__subtitle {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  color: var(--color-muted);
+}
+
 .hero__statue {
   aspect-ratio: 489 / 736;
   pointer-events: none;
@@ -831,9 +844,10 @@ html[lang="es"] .btn { text-transform: none; }
     font-size: clamp(52px, 17vw, 72px);
     line-height: 1.05;
   }
+  .hero__subtitle { font-size: 14px; letter-spacing: 0.02em; margin-top: 10px; }
   .hero__statue {
     width: min(78%, 360px);
-    margin-top: -32px;        /* acerca la estatua al título (el vídeo tiene margen negro arriba) */
+    margin-top: -12px;        /* acerca la estatua al título (el vídeo tiene margen negro arriba) */
   }
 
   .values { flex-direction: column; align-items: center; }

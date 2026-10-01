@@ -14,8 +14,8 @@
 
 const TRANSLATIONS = {
   es: {
-    'meta.title': 'Abora Tattoo',
-    'meta.description': 'Abora Tattoo – Estudio de tatuajes en Costa Teguise, Lanzarote.',
+    'meta.title': 'Estudio de tatuajes en Lanzarote | Abora Tattoo – Costa Teguise',
+    'meta.description': 'Abora Tattoo, estudio de tatuajes en Costa Teguise, Lanzarote. Realismo, fineline, tradicional, black work y japonés. Pide cita con nuestros tatuadores.',
 
     'nav.aria': 'Principal',
     'nav.home': 'Abora Tattoo – Inicio',
@@ -25,6 +25,7 @@ const TRANSLATIONS = {
     'nav.openMenu': 'Abrir menú',
     'nav.closeMenu': 'Cerrar menú',
 
+    'hero.subtitle': 'Estudio de tatuajes en Costa Teguise, Lanzarote',
     'hero.video': 'Busto clásico de mármol con grafitis que se agrieta y se recompone',
 
     'values.aria': 'Nuestros valores',
@@ -35,33 +36,37 @@ const TRANSLATIONS = {
     'values.inspiration.title': 'Inspiración',
     'values.inspiration.text': 'Creamos un ambiente creativo que motiva tanto a los artistas como a los clientes.',
 
-    // Textos de relleno (sustitúyelos por los reales)
-    'placeholder.long': 'Descubre una colección de diseños de tatuaje únicos que reflejan creatividad, técnica e inspiración. Cada pieza muestra la pasión y la visión que hay detrás de nuestro oficio.',
-    'placeholder.bio': 'Descubre una colección de diseños de tatuaje únicos que reflejan creatividad, técnica e inspiración. Cada pieza muestra nuestra pasión.',
 
     'team.title': 'Conoce a nuestro equipo',
+    'team.text': "Cuatro tatuadores, cuatro formas de entender la tinta. Cada artista de nuestro estudio en Costa Teguise domina su estilo y trabaja contigo el diseño, desde la primera idea hasta la última línea.",
     'team.kevin.aria': 'Kevin – ver ficha',
     'team.kevin.alt': 'Tatuador trabajando en el estudio',
     'team.kevin.style': 'Dotwork y anime',
+    'team.kevin.bio': "Punto a punto, Kevin construye sombras y texturas con una paciencia infinita. Especialista en dotwork y en llevar a la piel personajes y escenas del anime.",
     'team.abian.aria': 'Abian Trujillo – ver ficha',
     'team.abian.alt': 'Tatuador de Abora Tattoo',
     'team.abian.style': 'Realismo',
+    'team.abian.bio': "Retratos, animales y escenas con un detalle que parece fotografía. Abian trabaja el realismo cuidando cada luz, cada sombra y cada matiz.",
     'team.german.aria': 'German aka Farru – ver ficha',
     'team.german.alt': 'Tatuador con gafas trabajando',
     'team.german.style': 'Tradicional americano',
+    'team.german.bio': "Líneas firmes, colores sólidos y diseños que nunca pasan de moda. Farru trae a Lanzarote el tradicional americano con todo su carácter.",
     'team.daniela.aria': 'Daniela Bryon – ver ficha',
     'team.daniela.alt': 'Tatuadora de Abora Tattoo',
     'team.daniela.style': 'Tradicional americano y japonés',
+    'team.daniela.bio': "Del tradicional americano al japonés: flores, koi, dragones y piezas grandes pensadas para fluir con tu cuerpo.",
 
     'gallery.title': 'Galería de tatuajes',
+    'gallery.text': "Una selección de trabajos reales hechos en nuestro estudio de Lanzarote: realismo, fineline, black work, tradicional y japonés. Inspírate y cuéntanos qué quieres llevar en la piel.",
     'gallery.alt': 'Tatuaje',
     'gallery.button': 'Ir a la galería',
 
     'story.eyebrow': 'Nuestra historia',
-    'story.body': 'Descubre una colección de diseños de tatuaje únicos que reflejan creatividad, técnica e inspiración. Cada pieza muestra la pasión y la visión que hay detrás de nuestro oficio. Descubre una colección de diseños de tatuaje únicos que reflejan creatividad, técnica e inspiración. Cada pieza muestra la pasión y la visión que hay detrás de nuestro oficio. Descubre una colección de diseños de tatuaje únicos que reflejan creatividad, técnica e inspiración.',
+    'story.body': "Abora era el dios del sol para los antiguos canarios. De esa luz nace nuestro nombre y nuestra forma de trabajar: un estudio de tatuajes en Costa Teguise, Lanzarote, donde se encuentran el arte, la cultura de la isla y el respeto por la tradición del tatuaje. Cada proyecto empieza con una conversación. Escuchamos tu idea, la convertimos en un diseño único y la tatuamos con los más altos estándares de higiene y calidad. Tanto si es tu primer tatuaje como si vienes a completar una pieza grande, aquí te vas a sentir como en casa. Recibimos a gente de toda la isla, de Arrecife a Playa Blanca, y a quienes nos visitan y quieren llevarse un pedazo de Lanzarote en la piel.",
     'story.alt': 'Los tatuadores de Abora Tattoo',
 
     'contact.title': '¡Conectemos y creemos algo juntos!',
+    'contact.text': "¿Tienes una idea en mente? Cuéntanos el estilo, el tamaño y la zona, y te responderemos con una propuesta y una cita en nuestro estudio de Costa Teguise.",
     'form.name': 'Nombre',
     'form.email': 'Email',
     'form.style': 'Estilo',
@@ -103,6 +108,7 @@ const TRANSLATIONS = {
 
     'visit.eyebrow': '¿Dónde estamos?',
     'visit.title': 'Ven a visitarnos',
+    'visit.text': "Ven a conocer el estudio, ver nuestros trabajos y hablar de tu próximo tatuaje. Estamos en Costa Teguise, a pocos minutos de Arrecife y del aeropuerto de Lanzarote.",
     'visit.weekdays': 'Lunes - Viernes',
     'visit.weekdaysHours': '9:00 - 21:00',
     'visit.saturday': 'Sábado',
@@ -119,8 +125,8 @@ const TRANSLATIONS = {
   },
 
   en: {
-    'meta.title': 'Abora Tattoo',
-    'meta.description': 'Abora Tattoo – Tattoo studio in Costa Teguise, Lanzarote.',
+    'meta.title': 'Tattoo Studio in Lanzarote | Abora Tattoo – Costa Teguise',
+    'meta.description': 'Abora Tattoo, tattoo studio in Costa Teguise, Lanzarote. Realism, fineline, traditional, black work and Japanese styles. Book your appointment with our artists.',
 
     'nav.aria': 'Main',
     'nav.home': 'Abora Tattoo – Home',
@@ -130,6 +136,7 @@ const TRANSLATIONS = {
     'nav.openMenu': 'Open menu',
     'nav.closeMenu': 'Close menu',
 
+    'hero.subtitle': 'Tattoo studio in Costa Teguise, Lanzarote',
     'hero.video': 'Classic marble bust with graffiti that cracks apart and comes back together',
 
     'values.aria': 'Our values',
@@ -140,33 +147,37 @@ const TRANSLATIONS = {
     'values.inspiration.title': 'Inspiration',
     'values.inspiration.text': 'Fostering a creative environment that motivates both artists and clients.',
 
-    // Placeholder texts (replace with the real ones)
-    'placeholder.long': 'Explore a curated collection of unique tattoo designs and artwork that showcase creativity, skill, and inspiration. Each piece reflects the passion and vision behind our craft.',
-    'placeholder.bio': 'Explore a curated collection of unique tattoo designs and artwork that showcase creativity, skill, and inspiration. Each piece reflects our passion.',
 
     'team.title': 'Meet our team',
+    'team.text': "Four artists, four ways of understanding ink. Each tattooer at our Costa Teguise studio masters their own style and works on the design with you, from the first idea to the last line.",
     'team.kevin.aria': 'Kevin – view profile',
     'team.kevin.alt': 'Tattoo artist working in the studio',
     'team.kevin.style': 'Dotwork & anime',
+    'team.kevin.bio': "Dot by dot, Kevin builds shading and texture with endless patience. A specialist in dotwork and in bringing anime characters and scenes to life on skin.",
     'team.abian.aria': 'Abian Trujillo – view profile',
     'team.abian.alt': 'Abora Tattoo artist',
     'team.abian.style': 'Realism',
+    'team.abian.bio': "Portraits, animals and scenes with photographic detail. Abian approaches realism with care for every light, every shadow and every nuance.",
     'team.german.aria': 'German aka Farru – view profile',
     'team.german.alt': 'Tattoo artist with glasses at work',
     'team.german.style': 'American traditional',
+    'team.german.bio': "Bold lines, solid colors and designs that never go out of style. Farru brings American traditional to Lanzarote with all its character.",
     'team.daniela.aria': 'Daniela Bryon – view profile',
     'team.daniela.alt': 'Abora Tattoo artist',
     'team.daniela.style': 'American traditional & Japanese',
+    'team.daniela.bio': "From American traditional to Japanese: flowers, koi, dragons and large pieces designed to flow with your body.",
 
     'gallery.title': 'Tattoo Gallery',
+    'gallery.text': "A selection of real work done at our Lanzarote studio: realism, fineline, black work, traditional and Japanese. Get inspired and tell us what you want to wear on your skin.",
     'gallery.alt': 'Tattoo',
     'gallery.button': 'Go to gallery',
 
     'story.eyebrow': 'Our Story',
-    'story.body': 'Explore a curated collection of unique tattoo designs and artwork that showcase creativity, skill, and inspiration. Each piece reflects the passion and vision behind our craft. Explore a curated collection of unique tattoo designs and artwork that showcase creativity, skill, and inspiration. Each piece reflects the passion and vision behind our craft. Explore a curated collection of unique tattoo designs and artwork that showcase creativity, skill, and inspiration.',
+    'story.body': "Abora was the sun god of the ancient Canary Islanders. Our name, and the way we work, are born from that light: a tattoo studio in Costa Teguise, Lanzarote, where art, island culture and respect for the tattoo tradition come together. Every project starts with a conversation. We listen to your idea, turn it into a one-of-a-kind design and tattoo it to the highest standards of hygiene and quality. Whether it is your first tattoo or you are coming to finish a large piece, you will feel at home here. We welcome people from all over the island, from Arrecife to Playa Blanca, as well as visitors who want to take a piece of Lanzarote home on their skin.",
     'story.alt': 'The Abora Tattoo artists',
 
     'contact.title': "Let's Connect and Build Together!",
+    'contact.text': "Have an idea in mind? Tell us the style, size and placement, and we will get back to you with a proposal and an appointment at our Costa Teguise studio.",
     'form.name': 'Name',
     'form.email': 'Mail',
     'form.style': 'Style',
@@ -208,6 +219,7 @@ const TRANSLATIONS = {
 
     'visit.eyebrow': 'Where are we?',
     'visit.title': 'Come to visit us',
+    'visit.text': "Come and see the studio, check out our work and talk about your next tattoo. We are in Costa Teguise, just a few minutes from Arrecife and Lanzarote airport.",
     'visit.weekdays': 'Monday - Friday',
     'visit.weekdaysHours': '9am - 9pm',
     'visit.saturday': 'Saturday',
