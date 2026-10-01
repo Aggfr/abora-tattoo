@@ -57,17 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const required = form.querySelectorAll('[required]');
-    let valid = true;
-    required.forEach((field) => {
-      const ok = field.checkValidity();
-      field.classList.toggle('is-invalid', !ok);
-      if (!ok) valid = false;
-    });
-
-    if (!valid) {
-      status.textContent = t('form.invalid');
-      form.querySelector('.is-invalid')?.focus();
+    // Validación: todos los campos son obligatorios salvo el mensaje
+    if (!validateForm()) {
+      status.textContent = t('form.errorSummary');
+      form.querySelector('[aria-invalid="true"]')?.focus();
       return;
     }
 
@@ -125,11 +118,70 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  document.addEventListener('languagechange', () => { if (status) status.textContent = ''; });
+  // Al cambiar de idioma: limpia el aviso general y traduce los errores visibles
+  document.addEventListener('languagechange', () => {
+    if (status) status.textContent = '';
+    form?.querySelectorAll('[aria-invalid="true"]').forEach((field) => showFieldError(field));
+  });
 
+  // Errores en vivo: tras el primer intento de envío, cada campo se revisa al
+  // cambiarlo o al salir de él; el error desaparece en cuanto se corrige.
   form?.querySelectorAll('[required]').forEach((field) => {
-    field.addEventListener('input', () => field.classList.remove('is-invalid'));
-    field.addEventListener('change', () => field.classList.remove('is-invalid'));
+    const recheck = () => { if (form.dataset.submitted) validateField(field); };
+    field.addEventListener('input', recheck);
+    field.addEventListener('change', recheck);
+    field.addEventListener('blur', recheck);
+  });
+
+  // Mensaje de error de cada campo (clave de traducción)
+  function errorKeyFor(field) {
+    if (field.name === 'email') {
+      return field.validity.valueMissing ? 'error.emailEmpty' : 'error.emailInvalid';
+    }
+    return `error.${field.name}`;
+  }
+
+  function showFieldError(field) {
+    const error = document.getElementById(`err-${field.name}`);
+    if (error) error.textContent = t(errorKeyFor(field));
+  }
+
+  // Valida un campo y muestra u oculta su error. Devuelve true si es correcto.
+  function validateField(field) {
+    if (field.type === 'email') field.value = field.value.trim();
+    // El navegador acepta "a@b"; exigimos además un dominio con punto
+    const emailOk = field.type !== 'email' || /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(field.value) || !field.value;
+    if (field.type === 'email') field.setCustomValidity(emailOk ? '' : 'invalid');
+    const ok = field.checkValidity() && (field.type !== 'text' || field.value.trim() !== '');
+    const error = document.getElementById(`err-${field.name}`);
+    field.classList.toggle('is-invalid', !ok);
+    field.setAttribute('aria-invalid', String(!ok));
+    if (error) {
+      error.hidden = ok;
+      if (ok) error.textContent = '';
+      else showFieldError(field);
+    }
+    return ok;
+  }
+
+  function validateForm() {
+    form.dataset.submitted = 'true';
+    let allOk = true;
+    form.querySelectorAll('[required]').forEach((field) => {
+      if (!validateField(field)) allOk = false;
+    });
+    return allOk;
+  }
+
+  // Tras enviar con éxito, se limpia el estado de validación
+  form?.addEventListener('reset', () => {
+    delete form.dataset.submitted;
+    form.querySelectorAll('[required]').forEach((field) => {
+      field.classList.remove('is-invalid');
+      field.removeAttribute('aria-invalid');
+      const error = document.getElementById(`err-${field.name}`);
+      if (error) { error.hidden = true; error.textContent = ''; }
+    });
   });
 });
 

@@ -288,57 +288,78 @@
 
           <form class="form" id="booking-form" novalidate>
             <div class="form__fields">
-              <label class="visually-hidden" for="f-name" data-i18n="form.name">Nombre</label>
-              <input class="field" type="text" name="name" id="f-name" autocomplete="name" placeholder="Nombre" data-i18n-placeholder="form.name" required>
-              <label class="visually-hidden" for="f-email" data-i18n="form.email">Email</label>
-              <input class="field" type="email" name="email" id="f-email" autocomplete="email" placeholder="Email" data-i18n-placeholder="form.email" required>
-              <div class="form__row">
-                <label class="visually-hidden" for="f-style" data-i18n="form.style">Estilo</label>
-                <select class="field field--select" name="style" id="f-style" required>
-                  <option value="" selected disabled data-i18n="form.style">Estilo</option>
-                  <option data-i18n="style.realism">Realismo</option>
-                  <option data-i18n="style.traditional">Tradicional</option>
-                  <option data-i18n="style.blackwork">Black work</option>
-                  <option data-i18n="style.fineline">Fineline</option>
-                  <option data-i18n="style.japanese">Japonés</option>
-                </select>
-                <label class="visually-hidden" for="f-color" data-i18n="form.color">Preferencia de color</label>
-                <select class="field field--select" name="color" id="f-color">
-                  <option value="" selected disabled data-i18n="form.color">Preferencia de color</option>
-                  <option data-i18n="color.blackgrey">Negro y gris</option>
-                  <option data-i18n="color.color">Color</option>
-                  <option data-i18n="color.unsure">Aún no lo sé</option>
-                </select>
+              <div class="form__field">
+                <label class="visually-hidden" for="f-name" data-i18n="form.name">Nombre</label>
+                <input class="field" type="text" name="name" id="f-name" aria-describedby="err-name" autocomplete="name" placeholder="Nombre" data-i18n-placeholder="form.name" required>
+                <p class="field-error" id="err-name" hidden></p>
+              </div>
+              <div class="form__field">
+                <label class="visually-hidden" for="f-email" data-i18n="form.email">Email</label>
+                <input class="field" type="email" name="email" id="f-email" aria-describedby="err-email" autocomplete="email" placeholder="Email" data-i18n-placeholder="form.email" required>
+                <p class="field-error" id="err-email" hidden></p>
               </div>
               <div class="form__row">
-                <label class="visually-hidden" for="f-size" data-i18n="form.size">Tamaño</label>
-                <select class="field field--select" name="size" id="f-size">
-                  <option value="" selected disabled data-i18n="form.size">Tamaño</option>
-                  <option data-i18n="size.small">Pequeño (&lt; 5 cm)</option>
-                  <option data-i18n="size.medium">Mediano (5–15 cm)</option>
-                  <option data-i18n="size.large">Grande (&gt; 15 cm)</option>
-                </select>
-                <label class="visually-hidden" for="f-area" data-i18n="form.area">Zona del cuerpo</label>
-                <select class="field field--select" name="area" id="f-area">
-                  <option value="" selected disabled data-i18n="form.area">Zona del cuerpo</option>
-                  <option data-i18n="area.arm">Brazo</option>
-                  <option data-i18n="area.forearm">Antebrazo</option>
-                  <option data-i18n="area.hand">Mano</option>
-                  <option data-i18n="area.leg">Pierna</option>
-                  <option data-i18n="area.back">Espalda</option>
-                  <option data-i18n="area.chest">Pecho</option>
-                  <option data-i18n="area.neck">Cuello</option>
-                  <option data-i18n="area.other">Otra</option>
-                </select>
+                <div class="form__field">
+                  <label class="visually-hidden" for="f-style" data-i18n="form.style">Estilo</label>
+                  <select class="field field--select" name="style" id="f-style" aria-describedby="err-style" required>
+                    <option value="" selected disabled data-i18n="form.style">Estilo</option>
+                    <option data-i18n="style.realism">Realismo</option>
+                    <option data-i18n="style.traditional">Tradicional</option>
+                    <option data-i18n="style.blackwork">Black work</option>
+                    <option data-i18n="style.fineline">Fineline</option>
+                    <option data-i18n="style.japanese">Japonés</option>
+                  </select>
+                  <p class="field-error" id="err-style" hidden></p>
+                </div>
+                <div class="form__field">
+                  <label class="visually-hidden" for="f-color" data-i18n="form.color">Preferencia de color</label>
+                  <select class="field field--select" name="color" id="f-color" aria-describedby="err-color" required>
+                    <option value="" selected disabled data-i18n="form.color">Preferencia de color</option>
+                    <option data-i18n="color.blackgrey">Negro y gris</option>
+                    <option data-i18n="color.color">Color</option>
+                    <option data-i18n="color.unsure">Aún no lo sé</option>
+                  </select>
+                  <p class="field-error" id="err-color" hidden></p>
+                </div>
               </div>
-              <label class="visually-hidden" for="f-slot" data-i18n="form.slot">Franja horaria preferida</label>
-              <select class="field field--select" name="slot" id="f-slot">
-                <option value="" selected disabled data-i18n="form.slot">Franja horaria preferida</option>
-                <option data-i18n="slot.morning">Mañana (9:00 – 13:00)</option>
-                <option data-i18n="slot.afternoon">Tarde (13:00 – 17:00)</option>
-                <option data-i18n="slot.evening">Noche (17:00 – 21:00)</option>
-                <option data-i18n="slot.saturday">Sábado (con cita previa)</option>
-              </select>
+              <div class="form__row">
+                <div class="form__field">
+                  <label class="visually-hidden" for="f-size" data-i18n="form.size">Tamaño</label>
+                  <select class="field field--select" name="size" id="f-size" aria-describedby="err-size" required>
+                    <option value="" selected disabled data-i18n="form.size">Tamaño</option>
+                    <option data-i18n="size.small">Pequeño (&lt; 5 cm)</option>
+                    <option data-i18n="size.medium">Mediano (5–15 cm)</option>
+                    <option data-i18n="size.large">Grande (&gt; 15 cm)</option>
+                  </select>
+                  <p class="field-error" id="err-size" hidden></p>
+                </div>
+                <div class="form__field">
+                  <label class="visually-hidden" for="f-area" data-i18n="form.area">Zona del cuerpo</label>
+                  <select class="field field--select" name="area" id="f-area" aria-describedby="err-area" required>
+                    <option value="" selected disabled data-i18n="form.area">Zona del cuerpo</option>
+                    <option data-i18n="area.arm">Brazo</option>
+                    <option data-i18n="area.forearm">Antebrazo</option>
+                    <option data-i18n="area.hand">Mano</option>
+                    <option data-i18n="area.leg">Pierna</option>
+                    <option data-i18n="area.back">Espalda</option>
+                    <option data-i18n="area.chest">Pecho</option>
+                    <option data-i18n="area.neck">Cuello</option>
+                    <option data-i18n="area.other">Otra</option>
+                  </select>
+                  <p class="field-error" id="err-area" hidden></p>
+                </div>
+              </div>
+              <div class="form__field">
+                <label class="visually-hidden" for="f-slot" data-i18n="form.slot">Franja horaria preferida</label>
+                <select class="field field--select" name="slot" id="f-slot" aria-describedby="err-slot" required>
+                  <option value="" selected disabled data-i18n="form.slot">Franja horaria preferida</option>
+                  <option data-i18n="slot.morning">Mañana (9:00 – 13:00)</option>
+                  <option data-i18n="slot.afternoon">Tarde (13:00 – 17:00)</option>
+                  <option data-i18n="slot.evening">Noche (17:00 – 21:00)</option>
+                  <option data-i18n="slot.saturday">Sábado (con cita previa)</option>
+                </select>
+                <p class="field-error" id="err-slot" hidden></p>
+              </div>
               <label class="visually-hidden" for="f-message" data-i18n="form.message">Cuéntanos más sobre tu tatuaje y qué día te gustaría venir</label>
               <textarea class="field field--area" name="message" id="f-message" placeholder="Cuéntanos más sobre tu tatuaje y qué día te gustaría venir" data-i18n-placeholder="form.message"></textarea>
             </div>
