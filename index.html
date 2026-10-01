@@ -3,42 +3,253 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Abora Tattoo – Estudio de tatuajes">
+  <meta name="description" content="Abora Tattoo – Estudio de tatuajes en Costa Teguise, Lanzarote.">
   <title>Abora Tattoo</title>
+  <link rel="icon" type="image/png" href="assets/img/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lato:wght@400&family=Roboto+Flex:opsz,wght@8..144,500;8..144,700&family=Roboto+Serif:opsz,wght@8..144,500;8..144,700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
+  <!-- ============ HEADER / NAV ============ -->
   <header class="header">
-    <a href="#" class="logo">Abora Tattoo</a>
-    <nav class="nav">
-      <a href="#galeria">Galería</a>
-      <a href="#artistas">Artistas</a>
-      <a href="#contacto">Contacto</a>
+    <nav class="nav" aria-label="Principal">
+      <ul class="nav__group">
+        <li><a href="#team">Tatto artists</a></li>
+        <li><a href="#gallery">Tatto Gallery</a></li>
+      </ul>
+      <a href="#top" class="nav__logo" aria-label="Abora Tattoo – Inicio">
+        <img src="assets/img/logo.png" alt="Abora Tattoo" width="100" height="100">
+      </a>
+      <ul class="nav__group">
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+      <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <a href="#team">Tatto artists</a>
+      <a href="#gallery">Tatto Gallery</a>
+      <a href="#contact">Contact</a>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+    </div>
   </header>
 
-  <main>
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
     <section class="hero">
-      <h1>Abora Tattoo</h1>
-      <p>Arte en tu piel</p>
-      <a href="#contacto" class="btn">Pide tu cita</a>
+      <div class="hero__title-wrap">
+        <img class="hero__circle" src="assets/icons/hero-circle.svg" alt="" width="430" height="430">
+        <h1 class="hero__title">ABORA TATTOO</h1>
+      </div>
+      <!-- Video scrubbing: el fotograma sigue al scroll (ver initHeroScrub en js/main.js) -->
+      <video class="hero__statue hero__video-scrub" muted playsinline preload="auto"
+             poster="assets/img/hero-poster.jpg" width="489" height="736"
+             aria-label="Busto clásico de mármol con caligrafía tatuada que gira la cabeza">
+        <source src="assets/video/hero-scrub.mp4" type="video/mp4">
+      </video>
     </section>
 
-    <section id="galeria" class="section">
-      <h2>Galería</h2>
-    </section>
+    <div class="content">
 
-    <section id="artistas" class="section">
-      <h2>Artistas</h2>
-    </section>
+      <!-- ============ VALORES ============ -->
+      <section class="values" aria-label="Nuestros valores">
+        <article class="value">
+          <img src="assets/icons/icon-culture.svg" alt="" width="92" height="101">
+          <h3 class="value__title">Culture</h3>
+          <p class="value__text">We honor tattooing traditions while fostering a diverse and creative studio.</p>
+        </article>
+        <article class="value">
+          <img src="assets/icons/icon-excellence.svg" alt="" width="100" height="117.5">
+          <h3 class="value__title">Excellence</h3>
+          <p class="value__text">Striving for the highest standards in both artistic quality and client experience</p>
+        </article>
+        <article class="value">
+          <img src="assets/icons/icon-inspiration.svg" alt="" width="64" height="116.46">
+          <h3 class="value__title">Inspiration</h3>
+          <p class="value__text">Fostering a creative environment that motivates both artists and clients.</p>
+        </article>
+      </section>
 
-    <section id="contacto" class="section">
-      <h2>Contacto</h2>
-    </section>
+      <!-- ============ EQUIPO ============ -->
+      <section class="team" id="team">
+        <header class="section-head">
+          <h2 class="section-head__title">Meet our team</h2>
+          <p class="section-head__text section-head__text--light">Explore a curated collection of unique tattoo designs and artwork that showcase creativity, skill, and inspiration. Each piece reflects the passion and vision behind our craft.</p>
+        </header>
+        <div class="team__grid">
+          <img src="assets/img/team-1.jpg" alt="Tatuador trabajando en el estudio" loading="lazy">
+          <img src="assets/img/team-2.jpg" alt="Tatuador de Abora Tattoo" loading="lazy">
+          <img src="assets/img/team-3.jpg" alt="Tatuadora con gafas trabajando" loading="lazy">
+          <img src="assets/img/team-4.jpg" alt="Tatuadora de Abora Tattoo" loading="lazy">
+        </div>
+      </section>
+
+      <!-- ============ GALERÍA ============ -->
+      <section class="gallery" id="gallery">
+        <header class="section-head">
+          <h2 class="section-head__title">Tattoo Gallery</h2>
+          <p class="section-head__text">Explore a curated collection of unique tattoo designs and artwork that showcase creativity, skill, and inspiration. Each piece reflects the passion and vision behind our craft.</p>
+        </header>
+        <div class="gallery__grid">
+          <div class="gallery__col">
+            <img src="assets/img/gallery-01.jpg" alt="Tatuaje" style="aspect-ratio:258/201" loading="lazy">
+            <img src="assets/img/gallery-02.jpg" alt="Tatuaje" style="aspect-ratio:258/386" loading="lazy">
+          </div>
+          <div class="gallery__col">
+            <img src="assets/img/gallery-03.jpg" alt="Tatuaje" class="is-mirrored" style="aspect-ratio:258/303" loading="lazy">
+            <img src="assets/img/gallery-04.jpg" alt="Tatuaje" style="aspect-ratio:258/284" loading="lazy">
+          </div>
+          <div class="gallery__col">
+            <img src="assets/img/gallery-05.jpg" alt="Tatuaje" style="aspect-ratio:258/438" loading="lazy">
+            <img src="assets/img/gallery-06.jpg" alt="Tatuaje" style="aspect-ratio:258/149" loading="lazy">
+          </div>
+          <div class="gallery__col gallery__col--gap25">
+            <img src="assets/img/gallery-07.jpg" alt="Tatuaje" style="aspect-ratio:258/187" loading="lazy">
+            <img src="assets/img/gallery-08.jpg" alt="Tatuaje" style="aspect-ratio:258/187" loading="lazy">
+            <img src="assets/img/gallery-09.jpg" alt="Tatuaje" style="aspect-ratio:258/187" loading="lazy">
+          </div>
+          <div class="gallery__col gallery__col--wide gallery__col--gap25">
+            <img src="assets/img/gallery-10.jpg" alt="Tatuaje" style="aspect-ratio:308/135" loading="lazy">
+            <img src="assets/img/gallery-11.jpg" alt="Tatuaje" style="aspect-ratio:308/451" loading="lazy">
+          </div>
+        </div>
+        <a href="#gallery" class="btn">Go to gallery</a>
+      </section>
+
+      <!-- ============ HISTORIA ============ -->
+      <section class="story">
+        <div class="story__text">
+          <p class="eyebrow">Our Story</p>
+          <h2 class="display">Abora</h2>
+          <p class="story__body">Explore a curated collection of unique tattoo designs and artwork that showcase creativity, skill, and inspiration. Each piece reflects the passion and vision behind our craft.Explore a curated collection of unique tattoo designs and artwork that showcase creativity, skill, and inspiration. Each piece reflects the passion and vision behind our craft.Explore a curated collection of unique tattoo designs and artwork that showcase creativity, skill, and inspiration. Each piece .</p>
+        </div>
+        <img class="story__img" src="assets/img/story.jpg" alt="Los tatuadores de Abora Tattoo" loading="lazy">
+      </section>
+
+      <!-- ============ CONTACTO / CITA ============ -->
+      <section class="contact" id="contact">
+        <div class="contact__inner">
+          <div class="contact__intro">
+            <h2 class="contact__title">Let's Connect and Build Together!</h2>
+            <p>Explore a curated collection of unique tattoo designs and artwork that showcase creativity, skill, and inspiration. Each piece reflects the passion .</p>
+          </div>
+
+          <form class="form" id="booking-form" novalidate>
+            <div class="form__fields">
+              <input class="field" type="text" name="name" placeholder="Name" aria-label="Name" required>
+              <input class="field" type="email" name="email" placeholder="Mail" aria-label="Mail" required>
+              <div class="form__row">
+                <select class="field field--select" name="style" aria-label="Style" required>
+                  <option value="" selected disabled>Style</option>
+                  <option>Realism tattoo</option>
+                  <option>Traditional</option>
+                  <option>Black work</option>
+                  <option>Fineline</option>
+                  <option>Japanese</option>
+                </select>
+                <select class="field field--select" name="color" aria-label="Color preference">
+                  <option value="" selected disabled>Select color preference</option>
+                  <option>Black &amp; grey</option>
+                  <option>Color</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+              <div class="form__row">
+                <select class="field field--select" name="size" aria-label="Size">
+                  <option value="" selected disabled>Size</option>
+                  <option>Small (&lt; 5 cm)</option>
+                  <option>Medium (5–15 cm)</option>
+                  <option>Large (&gt; 15 cm)</option>
+                </select>
+                <select class="field field--select" name="area" aria-label="Body area">
+                  <option value="" selected disabled>Body area</option>
+                  <option>Arm</option>
+                  <option>Forearm</option>
+                  <option>Hand</option>
+                  <option>Leg</option>
+                  <option>Back</option>
+                  <option>Chest</option>
+                  <option>Neck</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <select class="field field--select" name="slot" aria-label="Preferred time slot">
+                <option value="" selected disabled>Pick preferred time slot</option>
+                <option>Morning (9am – 1pm)</option>
+                <option>Afternoon (1pm – 5pm)</option>
+                <option>Evening (5pm – 9pm)</option>
+                <option>Saturday (under appointment)</option>
+              </select>
+              <textarea class="field field--area" name="message" placeholder="Tell us more about your tattoo" aria-label="Tell us more about your tattoo"></textarea>
+            </div>
+            <p class="form__status" role="status" aria-live="polite"></p>
+            <button type="submit" class="btn">Send message</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- ============ UBICACIÓN Y HORARIO ============ -->
+      <section class="visit">
+        <div class="visit__info">
+          <div class="visit__head">
+            <p class="eyebrow">Where we are?</p>
+            <h2 class="display">Come to visit us</h2>
+            <p class="visit__text">Explore a curated collection of unique tattoo designs and artwork that showcase creativity, skill, and inspiration. Each piece reflects the passion and vision behind our craft.</p>
+          </div>
+          <div class="schedule">
+            <div class="schedule__row"><span>Monday - Friday</span><span>9am - 9pm</span></div>
+            <img class="schedule__divider" src="assets/icons/divider.svg" alt="" width="548" height="1">
+            <div class="schedule__row"><span>Saturday</span><span>Under appoinment</span></div>
+            <img class="schedule__divider" src="assets/icons/divider.svg" alt="" width="548" height="1">
+            <div class="schedule__row"><span>Sunday</span><span>Closed</span></div>
+          </div>
+          <address class="visit__address">C. la Rosa, 10, 35508 Costa Teguise, Lanzarote, Las palmas.</address>
+        </div>
+        <a class="map" href="https://www.google.com/maps/search/?api=1&query=C.+la+Rosa+10+35508+Costa+Teguise+Lanzarote" target="_blank" rel="noopener" aria-label="Ver Abora Tattoo en Google Maps">
+          <img class="map__img" src="assets/img/map.png" alt="Mapa de Costa Teguise con la ubicación del estudio" loading="lazy">
+          <img class="map__pin" src="assets/img/logo.png" alt="" width="69" height="69">
+        </a>
+      </section>
+
+    </div>
   </main>
 
+  <!-- ============ FOOTER ============ -->
   <footer class="footer">
-    <p>&copy; <span id="year"></span> Abora Tattoo</p>
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__cols">
+          <div class="footer__col">
+            <h4>Services</h4>
+            <ul>
+              <li>Realism tattoo</li>
+              <li>Traditional</li>
+              <li>Black work</li>
+              <li>Fineline</li>
+              <li>Japaneese</li>
+            </ul>
+          </div>
+          <div class="footer__col footer__col--wide">
+            <h4>Contact us</h4>
+            <ul>
+              <li><a href="tel:+34617849352">+34 617 849 352</a></li>
+              <li><a href="mailto:AleDiazFoto@gmail.com">AleDiazFoto@gmail.com</a></li>
+              <li>Lanzarote, Spain</li>
+            </ul>
+          </div>
+        </div>
+        <img class="footer__logo" src="assets/img/logo.png" alt="Abora Tattoo" width="100" height="100" loading="lazy">
+      </div>
+      <p class="footer__copy">© <span id="year">2025</span> — Copyright</p>
+    </div>
   </footer>
 
   <script src="js/main.js"></script>
