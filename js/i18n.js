@@ -74,7 +74,7 @@ const TRANSLATIONS = {
     'gallery.alt09': "Tatuaje de un ojo con alambre de espino en la mano",
     'gallery.alt10': "Piernas tatuadas sobre fondo naranja",
     'gallery.alt11': "Brazos con tatuajes tradicionales en color y un dragón",
-    'gallery.button': 'Ir a la galería',
+    'gallery.button': 'Ver más trabajos',
 
     // Página de la galería (galeria.html)
     'galleryPage.title': "Galería de tatuajes | Abora Tattoo – Lanzarote",
@@ -221,7 +221,7 @@ const TRANSLATIONS = {
     'gallery.alt09': "Eye and barbed-wire tattoo on the hand",
     'gallery.alt10': "Tattooed legs against an orange background",
     'gallery.alt11': "Arms with colorful traditional tattoos and a dragon",
-    'gallery.button': 'Go to gallery',
+    'gallery.button': 'See more work',
 
     // Página de la galería (galeria.html)
     'galleryPage.title': "Tattoo Gallery | Abora Tattoo – Lanzarote",
