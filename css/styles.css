@@ -923,3 +923,107 @@ html[lang="es"] .btn { text-transform: none; }
   width: 1px; height: 1px;
   overflow: hidden;
 }
+
+
+/* =========================================================
+   PÁGINA DE GALERÍA (galeria.html)
+   ========================================================= */
+/* Cabecera compacta de las páginas interiores */
+.header--page {
+  position: relative;
+  padding: 24px 0;
+  background: var(--color-bg);
+}
+.header--page .nav { gap: 80px; }
+.header--page .nav__logo img { width: 46px; height: 46px; }
+.nav__group a.is-active {
+  display: inline-block;
+  padding: 5px 0;
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.gallery-page { padding: 64px 24px 140px; }
+
+.gallery-page__inner {
+  width: 1164px;
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.gallery-page__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.gallery-page__title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 32px;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.filter {
+  padding: 6px 16px 9px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: color .2s ease, border-color .2s ease;
+}
+.filter:hover { color: var(--color-accent); }
+.filter.is-active { border-bottom-color: var(--color-accent); }
+.filter.is-active:hover { color: var(--color-text); }
+.filter:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+.works {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.work { aspect-ratio: 372 / 465; overflow: hidden; }
+.work[hidden] { display: none; }
+.work img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+.work:hover img { transform: scale(1.03); }
+
+.works__empty {
+  font-weight: 300;
+  font-size: 16px;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .header--page .nav { gap: 24px; }
+  .works { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+
+@media (max-width: 760px) {
+  .header--page { padding: 16px; }
+  .gallery-page { padding: 40px 16px 72px; }
+  .gallery-page__title { font-size: 26px; }
+  .works { gap: 8px; }
+}

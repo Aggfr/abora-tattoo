@@ -76,6 +76,20 @@ const TRANSLATIONS = {
     'gallery.alt11': "Brazos con tatuajes tradicionales en color y un dragón",
     'gallery.button': 'Ir a la galería',
 
+    // Página de la galería (galeria.html)
+    'galleryPage.title': "Galería de tatuajes | Abora Tattoo – Lanzarote",
+    'galleryPage.description': "Galería de tatuajes de Abora Tattoo en Costa Teguise, Lanzarote: realismo, fineline, tradicional, japonés y más. Filtra por estilo.",
+    'galleryPage.h1': "Galería de tatuajes de Abora Tattoo en Lanzarote",
+    'galleryPage.filterTitle': "Filtrar por estilo",
+    'galleryPage.all': "Todos",
+    'galleryPage.realism': "Realismo",
+    'galleryPage.anime': "Anime",
+    'galleryPage.fineline': "Fineline",
+    'galleryPage.traditional': "Tradicional",
+    'galleryPage.japanese': "Japonés",
+    'galleryPage.others': "Otros",
+    'galleryPage.empty': "Muy pronto añadiremos trabajos de este estilo.",
+
     'story.eyebrow': 'Nuestra historia',
     'story.body': "Abora era el dios del sol para los antiguos canarios. De esa luz nace nuestro nombre y nuestra forma de trabajar: un estudio de tatuajes en Costa Teguise, Lanzarote, donde se encuentran el arte, la cultura de la isla y el respeto por la tradición del tatuaje. Cada proyecto empieza con una conversación. Escuchamos tu idea, la convertimos en un diseño único y la tatuamos con los más altos estándares de higiene y calidad. Tanto si es tu primer tatuaje como si vienes a completar una pieza grande, aquí te vas a sentir como en casa. Recibimos a gente de toda la isla, de Arrecife a Playa Blanca, y a quienes nos visitan y quieren llevarse un pedazo de Lanzarote en la piel.",
     'story.alt': 'Los tatuadores de Abora Tattoo',
@@ -201,6 +215,20 @@ const TRANSLATIONS = {
     'gallery.alt11': "Arms with colorful traditional tattoos and a dragon",
     'gallery.button': 'Go to gallery',
 
+    // Página de la galería (galeria.html)
+    'galleryPage.title': "Tattoo Gallery | Abora Tattoo – Lanzarote",
+    'galleryPage.description': "Abora Tattoo's gallery in Costa Teguise, Lanzarote: realism, fineline, traditional, Japanese and more. Filter by style.",
+    'galleryPage.h1': "Abora Tattoo gallery in Lanzarote",
+    'galleryPage.filterTitle': "Filter by style",
+    'galleryPage.all': "All",
+    'galleryPage.realism': "Realism",
+    'galleryPage.anime': "Anime",
+    'galleryPage.fineline': "Fineline",
+    'galleryPage.traditional': "Traditional",
+    'galleryPage.japanese': "Japanese",
+    'galleryPage.others': "Others",
+    'galleryPage.empty': "Work in this style is coming soon.",
+
     'story.eyebrow': 'Our Story',
     'story.body': "Abora was the sun god of the ancient Canary Islanders. Our name, and the way we work, are born from that light: a tattoo studio in Costa Teguise, Lanzarote, where art, island culture and respect for the tattoo tradition come together. Every project starts with a conversation. We listen to your idea, turn it into a one-of-a-kind design and tattoo it to the highest standards of hygiene and quality. Whether it is your first tattoo or you are coming to finish a large piece, you will feel at home here. We welcome people from all over the island, from Arrecife to Playa Blanca, as well as visitors who want to take a piece of Lanzarote home on their skin.",
     'story.alt': 'The Abora Tattoo artists',
@@ -290,7 +318,8 @@ function setLanguage(lang) {
   apply('data-i18n-aria', (el, v) => { el.setAttribute('aria-label', v); });
   apply('data-i18n-alt', (el, v) => { el.setAttribute('alt', v); });
   apply('data-i18n-content', (el, v) => { el.setAttribute('content', v); });
-  document.title = dict['meta.title'];
+  // Cada página puede tener su propio título (atributo data-title-key en <body>)
+  document.title = dict[document.body.dataset.titleKey || 'meta.title'];
 
   // Estado de los botones ES / EN
   document.querySelectorAll('.lang-switch__btn').forEach((btn) => {

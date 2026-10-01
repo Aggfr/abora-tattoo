@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLanguage();   // idioma: español por defecto, inglés con el selector (js/i18n.js)
   initHeroScrub();
   initTeamCards();
+  initGalleryFilter();
 
   // ---------- Email del footer ----------
   // En el HTML el email está partido (data-user / data-domain) para que los
@@ -229,4 +230,31 @@ function initTeamCards() {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
     });
   });
+}
+
+/* ---------- Galería (galeria.html): filtro por estilo ----------
+   Cada foto lleva data-style="realism|anime|fineline|traditional|japanese|others".
+   Al pulsar un filtro se muestran solo las fotos de ese estilo. */
+function initGalleryFilter() {
+  const buttons = document.querySelectorAll('.filter');
+  const works = document.querySelectorAll('.work');
+  const empty = document.getElementById('works-empty');
+  if (!buttons.length || !works.length) return;
+
+  const apply = (filter) => {
+    let visible = 0;
+    works.forEach((work) => {
+      const show = filter === 'all' || work.dataset.style === filter;
+      work.hidden = !show;
+      if (show) visible += 1;
+    });
+    if (empty) empty.hidden = visible > 0;
+    buttons.forEach((btn) => {
+      const active = btn.dataset.filter === filter;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', String(active));
+    });
+  };
+
+  buttons.forEach((btn) => btn.addEventListener('click', () => apply(btn.dataset.filter)));
 }

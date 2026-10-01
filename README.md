@@ -7,7 +7,8 @@ Hecha con HTML, CSS y JavaScript, sin librerías ni servidor. Diseño original e
 
 ```
 abora-tattoo/
-├── index.html          → toda la página (una sola página)
+├── index.html          → página principal
+├── galeria.html        → galería completa con filtro por estilo
 ├── css/
 │   └── styles.css      → estilos (variables de color y tipografía arriba del todo)
 ├── js/
@@ -44,6 +45,13 @@ si cambias un texto, cámbialo también en el HTML para que Google lo lea igual.
   Móvil: al tocar. Teclado: Enter o espacio.
 - **Formulario de cita:** se envía con [Web3Forms](https://web3forms.com) y llega a
   abora.tattoo.art@gmail.com. Incluye un campo trampa anti-spam.
+
+## Galería (galeria.html)
+
+Cada foto es un `<li class="work" data-style="...">`. El valor de `data-style` decide en qué filtro aparece:
+`realism`, `anime`, `fineline`, `traditional`, `japanese` u `others`.
+Para añadir un trabajo, copia un `<li>`, cambia la imagen y su estilo, y añade su descripción
+(`data-i18n-alt`) en `js/i18n.js`. Ahora mismo las fotos son provisionales (las de la portada).
 
 ## Añadir o cambiar un tatuador
 
