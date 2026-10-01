@@ -95,6 +95,7 @@ ul { list-style: none; }
 }
 
 .nav {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -118,6 +119,38 @@ ul { list-style: none; }
 .nav__group a:hover { color: var(--color-accent); }
 
 .nav__logo img { width: 100px; height: 100px; object-fit: cover; }
+
+/* ---------- Selector de idioma ES / EN ---------- */
+.lang-switch {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-flex);
+  font-weight: 500;
+  font-size: 16px;
+  color: rgba(255, 255, 255, .5);
+}
+.lang-switch__btn {
+  background: none;
+  border: none;
+  padding: 6px 4px;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: color .2s ease;
+}
+.lang-switch__btn:hover { color: #fff; }
+.lang-switch__btn[aria-pressed="true"] { color: var(--color-accent); }
+.lang-switch__btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+/* En español los textos van en mayúscula inicial normal (no "Cada Palabra") */
+html[lang="es"] .nav__group a,
+html[lang="es"] .mobile-menu a,
+html[lang="es"] .btn { text-transform: none; }
 
 .nav__toggle { display: none; }
 .mobile-menu { display: none; }
@@ -678,6 +711,7 @@ ul { list-style: none; }
 
   .nav__group { gap: 28px; }
   .nav { gap: 24px; }
+  .lang-switch { position: static; transform: none; }
 
   .hero {
     height: auto;
@@ -688,6 +722,7 @@ ul { list-style: none; }
     padding: 170px 24px 0;
   }
   .hero__title-wrap { position: relative; left: auto; top: auto; }
+  .hero__title { left: 50%; transform: translateX(-50%); }  /* centrado sobre el círculo en tablet */
   .hero__statue { position: static; width: min(489px, 80%); height: auto; --statue-scale: 1; }
 
   .values { gap: 40px; padding: 0 24px; }
@@ -714,6 +749,7 @@ ul { list-style: none; }
   .nav { justify-content: space-between; }
   .nav__group { display: none; }
   .nav__logo img { width: 72px; height: 72px; }
+  .lang-switch { position: static; transform: none; margin-left: auto; margin-right: 8px; }
 
   .nav__toggle {
     display: flex;

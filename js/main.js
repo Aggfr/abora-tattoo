@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  initLanguage();   // idioma: español por defecto, inglés con el selector (js/i18n.js)
   initHeroScrub();
   initTeamCards();
 
@@ -12,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const closeMenu = () => {
     toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Abrir menú');
+    toggle.setAttribute('aria-label', t('nav.openMenu'));
     menu.hidden = true;
   };
 
@@ -20,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     toggle.addEventListener('click', () => {
       const open = toggle.getAttribute('aria-expanded') === 'true';
       toggle.setAttribute('aria-expanded', String(!open));
-      toggle.setAttribute('aria-label', open ? 'Abrir menú' : 'Cerrar menú');
+      toggle.setAttribute('aria-label', open ? t('nav.openMenu') : t('nav.closeMenu'));
       menu.hidden = open;
     });
     menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
@@ -56,26 +57,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (!valid) {
-      status.textContent = 'Please fill in your name, a valid email and a style.';
+      status.textContent = t('form.invalid');
       form.querySelector('.is-invalid')?.focus();
       return;
     }
 
     const data = new FormData(form);
-    const subject = `Tattoo request – ${data.get('name')}`;
+    // El email que recibe el estudio va siempre en español
+    const subject = `Solicitud de tatuaje – ${data.get('name')}`;
 
     // Sin clave todavía: plan B con el correo del usuario
     if (!WEB3FORMS_KEY) {
       const line = (label, key) => `${label}: ${data.get(key) || '-'}`;
       const body = [
-        line('Name', 'name'), line('Mail', 'email'), line('Style', 'style'),
-        line('Color preference', 'color'), line('Size', 'size'),
-        line('Body area', 'area'), line('Preferred time slot', 'slot'),
+        line('Nombre', 'name'), line('Email', 'email'), line('Estilo', 'style'),
+        line('Preferencia de color', 'color'), line('Tamaño', 'size'),
+        line('Zona del cuerpo', 'area'), line('Franja horaria', 'slot'),
         '', data.get('message') || '',
       ].join('\n');
       window.location.href =
         `mailto:${STUDIO_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      status.textContent = 'Thanks! Your email app should open to send the request.';
+      status.textContent = t('form.mailtoOpened');
       return;
     }
 
@@ -85,19 +87,19 @@ document.addEventListener('DOMContentLoaded', () => {
       subject,
       from_name: 'Abora Tattoo – Web',
       replyto: data.get('email'),   // al responder, le contestas directamente al cliente
-      Name: data.get('name'),
+      Nombre: data.get('name'),
       Email: data.get('email'),
-      Style: data.get('style') || '-',
-      'Color preference': data.get('color') || '-',
-      Size: data.get('size') || '-',
-      'Body area': data.get('area') || '-',
-      'Preferred time slot': data.get('slot') || '-',
-      Message: data.get('message') || '-',
+      Estilo: data.get('style') || '-',
+      'Preferencia de color': data.get('color') || '-',
+      'Tamaño': data.get('size') || '-',
+      'Zona del cuerpo': data.get('area') || '-',
+      'Franja horaria': data.get('slot') || '-',
+      Mensaje: data.get('message') || '-',
+      'Idioma de la web': document.documentElement.lang === 'en' ? 'Inglés' : 'Español',
     };
 
     submitBtn.disabled = true;
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending…';
+    submitBtn.textContent = t('form.sending');
     status.textContent = '';
 
     try {
@@ -111,14 +113,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
       form.reset();
       form.querySelectorAll('select').forEach((sel) => sel.classList.add('is-empty'));
-      status.textContent = "Thanks! We've received your request and will get back to you soon.";
+      status.textContent = t('form.success');
     } catch (err) {
-      status.textContent = `Sorry, something went wrong. Please try again or write to ${STUDIO_EMAIL}.`;
+      status.textContent = `${t('form.error')} ${STUDIO_EMAIL}.`;
     } finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = originalText;
+      submitBtn.textContent = t('form.submit');
     }
   });
+
+  document.addEventListener('languagechange', () => { if (status) status.textContent = ''; });
 
   form?.querySelectorAll('[required]').forEach((field) => {
     field.addEventListener('input', () => field.classList.remove('is-invalid'));
