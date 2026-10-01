@@ -285,10 +285,24 @@ function setLanguage(lang) {
   document.dispatchEvent(new CustomEvent('languagechange', { detail: { lang } }));
 }
 
-function initLanguage() {
+/* Idioma con el que se abre la web, por orden de prioridad:
+   1. ?lang=en o ?lang=es en la dirección  (p. ej. el .com redirige a aboratattoo.es/?lang=en)
+   2. Si se entra por un dominio .com → inglés
+   3. El idioma que el visitante eligió la última vez
+   4. Castellano por defecto */
+function getInitialLanguage() {
+  const param = new URLSearchParams(window.location.search).get('lang');
+  if (param && param in TRANSLATIONS) return param;
+
+  if (window.location.hostname.endsWith('.com')) return 'en';
+
   let saved = null;
   try { saved = localStorage.getItem(LANG_STORAGE_KEY); } catch (e) { /* sin almacenamiento */ }
-  setLanguage(saved || DEFAULT_LANG);
+  return saved || DEFAULT_LANG;
+}
+
+function initLanguage() {
+  setLanguage(getInitialLanguage());
 
   document.querySelectorAll('.lang-switch__btn').forEach((btn) => {
     btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
