@@ -3,6 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroScrub();
   initTeamCards();
 
+  // ---------- Email del footer ----------
+  // En el HTML el email está partido (data-user / data-domain) para que los
+  // bots que recopilan direcciones no lo encuentren. Aquí se monta el enlace.
+  document.querySelectorAll('.js-email').forEach((link) => {
+    const email = `${link.dataset.user}@${link.dataset.domain}`;
+    link.href = `mailto:${email}`;
+    link.textContent = email;
+  });
+
   // ---------- Año actual en el footer ----------
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
@@ -30,10 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ---------- Formulario de cita ----------
   // Se envía con Web3Forms: el mensaje llega directamente al email del estudio.
-  // Pega aquí la "Access Key" que Web3Forms te mandó a abora.tattoo.art@gmail.com.
-  // Mientras esté vacía, el formulario abre el correo del usuario como antes.
+  // La "Access Key" es pública por diseño: solo sirve para enviar mensajes a ese email.
   const WEB3FORMS_KEY = '5bd6156e-0185-43e0-bcf2-e5a71b94e2bb';
-  const STUDIO_EMAIL = 'abora.tattoo.art@gmail.com';
+  const STUDIO_EMAIL = ['abora.tattoo.art', 'gmail.com'].join('@');  // partido para que los bots no lo lean
   const form = document.getElementById('booking-form');
   const status = form?.querySelector('.form__status');
   const submitBtn = form?.querySelector('button[type="submit"]');
@@ -73,21 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // El email que recibe el estudio va siempre en español
     const subject = `Solicitud de tatuaje – ${data.get('name')}`;
-
-    // Sin clave todavía: plan B con el correo del usuario
-    if (!WEB3FORMS_KEY) {
-      const line = (label, key) => `${label}: ${data.get(key) || '-'}`;
-      const body = [
-        line('Nombre', 'name'), line('Email', 'email'), line('Estilo', 'style'),
-        line('Preferencia de color', 'color'), line('Tamaño', 'size'),
-        line('Zona del cuerpo', 'area'), line('Franja horaria', 'slot'),
-        '', data.get('message') || '',
-      ].join('\n');
-      window.location.href =
-        `mailto:${STUDIO_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      status.textContent = t('form.mailtoOpened');
-      return;
-    }
 
     // Envío real con Web3Forms
     const payload = {
@@ -216,12 +209,19 @@ function initTeamCards() {
   const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   cards.forEach((card) => {
-    const toggle = () => card.classList.toggle('is-flipped');
+    // aria-pressed indica a los lectores de pantalla si la tarjeta está girada
+    const setFlipped = (on) => {
+      card.classList.toggle('is-flipped', on);
+      card.setAttribute('aria-pressed', String(on));
+    };
+    const toggle = () => setFlipped(!card.classList.contains('is-flipped'));
 
     card.addEventListener('click', () => {
       if (hasHover) return;  // con ratón ya gira con :hover
       // Al abrir una, cierra las demás
-      cards.forEach((other) => { if (other !== card) other.classList.remove('is-flipped'); });
+      cards.forEach((other) => {
+        if (other !== card) { other.classList.remove('is-flipped'); other.setAttribute('aria-pressed', 'false'); }
+      });
       toggle();
     });
 

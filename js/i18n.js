@@ -63,7 +63,17 @@ const TRANSLATIONS = {
 
     'gallery.title': 'Galería de tatuajes',
     'gallery.text': "Una selección de trabajos reales hechos en nuestro estudio de Lanzarote: realismo, fineline, black work, tradicional y japonés. Inspírate y cuéntanos qué quieres llevar en la piel.",
-    'gallery.alt': 'Tatuaje',
+    'gallery.alt01': "Manos y antebrazos con tatuajes tradicionales, entre ellos un ancla",
+    'gallery.alt02': "Tatuaje de calaveras en línea negra en la pierna",
+    'gallery.alt03': "Tatuajes realistas de retratos en el brazo",
+    'gallery.alt04': "Tatuador trabajando en un brazo completo en el estudio",
+    'gallery.alt05': "Torso y brazos cubiertos de tatuajes tradicionales en negro",
+    'gallery.alt06': "Interior del estudio Abora Tattoo con un gran mural de grafiti",
+    'gallery.alt07': "Piernas con tatuajes tradicionales en color",
+    'gallery.alt08': "Tatuaje en negro de un rostro de mujer en la mano",
+    'gallery.alt09': "Tatuaje de un ojo con alambre de espino en la mano",
+    'gallery.alt10': "Piernas tatuadas sobre fondo naranja",
+    'gallery.alt11': "Brazos con tatuajes tradicionales en color y un dragón",
     'gallery.button': 'Ir a la galería',
 
     'story.eyebrow': 'Nuestra historia',
@@ -85,7 +95,6 @@ const TRANSLATIONS = {
     'form.invalid': 'Rellena tu nombre, un email válido y el estilo.',
     'form.success': '¡Gracias! Hemos recibido tu solicitud y te responderemos pronto.',
     'form.error': 'Lo sentimos, algo ha fallado. Inténtalo de nuevo o escríbenos a',
-    'form.mailtoOpened': '¡Gracias! Se abrirá tu app de correo para enviar la solicitud.',
 
     'style.realism': 'Realismo',
     'style.traditional': 'Tradicional',
@@ -179,7 +188,17 @@ const TRANSLATIONS = {
 
     'gallery.title': 'Tattoo Gallery',
     'gallery.text': "A selection of real work done at our Lanzarote studio: realism, fineline, black work, traditional and Japanese. Get inspired and tell us what you want to wear on your skin.",
-    'gallery.alt': 'Tattoo',
+    'gallery.alt01': "Hands and forearms with traditional tattoos, including an anchor",
+    'gallery.alt02': "Black linework skull tattoo on the leg",
+    'gallery.alt03': "Realistic portrait tattoos on the arm",
+    'gallery.alt04': "Tattoo artist working on a full sleeve at the studio",
+    'gallery.alt05': "Torso and arms covered in black traditional tattoos",
+    'gallery.alt06': "Inside the Abora Tattoo studio, with a large graffiti mural",
+    'gallery.alt07': "Legs with colorful traditional tattoos",
+    'gallery.alt08': "Black tattoo of a woman's face on the hand",
+    'gallery.alt09': "Eye and barbed-wire tattoo on the hand",
+    'gallery.alt10': "Tattooed legs against an orange background",
+    'gallery.alt11': "Arms with colorful traditional tattoos and a dragon",
     'gallery.button': 'Go to gallery',
 
     'story.eyebrow': 'Our Story',
@@ -201,7 +220,6 @@ const TRANSLATIONS = {
     'form.invalid': 'Please fill in your name, a valid email and a style.',
     'form.success': "Thanks! We've received your request and will get back to you soon.",
     'form.error': 'Sorry, something went wrong. Please try again or write to',
-    'form.mailtoOpened': 'Thanks! Your email app should open to send the request.',
 
     'style.realism': 'Realism tattoo',
     'style.traditional': 'Traditional',

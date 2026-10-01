@@ -42,7 +42,7 @@ body {
   overflow-x: hidden;
 }
 
-img { display: block; max-width: 100%; }
+img { display: block; max-width: 100%; height: auto; }  /* width/height del HTML solo reservan el espacio (evita saltos al cargar) */
 a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
 
