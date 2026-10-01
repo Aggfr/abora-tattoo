@@ -178,6 +178,42 @@ html[lang="es"] .btn { text-transform: none; }
   height: 430px;
 }
 
+/* Sol radiante (Abora, dios del sol guanche): degradado + halo de luz sutil
+   pintado encima del círculo amarillo y por debajo del título */
+.hero__title-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%,
+      #ffe27a 0%,           /* núcleo más claro */
+      #fdd03a 35%,
+      #fdc519 60%,          /* amarillo de la marca */
+      #f7ad16 88%,
+      #f09a10 100%);        /* borde más cálido */
+  box-shadow:
+    0 0 40px 6px rgba(253, 197, 25, .35),
+    0 0 110px 30px rgba(245, 150, 20, .18),
+    0 0 220px 80px rgba(245, 130, 20, .07);
+  animation: sun-glow 7s ease-in-out infinite;
+}
+
+@keyframes sun-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 40px 6px rgba(253, 197, 25, .35),
+      0 0 110px 30px rgba(245, 150, 20, .18),
+      0 0 220px 80px rgba(245, 130, 20, .07);
+  }
+  50% {
+    box-shadow:
+      0 0 55px 10px rgba(253, 197, 25, .45),
+      0 0 140px 40px rgba(245, 150, 20, .22),
+      0 0 260px 100px rgba(245, 130, 20, .09);
+  }
+}
+
 .hero__title {
   position: absolute;
   top: 148px;              /* 431 - 283 */
@@ -785,6 +821,7 @@ html[lang="es"] .btn { text-transform: none; }
   /* Hero móvil: sin círculo, título centrado arriba y estatua centrada debajo */
   .hero { padding: 120px 16px 72px; align-items: center; gap: 0; }
   .hero__circle { display: none; }
+  .hero__title-wrap::before { display: none; }
   .hero__title-wrap { width: auto; height: auto; position: relative; }
   .hero__title {
     position: static;
@@ -828,5 +865,6 @@ html[lang="es"] .btn { text-transform: none; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .team-card__inner { transition: none; }
+  .hero__title-wrap::before { animation: none; }
   * { transition: none !important; }
 }
