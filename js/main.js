@@ -63,6 +63,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const data = new FormData(form);
+
+    // Anti-spam: si el campo trampa está marcado, es un bot → se ignora en silencio
+    if (data.get('botcheck')) {
+      form.reset();
+      status.textContent = t('form.success');
+      return;
+    }
+
     // El email que recibe el estudio va siempre en español
     const subject = `Solicitud de tatuaje – ${data.get('name')}`;
 
@@ -84,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Envío real con Web3Forms
     const payload = {
       access_key: WEB3FORMS_KEY,
+      botcheck: false,              // Web3Forms rechaza los envíos con botcheck marcado
       subject,
       from_name: 'Abora Tattoo – Web',
       replyto: data.get('email'),   // al responder, le contestas directamente al cliente
@@ -108,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(payload),
       });
-      const json = await res.json();
+      const json = await res.json().catch(() => ({}));
       if (!res.ok || !json.success) throw new Error(json.message || 'Error');
 
       form.reset();

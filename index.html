@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Seguridad: el navegador solo carga scripts, estilos, fuentes, imágenes y vídeo de esta web
+       (y de Google Fonts), y el formulario solo puede enviar datos a Web3Forms. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src https://api.web3forms.com; form-action 'self'; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="description" content="Abora Tattoo, estudio de tatuajes en Costa Teguise, Lanzarote. Realismo, fineline, tradicional, black work y japonés. Pide cita con nuestros tatuadores." data-i18n-content="meta.description">
   <title>Estudio de tatuajes en Lanzarote | Abora Tattoo – Costa Teguise</title>
   <link rel="icon" type="image/png" href="assets/img/logo.png">
@@ -216,10 +220,10 @@
           <article class="team-card team-card--third" tabindex="0" aria-label="Alex – ver ficha" data-i18n-aria="team.new.aria">
             <div class="team-card__inner">
               <div class="team-card__face team-card__front">
-                <img src="assets/img/team-5.jpg" alt="Alex, tatuador de realismo" data-i18n-alt="team.new.alt" style="object-position: 50% 35%" loading="lazy">
+                <img src="assets/img/team-5.jpg" alt="Alex, tatuador de realismo" data-i18n-alt="team.new.alt" class="team-card__img--alex" loading="lazy">
               </div>
               <div class="team-card__face team-card__back">
-                <img class="team-card__avatar" src="assets/img/team-5.jpg" alt="" style="object-position: 50% 38%" loading="lazy">
+                <img class="team-card__avatar team-card__avatar--alex" src="assets/img/team-5.jpg" alt="" loading="lazy">
                 <div class="team-card__info">
                   <div class="team-card__head">
                     <h3 class="team-card__name" data-i18n="team.new.name">Alex</h3>
@@ -241,25 +245,25 @@
         </header>
         <div class="gallery__grid">
           <div class="gallery__col">
-            <img src="assets/img/gallery-01.jpg" alt="Tatuaje" data-i18n-alt="gallery.alt" style="aspect-ratio:258/201" loading="lazy">
-            <img src="assets/img/gallery-02.jpg" alt="Tatuaje" data-i18n-alt="gallery.alt" style="aspect-ratio:258/386" loading="lazy">
+            <img class="gallery__img--01" src="assets/img/gallery-01.jpg" alt="Tatuaje" data-i18n-alt="gallery.alt" loading="lazy">
+            <img class="gallery__img--02" src="assets/img/gallery-02.jpg" alt="Tatuaje" data-i18n-alt="gallery.alt" loading="lazy">
           </div>
           <div class="gallery__col">
-            <img src="assets/img/gallery-03.jpg" alt="Tatuaje" data-i18n-alt="gallery.alt" class="is-mirrored" style="aspect-ratio:258/303" loading="lazy">
-            <img src="assets/img/gallery-04.jpg" alt="Tatuaje" data-i18n-alt="gallery.alt" style="aspect-ratio:258/284" loading="lazy">
+            <img src="assets/img/gallery-03.jpg" alt="Tatuaje" data-i18n-alt="gallery.alt" class="gallery__img--03 is-mirrored" loading="lazy">
+            <img class="gallery__img--04" src="assets/img/gallery-04.jpg" alt="Tatuaje" data-i18n-alt="gallery.alt" loading="lazy">
           </div>
           <div class="gallery__col">
-            <img src="assets/img/gallery-05.jpg" alt="Tatuaje" data-i18n-alt="gallery.alt" style="aspect-ratio:258/438" loading="lazy">
-            <img src="assets/img/gallery-06.jpg" alt="Tatuaje" data-i18n-alt="gallery.alt" style="aspect-ratio:258/149" loading="lazy">
+            <img class="gallery__img--05" src="assets/img/gallery-05.jpg" alt="Tatuaje" data-i18n-alt="gallery.alt" loading="lazy">
+            <img class="gallery__img--06" src="assets/img/gallery-06.jpg" alt="Tatuaje" data-i18n-alt="gallery.alt" loading="lazy">
           </div>
           <div class="gallery__col gallery__col--gap25">
-            <img src="assets/img/gallery-07.jpg" alt="Tatuaje" data-i18n-alt="gallery.alt" style="aspect-ratio:258/187" loading="lazy">
-            <img src="assets/img/gallery-08.jpg" alt="Tatuaje" data-i18n-alt="gallery.alt" style="aspect-ratio:258/187" loading="lazy">
-            <img src="assets/img/gallery-09.jpg" alt="Tatuaje" data-i18n-alt="gallery.alt" style="aspect-ratio:258/187" loading="lazy">
+            <img class="gallery__img--07" src="assets/img/gallery-07.jpg" alt="Tatuaje" data-i18n-alt="gallery.alt" loading="lazy">
+            <img class="gallery__img--08" src="assets/img/gallery-08.jpg" alt="Tatuaje" data-i18n-alt="gallery.alt" loading="lazy">
+            <img class="gallery__img--09" src="assets/img/gallery-09.jpg" alt="Tatuaje" data-i18n-alt="gallery.alt" loading="lazy">
           </div>
           <div class="gallery__col gallery__col--wide gallery__col--gap25">
-            <img src="assets/img/gallery-10.jpg" alt="Tatuaje" data-i18n-alt="gallery.alt" style="aspect-ratio:308/135" loading="lazy">
-            <img src="assets/img/gallery-11.jpg" alt="Tatuaje" data-i18n-alt="gallery.alt" style="aspect-ratio:308/451" loading="lazy">
+            <img class="gallery__img--10" src="assets/img/gallery-10.jpg" alt="Tatuaje" data-i18n-alt="gallery.alt" loading="lazy">
+            <img class="gallery__img--11" src="assets/img/gallery-11.jpg" alt="Tatuaje" data-i18n-alt="gallery.alt" loading="lazy">
           </div>
         </div>
         <a href="#gallery" class="btn" data-i18n="gallery.button">Ir a la galería</a>
@@ -285,10 +289,13 @@
 
           <form class="form" id="booking-form" novalidate>
             <div class="form__fields">
-              <input class="field" type="text" name="name" placeholder="Nombre" aria-label="Nombre" data-i18n-placeholder="form.name" data-i18n-aria="form.name" required>
-              <input class="field" type="email" name="email" placeholder="Email" aria-label="Email" data-i18n-placeholder="form.email" data-i18n-aria="form.email" required>
+              <label class="visually-hidden" for="f-name" data-i18n="form.name">Nombre</label>
+              <input class="field" type="text" name="name" id="f-name" autocomplete="name" placeholder="Nombre" data-i18n-placeholder="form.name" required>
+              <label class="visually-hidden" for="f-email" data-i18n="form.email">Email</label>
+              <input class="field" type="email" name="email" id="f-email" autocomplete="email" placeholder="Email" data-i18n-placeholder="form.email" required>
               <div class="form__row">
-                <select class="field field--select" name="style" aria-label="Estilo" data-i18n-aria="form.style" required>
+                <label class="visually-hidden" for="f-style" data-i18n="form.style">Estilo</label>
+                <select class="field field--select" name="style" id="f-style" required>
                   <option value="" selected disabled data-i18n="form.style">Estilo</option>
                   <option data-i18n="style.realism">Realismo</option>
                   <option data-i18n="style.traditional">Tradicional</option>
@@ -296,7 +303,8 @@
                   <option data-i18n="style.fineline">Fineline</option>
                   <option data-i18n="style.japanese">Japonés</option>
                 </select>
-                <select class="field field--select" name="color" aria-label="Preferencia de color" data-i18n-aria="form.color">
+                <label class="visually-hidden" for="f-color" data-i18n="form.color">Preferencia de color</label>
+                <select class="field field--select" name="color" id="f-color">
                   <option value="" selected disabled data-i18n="form.color">Preferencia de color</option>
                   <option data-i18n="color.blackgrey">Negro y gris</option>
                   <option data-i18n="color.color">Color</option>
@@ -304,13 +312,15 @@
                 </select>
               </div>
               <div class="form__row">
-                <select class="field field--select" name="size" aria-label="Tamaño" data-i18n-aria="form.size">
+                <label class="visually-hidden" for="f-size" data-i18n="form.size">Tamaño</label>
+                <select class="field field--select" name="size" id="f-size">
                   <option value="" selected disabled data-i18n="form.size">Tamaño</option>
                   <option data-i18n="size.small">Pequeño (&lt; 5 cm)</option>
                   <option data-i18n="size.medium">Mediano (5–15 cm)</option>
                   <option data-i18n="size.large">Grande (&gt; 15 cm)</option>
                 </select>
-                <select class="field field--select" name="area" aria-label="Zona del cuerpo" data-i18n-aria="form.area">
+                <label class="visually-hidden" for="f-area" data-i18n="form.area">Zona del cuerpo</label>
+                <select class="field field--select" name="area" id="f-area">
                   <option value="" selected disabled data-i18n="form.area">Zona del cuerpo</option>
                   <option data-i18n="area.arm">Brazo</option>
                   <option data-i18n="area.forearm">Antebrazo</option>
@@ -322,14 +332,21 @@
                   <option data-i18n="area.other">Otra</option>
                 </select>
               </div>
-              <select class="field field--select" name="slot" aria-label="Franja horaria preferida" data-i18n-aria="form.slot">
+              <label class="visually-hidden" for="f-slot" data-i18n="form.slot">Franja horaria preferida</label>
+              <select class="field field--select" name="slot" id="f-slot">
                 <option value="" selected disabled data-i18n="form.slot">Franja horaria preferida</option>
                 <option data-i18n="slot.morning">Mañana (9:00 – 13:00)</option>
                 <option data-i18n="slot.afternoon">Tarde (13:00 – 17:00)</option>
                 <option data-i18n="slot.evening">Noche (17:00 – 21:00)</option>
                 <option data-i18n="slot.saturday">Sábado (con cita previa)</option>
               </select>
-              <textarea class="field field--area" name="message" placeholder="Cuéntanos más sobre tu tatuaje" aria-label="Cuéntanos más sobre tu tatuaje" data-i18n-placeholder="form.message" data-i18n-aria="form.message"></textarea>
+              <label class="visually-hidden" for="f-message" data-i18n="form.message">Cuéntanos más sobre tu tatuaje</label>
+              <textarea class="field field--area" name="message" id="f-message" placeholder="Cuéntanos más sobre tu tatuaje" data-i18n-placeholder="form.message"></textarea>
+            </div>
+            <!-- Anti-spam: campo trampa invisible. Las personas no lo ven; los bots lo rellenan y su envío se descarta. -->
+            <div class="form__hp" aria-hidden="true">
+              <label for="f-botcheck">No rellenes este campo</label>
+              <input type="checkbox" name="botcheck" id="f-botcheck" tabindex="-1" autocomplete="off">
             </div>
             <p class="form__status" role="status" aria-live="polite"></p>
             <button type="submit" class="btn" data-i18n="form.submit">Enviar mensaje</button>

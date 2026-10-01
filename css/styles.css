@@ -889,3 +889,37 @@ html[lang="es"] .btn { text-transform: none; }
   .hero__title-wrap::before { animation: none; }
   * { transition: none !important; }
 }
+
+/* ---------- Proporciones de la galería y encuadres (antes estaban en el HTML) ---------- */
+.gallery__img--01 { aspect-ratio: 258 / 201; }
+.gallery__img--02 { aspect-ratio: 258 / 386; }
+.gallery__img--03 { aspect-ratio: 258 / 303; }
+.gallery__img--04 { aspect-ratio: 258 / 284; }
+.gallery__img--05 { aspect-ratio: 258 / 438; }
+.gallery__img--06 { aspect-ratio: 258 / 149; }
+.gallery__img--07 { aspect-ratio: 258 / 187; }
+.gallery__img--08 { aspect-ratio: 258 / 187; }
+.gallery__img--09 { aspect-ratio: 258 / 187; }
+.gallery__img--10 { aspect-ratio: 308 / 135; }
+.gallery__img--11 { aspect-ratio: 308 / 451; }
+.team-card__img--alex { object-position: 50% 35%; }
+.team-card__avatar--alex { object-position: 50% 38%; }
+
+/* ---------- Accesibilidad / anti-spam ---------- */
+/* Texto solo para lectores de pantalla (etiquetas de los campos del formulario) */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+/* Campo trampa anti-spam: fuera de la vista */
+.form__hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px; height: 1px;
+  overflow: hidden;
+}
