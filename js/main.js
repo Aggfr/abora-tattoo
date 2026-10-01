@@ -28,11 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ---------- Formulario de cita ----------
-  // No hay servidor todavía: al enviar se abre el correo del usuario
-  // con los datos ya rellenados, dirigido al email del estudio.
-  const STUDIO_EMAIL = 'AleDiazFoto@gmail.com';
+  // Se envía con Web3Forms: el mensaje llega directamente al email del estudio.
+  // Pega aquí la "Access Key" que Web3Forms te mandó a abora.tattoo.art@gmail.com.
+  // Mientras esté vacía, el formulario abre el correo del usuario como antes.
+  const WEB3FORMS_KEY = '5bd6156e-0185-43e0-bcf2-e5a71b94e2bb';
+  const STUDIO_EMAIL = 'abora.tattoo.art@gmail.com';
   const form = document.getElementById('booking-form');
   const status = form?.querySelector('.form__status');
+  const submitBtn = form?.querySelector('button[type="submit"]');
 
   // Los <select> muestran su texto en gris mientras estén sin elegir
   form?.querySelectorAll('select').forEach((select) => {
@@ -41,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     select.addEventListener('change', sync);
   });
 
-  form?.addEventListener('submit', (e) => {
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const required = form.querySelectorAll('[required]');
@@ -59,24 +62,62 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const data = new FormData(form);
-    const line = (label, key) => `${label}: ${data.get(key) || '-'}`;
-    const body = [
-      line('Name', 'name'),
-      line('Mail', 'email'),
-      line('Style', 'style'),
-      line('Color preference', 'color'),
-      line('Size', 'size'),
-      line('Body area', 'area'),
-      line('Preferred time slot', 'slot'),
-      '',
-      data.get('message') || '',
-    ].join('\n');
-
     const subject = `Tattoo request – ${data.get('name')}`;
-    window.location.href =
-      `mailto:${STUDIO_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-    status.textContent = 'Thanks! Your email app should open to send the request.';
+    // Sin clave todavía: plan B con el correo del usuario
+    if (!WEB3FORMS_KEY) {
+      const line = (label, key) => `${label}: ${data.get(key) || '-'}`;
+      const body = [
+        line('Name', 'name'), line('Mail', 'email'), line('Style', 'style'),
+        line('Color preference', 'color'), line('Size', 'size'),
+        line('Body area', 'area'), line('Preferred time slot', 'slot'),
+        '', data.get('message') || '',
+      ].join('\n');
+      window.location.href =
+        `mailto:${STUDIO_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      status.textContent = 'Thanks! Your email app should open to send the request.';
+      return;
+    }
+
+    // Envío real con Web3Forms
+    const payload = {
+      access_key: WEB3FORMS_KEY,
+      subject,
+      from_name: 'Abora Tattoo – Web',
+      replyto: data.get('email'),   // al responder, le contestas directamente al cliente
+      Name: data.get('name'),
+      Email: data.get('email'),
+      Style: data.get('style') || '-',
+      'Color preference': data.get('color') || '-',
+      Size: data.get('size') || '-',
+      'Body area': data.get('area') || '-',
+      'Preferred time slot': data.get('slot') || '-',
+      Message: data.get('message') || '-',
+    };
+
+    submitBtn.disabled = true;
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending…';
+    status.textContent = '';
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const json = await res.json();
+      if (!res.ok || !json.success) throw new Error(json.message || 'Error');
+
+      form.reset();
+      form.querySelectorAll('select').forEach((sel) => sel.classList.add('is-empty'));
+      status.textContent = "Thanks! We've received your request and will get back to you soon.";
+    } catch (err) {
+      status.textContent = `Sorry, something went wrong. Please try again or write to ${STUDIO_EMAIL}.`;
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
   });
 
   form?.querySelectorAll('[required]').forEach((field) => {
