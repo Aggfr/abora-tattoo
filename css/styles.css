@@ -333,7 +333,12 @@ html[lang="es"] .btn { text-transform: none; }
 .team__grid {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(6, 1fr);   /* fila de arriba: 2 tarjetas (3+3) · fila de abajo: 3 tarjetas (2+2+2) */
+}
+.team__grid > .team-card { grid-column: span 3; }
+.team__grid > .team-card--third {
+  grid-column: span 2;
+  aspect-ratio: 372 / 465;                  /* misma altura que las tarjetas de arriba */
 }
 /* ---------- Tarjetas del equipo con flip ---------- */
 .team-card {
@@ -854,6 +859,8 @@ html[lang="es"] .btn { text-transform: none; }
   .section-head { padding: 0 16px; }
 
   .team__grid { grid-template-columns: 1fr; }
+  .team__grid > .team-card,
+  .team__grid > .team-card--third { grid-column: auto; aspect-ratio: 558 / 465; }
   .team-card__back { gap: 16px; padding: 16px 20px; }
   .team-card__avatar { width: 72px; height: 72px; }
   .team-card__name { font-size: 22px; line-height: 28px; }

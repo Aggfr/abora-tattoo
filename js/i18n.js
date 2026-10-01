@@ -55,6 +55,11 @@ const TRANSLATIONS = {
     'team.daniela.alt': 'Tatuadora de Abora Tattoo',
     'team.daniela.style': 'Tradicional americano y japonés',
     'team.daniela.bio': "Del tradicional americano al japonés: flores, koi, dragones y piezas grandes pensadas para fluir con tu cuerpo.",
+    'team.new.aria': "Alex – ver ficha",
+    'team.new.alt': "Alex, tatuador de realismo",
+    'team.new.name': "Alex",
+    'team.new.style': "Realismo",
+    'team.new.bio': "Realismo en negro y gris de contraste suave y gran profundidad. Le apasionan las estatuas clásicas, la mitología y el micro-realismo: piezas llenas de detalle, pensadas para encajar en tu anatomía.",
 
     'gallery.title': 'Galería de tatuajes',
     'gallery.text': "Una selección de trabajos reales hechos en nuestro estudio de Lanzarote: realismo, fineline, black work, tradicional y japonés. Inspírate y cuéntanos qué quieres llevar en la piel.",
@@ -166,6 +171,11 @@ const TRANSLATIONS = {
     'team.daniela.alt': 'Abora Tattoo artist',
     'team.daniela.style': 'American traditional & Japanese',
     'team.daniela.bio': "From American traditional to Japanese: flowers, koi, dragons and large pieces designed to flow with your body.",
+    'team.new.aria': "Alex – view profile",
+    'team.new.alt': "Alex, realism tattoo artist",
+    'team.new.name': "Alex",
+    'team.new.style': "Realism",
+    'team.new.bio': "Black and grey realism with soft contrast and real depth. Classical statues, mythology and micro-realism are his passion: detailed pieces designed to fit your anatomy.",
 
     'gallery.title': 'Tattoo Gallery',
     'gallery.text': "A selection of real work done at our Lanzarote studio: realism, fineline, black work, traditional and Japanese. Get inspired and tell us what you want to wear on your skin.",
