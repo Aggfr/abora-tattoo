@@ -12,6 +12,53 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lato:wght@400&family=Roboto+Flex:opsz,wght@8..144,500;8..144,700&family=Roboto+Serif:opsz,wght@8..144,500;8..144,700&family=Roboto:wdth,wght@75..100,300..600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Datos estructurados de negocio local (Google): estudio de tatuajes, dirección, teléfono, horario e Instagram.
+       Los sábados son con cita previa, por eso no aparecen como horario fijo.
+       Cuando la web tenga dominio, añade aquí "url" y "image" con enlaces completos (https://...). -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TattooParlor",
+    "name": "Abora Tattoo",
+    "description": "Estudio de tatuajes en Costa Teguise, Lanzarote. Realismo, fineline, tradicional americano, black work, dotwork y japonés.",
+    "telephone": "+34 617 849 352",
+    "email": "abora.tattoo.art@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "C. la Rosa, 10",
+      "addressLocality": "Costa Teguise",
+      "addressRegion": "Las Palmas",
+      "postalCode": "35508",
+      "addressCountry": "ES"
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "Lanzarote, Islas Canarias"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "21:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/abora.tattoo.gallery.sl/"
+    ],
+    "knowsLanguage": [
+      "es",
+      "en"
+    ]
+  }
+  </script>
 </head>
 <body>
 
