@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   initHeroScrub();
+  initTeamCards();
 
   // ---------- Año actual en el footer ----------
   const year = document.getElementById('year');
@@ -150,4 +151,28 @@ function initHeroScrub() {
     requestAnimationFrame(animate);
   };
   requestAnimationFrame(animate);
+}
+
+/* ---------- Tarjetas del equipo: flip al tocar / con el teclado ----------
+   Con ratón, el giro lo hace el CSS al pasar por encima (:hover).
+   En móvil/táctil, tocar la foto la gira y tocar otra vez la devuelve.
+   Con teclado, Enter o espacio la giran. */
+function initTeamCards() {
+  const cards = document.querySelectorAll('.team-card');
+  const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  cards.forEach((card) => {
+    const toggle = () => card.classList.toggle('is-flipped');
+
+    card.addEventListener('click', () => {
+      if (hasHover) return;  // con ratón ya gira con :hover
+      // Al abrir una, cierra las demás
+      cards.forEach((other) => { if (other !== card) other.classList.remove('is-flipped'); });
+      toggle();
+    });
+
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+  });
 }

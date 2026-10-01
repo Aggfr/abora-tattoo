@@ -9,7 +9,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lato:wght@400&family=Roboto+Flex:opsz,wght@8..144,500;8..144,700&family=Roboto+Serif:opsz,wght@8..144,500;8..144,700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lato:wght@400&family=Roboto+Flex:opsz,wght@8..144,500;8..144,700&family=Roboto+Serif:opsz,wght@8..144,500;8..144,700&family=Roboto:wdth,wght@75..100,300..600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -82,13 +82,78 @@
       <section class="team" id="team">
         <header class="section-head">
           <h2 class="section-head__title">Meet our team</h2>
-          <p class="section-head__text section-head__text--light">Explore a curated collection of unique tattoo designs and artwork that showcase creativity, skill, and inspiration. Each piece reflects the passion and vision behind our craft.</p>
+          <p class="section-head__text">Explore a curated collection of unique tattoo designs and artwork that showcase creativity, skill, and inspiration. Each piece reflects the passion and vision behind our craft.</p>
         </header>
+        <!-- Al pasar el ratón (o tocar en móvil) cada foto gira y muestra la ficha del tatuador -->
         <div class="team__grid">
-          <img src="assets/img/team-1.jpg" alt="Tatuador trabajando en el estudio" loading="lazy">
-          <img src="assets/img/team-2.jpg" alt="Tatuador de Abora Tattoo" loading="lazy">
-          <img src="assets/img/team-3.jpg" alt="Tatuadora con gafas trabajando" loading="lazy">
-          <img src="assets/img/team-4.jpg" alt="Tatuadora de Abora Tattoo" loading="lazy">
+          <article class="team-card" tabindex="0" aria-label="Kevin – ver ficha">
+            <div class="team-card__inner">
+              <div class="team-card__face team-card__front">
+                <img src="assets/img/team-1.jpg" alt="Tatuador trabajando en el estudio" loading="lazy">
+              </div>
+              <div class="team-card__face team-card__back">
+                <img class="team-card__avatar" src="assets/img/team-1.jpg" alt="" loading="lazy">
+                <div class="team-card__info">
+                  <div class="team-card__head">
+                    <h3 class="team-card__name">Kevin</h3>
+                    <p class="team-card__style">Dotwork &amp; anime</p>
+                  </div>
+                  <p class="team-card__bio">Explore a curated collection of unique tattoo designs and artwork that showcase creativity, skill, and inspiration. Each piece reflects the passion .</p>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="team-card" tabindex="0" aria-label="Abian Trujillo – ver ficha">
+            <div class="team-card__inner">
+              <div class="team-card__face team-card__front">
+                <img src="assets/img/team-2.jpg" alt="Tatuador de Abora Tattoo" loading="lazy">
+              </div>
+              <div class="team-card__face team-card__back">
+                <img class="team-card__avatar" src="assets/img/team-2.jpg" alt="" loading="lazy">
+                <div class="team-card__info">
+                  <div class="team-card__head">
+                    <h3 class="team-card__name">Abian Trujillo</h3>
+                    <p class="team-card__style">Realism</p>
+                  </div>
+                  <p class="team-card__bio">Explore a curated collection of unique tattoo designs and artwork that showcase creativity, skill, and inspiration. Each piece reflects the passion .</p>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="team-card" tabindex="0" aria-label="German aka Farru – ver ficha">
+            <div class="team-card__inner">
+              <div class="team-card__face team-card__front">
+                <img src="assets/img/team-3.jpg" alt="Tatuador con gafas trabajando" loading="lazy">
+              </div>
+              <div class="team-card__face team-card__back">
+                <img class="team-card__avatar" src="assets/img/team-3.jpg" alt="" loading="lazy">
+                <div class="team-card__info">
+                  <div class="team-card__head">
+                    <h3 class="team-card__name">German aka Farru</h3>
+                    <p class="team-card__style">American traditional</p>
+                  </div>
+                  <p class="team-card__bio">Explore a curated collection of unique tattoo designs and artwork that showcase creativity, skill, and inspiration. Each piece reflects the passion .</p>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="team-card" tabindex="0" aria-label="Daniela Bryon – ver ficha">
+            <div class="team-card__inner">
+              <div class="team-card__face team-card__front">
+                <img src="assets/img/team-4.jpg" alt="Tatuadora de Abora Tattoo" loading="lazy">
+              </div>
+              <div class="team-card__face team-card__back">
+                <img class="team-card__avatar" src="assets/img/team-4.jpg" alt="" loading="lazy">
+                <div class="team-card__info">
+                  <div class="team-card__head">
+                    <h3 class="team-card__name">Daniela Bryon</h3>
+                    <p class="team-card__style">American traditional &amp; Japaneese</p>
+                  </div>
+                  <p class="team-card__bio">Explore a curated collection of unique tattoo designs and artwork that showcase creativity, skill, and inspiration. Each piece reflects the passion .</p>
+                </div>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
