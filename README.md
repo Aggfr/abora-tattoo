@@ -49,6 +49,10 @@ En el HTML, cada texto tiene una clave, por ejemplo `data-i18n="team.title"`.
 2. Cambia también el castellano dentro de `index.html` / `galeria.html` (es lo que lee Google en `/`).
 3. Ejecuta **`node build.js`** para regenerar la versión en inglés (`/en/`).
 
+**Preguntas frecuentes:** cada pregunta es `faq.qN` y su respuesta `faq.aN` en `i18n.js`.
+Para añadir una, crea `faq.q13` / `faq.a13` en los dos idiomas, copia un `<details class="faq__item">`
+en `index.html` y ejecuta `node build.js`: los datos estructurados FAQ para Google se generan solos.
+
 `build.js` avisa si el castellano del HTML no coincide con `i18n.js` o si falta alguna traducción.
 
 ## Idiomas (castellano e inglés)
@@ -69,7 +73,8 @@ La web tiene **dos versiones reales**, cada una con su dirección:
 
 **Cómo funciona `build.js`:** copia cada página en castellano y le cambia los textos y atributos
 marcados con `data-i18n…` por los de `i18n.js`, pone el título y la descripción en inglés,
-traduce la descripción de los datos estructurados (`ld.description`), ajusta las rutas
+traduce la descripción de los datos estructurados (`ld.description`), genera los datos FAQ
+(entre los marcadores `i18n:faq-ld`, en castellano y en inglés), ajusta las rutas
 (`../assets/...`) y el selector de idioma. Las páginas generadas avisan arriba de que no se editan a mano.
 
 ## Funcionalidades
@@ -85,6 +90,11 @@ traduce la descripción de los datos estructurados (`ld.description`), ajusta la
   abora.tattoo.art@gmail.com (el email que recibe el estudio va siempre en castellano).
   Todos los campos son obligatorios salvo el mensaje; cada campo muestra su propio error.
   Incluye un campo trampa anti-spam (`botcheck`).
+- **Preguntas frecuentes:** 12 preguntas desplegables (`<details>`, sin JavaScript) antes del pie,
+  en castellano e inglés: precio (desde 70 €, por pieza, solo efectivo), walk-ins y citas, depósito
+  (20–50 €, se descuenta y se devuelve cancelando con 24 h), vacaciones, playa/piscina, cuidados con el sol
+  (second skin 10 €), diseño propio, cover-ups, estilos, menores (con consentimiento paterno en el estudio),
+  idiomas y ubicación/aparcamiento. Pensadas para que Google y las IAs las citen.
 - **WhatsApp:** botón flotante abajo a la derecha con un mensaje inicial según el idioma
   (número en `initWhatsApp`, `main.js`).
 - **Email protegido:** en el HTML el email del pie está partido (`data-user` / `data-domain`)
@@ -134,7 +144,7 @@ y el dominio **aboratattoo.es** (pendiente de configurar).
 
 ## Revisión de calidad (2 oct 2026)
 
-✅ Hecho: meta títulos y descripciones · datos estructurados (TattooParlor) · favicon · textos alternativos ·
+✅ Hecho: meta títulos y descripciones · datos estructurados (TattooParlor con precio mínimo y pago, y FAQPage) · favicon · textos alternativos ·
 imágenes comprimidas (mapa en WebP) · carga optimizada · contraste de colores · responsive (móvil, tablet, ordenador) ·
 página 404 · enlaces internos sin errores · formulario anti-spam y con validación · botón de WhatsApp ·
 web bilingüe ES/EN con páginas reales en inglés (`/en/`, hreflang y canonical) · SEO local (Lanzarote, Costa Teguise).
@@ -160,10 +170,10 @@ web bilingüe ES/EN con páginas reales en inglés (`/en/`, hreflang y canonical
 
 **Optimización para IAs (GEO)**
 - [x] Página en inglés real (`/en/`).
-- [ ] Sección de preguntas frecuentes (ES/EN) con datos estructurados FAQ.
+- [x] Sección de preguntas frecuentes (ES/EN) con datos estructurados FAQ.
 - [ ] Textos más "citables" (idiomas, walk-ins, tiempos de cita, zonas de la isla).
 - [ ] `llms.txt` con un resumen del estudio.
-- [ ] Más datos estructurados (idiomas, estilos, rango de precios, nota de reseñas).
+- [ ] Más datos estructurados: nota media de reseñas cuando las haya (idiomas, precio mínimo y pago ✅).
 - [ ] Alta en Bing Webmaster Tools (ChatGPT se apoya en Bing).
 
 **Fuera de la web**

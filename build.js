@@ -50,6 +50,25 @@ const alternatesBlock = (lang, page) => [
 const setAlternates = (html, lang, page) =>
   html.replace(/  <!-- i18n:alternates[\s\S]*?<!-- \/i18n:alternates -->/, alternatesBlock(lang, page));
 
+// Datos estructurados FAQ (FAQPage) a partir de las claves faq.qN / faq.aN de i18n.js.
+// Se escriben entre los marcadores <!-- i18n:faq-ld --> de cada página que los tenga.
+function faqLd(dict) {
+  const nums = Object.keys(dict).map((k) => (k.match(/^faq\.q(\d+)$/) || [])[1]).filter(Boolean).map(Number).sort((a, b) => a - b);
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: nums.map((n) => ({
+      '@type': 'Question',
+      name: dict[`faq.q${n}`],
+      acceptedAnswer: { '@type': 'Answer', text: dict[`faq.a${n}`] },
+    })),
+  };
+  const json = JSON.stringify(data, null, 2).replace(/</g, '\\u003c').split('\n').map((l) => '  ' + l).join('\n');
+  return `  <!-- i18n:faq-ld (generado por build.js a partir de js/i18n.js) -->\n  <script type="application/ld+json">\n${json}\n  </script>\n  <!-- /i18n:faq-ld -->`;
+}
+const setFaqLd = (html, dict) =>
+  html.replace(/  <!-- i18n:faq-ld[\s\S]*?<!-- \/i18n:faq-ld -->/, faqLd(dict));
+
 const ATTRS = { 'data-i18n-placeholder': 'placeholder', 'data-i18n-aria': 'aria-label', 'data-i18n-alt': 'alt', 'data-i18n-content': 'content' };
 
 function translate(html, page) {
@@ -99,7 +118,7 @@ function translate(html, page) {
 
   // 8. Aviso de archivo generado + hreflang/canonical
   html = html.replace('<!DOCTYPE html>', '<!DOCTYPE html>\n<!-- ⚠️ ARCHIVO GENERADO por build.js a partir de ../' + page + ' y js/i18n.js — no lo edites a mano -->');
-  return setAlternates(html, 'en', page);
+  return setFaqLd(setAlternates(html, 'en', page), EN);
 }
 
 // ---------- Generar ----------
@@ -113,7 +132,7 @@ for (const page of PAGES) {
     return m;
   });
   // Actualizar hreflang/canonical también en la versión en castellano
-  const esUpdated = setAlternates(es, 'es', page);
+  const esUpdated = setFaqLd(setAlternates(es, 'es', page), ES);
   if (esUpdated !== es) fs.writeFileSync(page, esUpdated);
 
   const en = translate(esUpdated, page);
