@@ -1180,3 +1180,84 @@ html[lang="es"] .btn { text-transform: none; }
   .faq__question { font-size: 18px; padding: 20px 44px 20px 0; }
   .faq__answer { padding-right: 0; }
 }
+
+
+/* =========================================================
+   RESEÑAS DE GOOGLE
+   ========================================================= */
+.reviews {
+  width: var(--container);
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+.reviews__rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-text);
+}
+.review__stars {
+  color: var(--color-accent);
+  letter-spacing: 2px;
+  font-size: 20px;
+  line-height: 1;
+}
+.reviews__grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.review {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 32px 28px 28px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  background: rgba(255, 255, 255, .03);
+}
+/* Comilla decorativa con el color de la marca */
+.review::before {
+  content: "“";
+  position: absolute;
+  top: -18px;
+  right: 24px;
+  font-family: var(--font-serif);
+  font-size: 96px;
+  line-height: 1;
+  color: var(--color-accent);
+  opacity: .9;
+}
+.review__text {
+  flex: 1;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-text);
+}
+.review__author { display: flex; flex-direction: column; gap: 4px; }
+.review__name {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--color-text);
+}
+.review__note { font-size: 13px; color: var(--color-muted); }
+.reviews .btn { width: auto; padding: 12px 32px; text-transform: none; text-align: center; }
+.reviews__rating { flex-wrap: wrap; text-align: center; }
+
+@media (max-width: 1024px) {
+  .reviews { padding: 0 24px; }
+  .reviews__grid { grid-template-columns: 1fr; max-width: 640px; }
+}
+@media (max-width: 760px) {
+  .reviews { padding: 0 16px; gap: 36px; }
+  .review { padding: 28px 22px 24px; }
+}

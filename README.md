@@ -103,6 +103,13 @@ Además genera tres archivos para buscadores e IAs (no se editan a mano):
   abora.tattoo.art@gmail.com (el email que recibe el estudio va siempre en castellano).
   Todos los campos son obligatorios salvo el mensaje; cada campo muestra su propio error.
   Incluye un campo trampa anti-spam (`botcheck`).
+- **Reseñas de Google:** sección "Lo que dicen nuestros clientes" (antes del formulario) con la nota
+  (⭐ 5,0 · 119 reseñas), 3 reseñas reales elegidas por el estudio (Angèlique R., Rosie C., Janire C.)
+  y botón a la ficha de Google Maps. En `/en/` se muestran traducidas e indicándolo
+  ("translated from Spanish/French"). Textos en `i18n.js` (`reviews.*`).
+  ⚠️ Actualiza de vez en cuando `reviews.rating` (nota y nº de reseñas) y ejecuta `node build.js`.
+  Las estrellas **no** se marcan en los datos estructurados: Google no permite que un negocio
+  marque sus propias reseñas (salen solas desde la ficha).
 - **Preguntas frecuentes:** 12 preguntas desplegables (`<details>`, sin JavaScript) antes del pie,
   en castellano e inglés: precio (desde 70 €, por pieza, solo efectivo), walk-ins y citas, depósito
   (20–50 €, se descuenta y se devuelve cancelando con 24 h), vacaciones, playa/piscina, cuidados con el sol
@@ -195,8 +202,9 @@ web bilingüe ES/EN con páginas reales en inglés (`/en/`, hreflang y canonical
 - [x] Datos de la web igualados con la ficha de Google (teléfono, horario y dirección). La ficha manda: si cambia, cambiar también la web.
 - [ ] Añadir en la ficha la web `https://aboratattoo.es` (al publicar).
 - [x] Ficha enlazada desde los datos estructurados (`sameAs` y `hasMap`).
-- [ ] Mostrar la nota de Google y algunas reseñas en la web (pendiente de elegir las reseñas).
-- [ ] Aclarar si "Ana" (mencionada en reseñas) es parte del equipo y debe salir en la web.
+- [x] Nota de Google y 3 reseñas destacadas en la web, con enlace a la ficha.
+- [ ] Actualizar cada cierto tiempo la nota y el nº de reseñas (`reviews.rating` en `i18n.js`).
+- [x] "Ana" (mencionada en reseñas antiguas) ya no está en el equipo: no se añade a la web ni se eligen reseñas que la mencionen.
 - [ ] Seguir pidiendo reseñas a cada cliente (Google y TripAdvisor), idealmente mencionando Lanzarote / Costa Teguise y el estilo.
 - [ ] Aparecer en directorios de tatuajes, guías de Lanzarote y blogs de viajes, con el mismo nombre, dirección y teléfono.
 

@@ -104,6 +104,18 @@ const TRANSLATIONS = {
     'story.body': "Abora era el dios del sol para los antiguos canarios. De esa luz nace nuestro nombre y nuestra forma de trabajar: un estudio de tatuajes en Costa Teguise, Lanzarote, donde se encuentran el arte, la cultura de la isla y el respeto por la tradición del tatuaje. Cada proyecto empieza con una conversación. Escuchamos tu idea, la convertimos en un diseño único y la tatuamos con los más altos estándares de higiene y calidad. Tanto si es tu primer tatuaje como si vienes a completar una pieza grande, aquí te vas a sentir como en casa. Recibimos a gente de toda la isla, de Arrecife a Playa Blanca, y a quienes nos visitan y quieren llevarse un pedazo de Lanzarote en la piel.",
     'story.alt': 'Los tatuadores de Abora Tattoo',
 
+    // Reseñas de Google (nota y nº de reseñas: actualizar de vez en cuando)
+    'reviews.title': "Lo que dicen nuestros clientes",
+    'reviews.rating': "5,0 · 119 reseñas en Google",
+    'reviews.starsAria': "Valoración de 5 sobre 5 estrellas",
+    'reviews.button': "Ver todas las reseñas en Google",
+    'reviews.r1.text': "Gracias por el tatuaje a juego que nos hicimos mi esposo y yo. Muy profesionales y con un acabado impecable. Atendieron nuestras peticiones a pesar de la barrera del idioma. ¡Muchas gracias! Los recomiendo al 100%.",
+    'reviews.r1.note': "Reseña de Google · traducida del francés",
+    'reviews.r2.text': "Me hice dos tatuajes con Daniela. Fue una experiencia increíble; fue muy dulce y amable. Los tatuajes quedaron exactamente como los quería. ¡Perfectos! ¡La recomiendo al 10000%! 🫶",
+    'reviews.r2.note': "Reseña de Google",
+    'reviews.r3.text': "Fui con mi pareja para su primer tattoo y un rediseño + un tattoo para mí, el trabajo lo realizó Kevin. Nos hizo la experiencia muy amena, muy buen chico y sobre todo un muy buen trabajo. Si volvemos a Lanzarote, ¡sin duda repetiremos!",
+    'reviews.r3.note': "Reseña de Google",
+
     'contact.title': '¡Conectemos y creemos algo juntos!',
     'contact.text': "¿Tienes una idea en mente? Cuéntanos el estilo, el tamaño y la zona, y te responderemos con una propuesta y una cita en nuestro estudio de Costa Teguise.",
     'form.name': 'Nombre',
@@ -288,6 +300,18 @@ const TRANSLATIONS = {
     'story.eyebrow': 'Our Story',
     'story.body': "Abora was the sun god of the ancient Canary Islanders. Our name, and the way we work, are born from that light: a tattoo studio in Costa Teguise, Lanzarote, where art, island culture and respect for the tattoo tradition come together. Every project starts with a conversation. We listen to your idea, turn it into a one-of-a-kind design and tattoo it to the highest standards of hygiene and quality. Whether it is your first tattoo or you are coming to finish a large piece, you will feel at home here. We welcome people from all over the island, from Arrecife to Playa Blanca, as well as visitors who want to take a piece of Lanzarote home on their skin.",
     'story.alt': 'The Abora Tattoo artists',
+
+    // Reseñas de Google (nota y nº de reseñas: actualizar de vez en cuando)
+    'reviews.title': "What our clients say",
+    'reviews.rating': "5.0 · 119 Google reviews",
+    'reviews.starsAria': "Rated 5 out of 5 stars",
+    'reviews.button': "Read all reviews on Google",
+    'reviews.r1.text': "Thank you for the matching tattoos my husband and I got. Very professional, with a flawless finish. They took care of everything we asked for despite the language barrier. Thank you so much! I recommend them 100%.",
+    'reviews.r1.note': "Google review · translated from French",
+    'reviews.r2.text': "I got two tattoos with Daniela. It was an incredible experience; she was so sweet and kind. The tattoos turned out exactly how I wanted them. Perfect! I recommend her 10000%! 🫶",
+    'reviews.r2.note': "Google review · translated from Spanish",
+    'reviews.r3.text': "I went with my partner for their first tattoo, plus a redesign and a tattoo for me — all done by Kevin. He made the whole experience really enjoyable, a great guy and, above all, great work. If we come back to Lanzarote, we'll definitely be back!",
+    'reviews.r3.note': "Google review · translated from Spanish",
 
     'contact.title': "Let's Connect and Build Together!",
     'contact.text': "Have an idea in mind? Tell us the style, size and placement, and we will get back to you with a proposal and an appointment at our Costa Teguise studio.",
