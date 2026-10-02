@@ -105,7 +105,7 @@ Además genera tres archivos para buscadores e IAs (no se editan a mano):
   Incluye un campo trampa anti-spam (`botcheck`).
 - **Reseñas de Google:** sección "Lo que dicen nuestros clientes" (antes del formulario) con la nota
   (⭐ 5,0 · 119 reseñas), 3 reseñas reales elegidas por el estudio (Angèlique R., Rosie C., Janire C.)
-  y botón a la ficha de Google Maps. En `/en/` se muestran traducidas e indicándolo
+  y la propia nota enlazada a la ficha de Google Maps (sin botón, para no competir con "Pide cita"). En `/en/` se muestran traducidas e indicándolo
   ("translated from Spanish/French"). Textos en `i18n.js` (`reviews.*`).
   ⚠️ Actualiza de vez en cuando `reviews.rating` (nota y nº de reseñas) y ejecuta `node build.js`.
   Las estrellas **no** se marcan en los datos estructurados: Google no permite que un negocio

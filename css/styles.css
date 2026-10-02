@@ -1250,8 +1250,12 @@ html[lang="es"] .btn { text-transform: none; }
   color: var(--color-text);
 }
 .review__note { font-size: 13px; color: var(--color-muted); }
-.reviews .btn { width: auto; padding: 12px 32px; text-transform: none; text-align: center; }
-.reviews__rating { flex-wrap: wrap; text-align: center; }
+.reviews__rating { flex-wrap: wrap; text-align: center; text-decoration: none; transition: color .2s ease; }
+/* La nota enlaza a la ficha de Google: subrayado discreto al pasar el ratón */
+.reviews__rating span:last-child { border-bottom: 1px solid rgba(255, 255, 255, .35); padding-bottom: 2px; }
+.reviews__rating:hover { color: var(--color-accent); }
+.reviews__rating:hover span:last-child { border-bottom-color: var(--color-accent); }
+.reviews__rating:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
 
 @media (max-width: 1024px) {
   .reviews { padding: 0 24px; }
