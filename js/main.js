@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroScrub();
   initTeamCards();
   initGalleryFilter();
+  initWhatsApp();
 
   // ---------- Email del footer ----------
   // En el HTML el email está partido (data-user / data-domain) para que los
@@ -309,4 +310,17 @@ function initGalleryFilter() {
   };
 
   buttons.forEach((btn) => btn.addEventListener('click', () => apply(btn.dataset.filter)));
+}
+
+/* ---------- Botón flotante de WhatsApp ----------
+   Abre un chat con el estudio con un mensaje inicial en el idioma de la web. */
+function initWhatsApp() {
+  const link = document.querySelector('.whatsapp');
+  if (!link) return;
+  const PHONE = '34699847802';
+  const update = () => {
+    link.href = `https://wa.me/${PHONE}?text=${encodeURIComponent(t('whatsapp.message'))}`;
+  };
+  update();
+  document.addEventListener('languagechange', update);
 }

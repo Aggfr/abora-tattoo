@@ -25,6 +25,15 @@ const TRANSLATIONS = {
     'nav.openMenu': 'Abrir menú',
     'nav.closeMenu': 'Cerrar menú',
 
+    'whatsapp.aria': "Escríbenos por WhatsApp",
+    'whatsapp.label': "WhatsApp",
+    'whatsapp.message': "¡Hola Abora Tattoo! Me gustaría pedir información para hacerme un tatuaje.",
+    'notFound.title': "Página no encontrada | Abora Tattoo",
+    'notFound.heading': "Esta página no existe",
+    'notFound.text': "Puede que el enlace esté mal escrito o que la página se haya movido. Como un tatuaje que aún no hemos hecho… todavía.",
+    'notFound.home': "Volver al inicio",
+    'notFound.book': "Pide cita",
+
     'hero.subtitle': 'Estudio de tatuajes en Costa Teguise, Lanzarote',
     'hero.video': 'Busto clásico de mármol con grafitis que se agrieta y se recompone',
 
@@ -171,6 +180,15 @@ const TRANSLATIONS = {
     'nav.contact': 'Book now',
     'nav.openMenu': 'Open menu',
     'nav.closeMenu': 'Close menu',
+
+    'whatsapp.aria': "Message us on WhatsApp",
+    'whatsapp.label': "WhatsApp",
+    'whatsapp.message': "Hi Abora Tattoo! I'd like some information about getting a tattoo.",
+    'notFound.title': "Page not found | Abora Tattoo",
+    'notFound.heading': "This page doesn't exist",
+    'notFound.text': "The link may be mistyped or the page may have moved. Like a tattoo we haven't done… yet.",
+    'notFound.home': "Back to home",
+    'notFound.book': "Book now",
 
     'hero.subtitle': 'Tattoo studio in Costa Teguise, Lanzarote',
     'hero.video': 'Classic marble bust with graffiti that cracks apart and comes back together',

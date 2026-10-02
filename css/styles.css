@@ -432,7 +432,7 @@ html[lang="es"] .btn { text-transform: none; }
   font-family: var(--font-sans);
   font-weight: 500;
   font-size: 16px;
-  color: #7f7a7a;
+  color: #635e5e;   /* gris con contraste suficiente sobre blanco (≥ 4.5) */
 }
 
 .team-card__bio {
@@ -751,7 +751,7 @@ html[lang="es"] .btn { text-transform: none; }
 .footer__copy {
   text-align: right;
   font-size: 10px;
-  opacity: .4;
+  opacity: .6;      /* contraste suficiente sobre el fondo del pie */
   white-space: nowrap;
 }
 
@@ -1044,3 +1044,76 @@ html[lang="es"] .btn { text-transform: none; }
   .gallery-page__title { font-size: 26px; }
   .works { gap: 8px; }
 }
+
+
+/* =========================================================
+   BOTÓN FLOTANTE DE WHATSAPP
+   ========================================================= */
+.whatsapp {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 56px;
+  padding: 0 20px 0 13px;
+  border-radius: 999px;
+  background: #1a8d4a;               /* verde WhatsApp oscurecido: el texto blanco se lee bien */
+  color: #fff;
+  font-family: var(--font-flex);
+  font-weight: 700;
+  font-size: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .45);
+  transition: transform .2s ease, background-color .2s ease;
+}
+.whatsapp:hover { background: #1fa257; transform: translateY(-2px); }
+.whatsapp:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 3px; }
+.whatsapp__icon { flex-shrink: 0; }
+/* Espacio al final del pie para que el botón nunca tape el logo ni el copyright */
+.footer { padding-bottom: 104px; }
+
+/* En móvil solo el icono (círculo), para no tapar contenido */
+@media (max-width: 760px) {
+  .whatsapp { right: 16px; bottom: 16px; width: 56px; padding: 0; justify-content: center; }
+  .whatsapp__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+
+/* =========================================================
+   PÁGINA 404
+   ========================================================= */
+.not-found {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 80px 24px 120px;
+  text-align: center;
+}
+.not-found__code {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(96px, 20vw, 180px);
+  line-height: 1;
+  color: var(--color-accent);
+  text-shadow: 0 0 40px rgba(253, 197, 25, .35);
+}
+.not-found__title {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(28px, 5vw, 40px);
+  color: var(--color-text);
+}
+.not-found__text {
+  max-width: 520px;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+.not-found__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 8px; }
+.btn--ghost { background: transparent; color: var(--color-text); border: 1px solid var(--color-text); }
+.btn--ghost:hover { background: var(--color-text); color: var(--color-dark); }
