@@ -7,10 +7,11 @@ Hecha con HTML, CSS y JavaScript, sin librerías ni servidor. Diseño original e
 
 | Dato | Valor |
 |---|---|
-| Teléfono / WhatsApp | +34 699 847 802 |
+| Teléfono / WhatsApp | +34 648 43 99 77 |
 | Email | abora.tattoo.art@gmail.com |
 | Dirección | C. la Rosa, 10, 35508 Costa Teguise, Lanzarote, Las Palmas |
-| Horario | Lunes a viernes 9:00–21:00 · Sábado con cita previa · Domingo cerrado |
+| Horario | Lunes a viernes 10:00–20:00 · Sábado 10:00–13:00 · Domingo cerrado |
+| Google Maps | https://maps.app.goo.gl/VyJC3PeeKh3jGMiT8 (⭐ 5,0 · 119 reseñas, oct 2026) |
 | Instagram | https://www.instagram.com/abora.tattoo.gallery.sl/ |
 | Repositorio | https://github.com/Aggfr/abora-tattoo |
 
@@ -190,8 +191,13 @@ web bilingüe ES/EN con páginas reales en inglés (`/en/`, hreflang y canonical
 - [ ] Alta en Bing Webmaster Tools (ChatGPT se apoya en Bing).
 
 **Fuera de la web**
-- [ ] Ficha de Google Business Profile (business.google.com) — lo que más pesa para salir en Google Maps.
-- [ ] Pedir reseñas a cada cliente (Google y TripAdvisor) mencionando Lanzarote / Costa Teguise.
+- [x] Ficha de Google Business Profile creada, con más de 100 reseñas positivas.
+- [x] Datos de la web igualados con la ficha de Google (teléfono, horario y dirección). La ficha manda: si cambia, cambiar también la web.
+- [ ] Añadir en la ficha la web `https://aboratattoo.es` (al publicar).
+- [x] Ficha enlazada desde los datos estructurados (`sameAs` y `hasMap`).
+- [ ] Mostrar la nota de Google y algunas reseñas en la web (pendiente de elegir las reseñas).
+- [ ] Aclarar si "Ana" (mencionada en reseñas) es parte del equipo y debe salir en la web.
+- [ ] Seguir pidiendo reseñas a cada cliente (Google y TripAdvisor), idealmente mencionando Lanzarote / Costa Teguise y el estilo.
 - [ ] Aparecer en directorios de tatuajes, guías de Lanzarote y blogs de viajes, con el mismo nombre, dirección y teléfono.
 
 **Contenido y mejoras**

@@ -317,7 +317,7 @@ function initGalleryFilter() {
 function initWhatsApp() {
   const link = document.querySelector('.whatsapp');
   if (!link) return;
-  const PHONE = '34699847802';
+  const PHONE = '34648439977';
   const update = () => {
     link.href = `https://wa.me/${PHONE}?text=${encodeURIComponent(t('whatsapp.message'))}`;
   };
