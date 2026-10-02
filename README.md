@@ -26,9 +26,16 @@ abora-tattoo/
 ├── index.html          → página principal
 ├── galeria.html        → galería completa con filtro por estilo
 ├── 404.html            → página de error (GitHub Pages la usa sola si una dirección no existe)
+├── aviso-legal.html    → aviso legal (LSSI) — texto en castellano
+├── privacidad.html     → política de privacidad (RGPD) — texto en castellano
+├── legal/              → texto en INGLÉS del aviso legal y la privacidad (lo inserta build.js)
+│   ├── aviso-legal.en.html
+│   └── privacidad.en.html
 ├── en/                 → ⚙️ versión en inglés GENERADA por build.js (no editar a mano)
 │   ├── index.html
-│   └── galeria.html
+│   ├── galeria.html
+│   ├── aviso-legal.html
+│   └── privacidad.html
 ├── build.js            → script que genera /en/, sitemap.xml, robots.txt y llms.txt
 ├── sitemap.xml         → ⚙️ generado por build.js (lista de páginas para Google/Bing)
 ├── robots.txt          → ⚙️ generado por build.js (permite buscadores y rastreadores de IA)
@@ -66,13 +73,13 @@ La web tiene **dos versiones reales**, cada una con su dirección:
 
 | Idioma | Dirección | Archivos |
 |---|---|---|
-| Castellano (por defecto) | `aboratattoo.es/` y `/galeria.html` | `index.html`, `galeria.html` (se editan a mano) |
-| Inglés | `aboratattoo.es/en/` y `/en/galeria.html` | `en/…` (los **genera** `build.js`) |
+| Castellano (por defecto) | `aboratattoo.es/`, `/galeria.html`, `/aviso-legal.html`, `/privacidad.html` | se editan a mano |
+| Inglés | `aboratattoo.es/en/…` (mismas páginas) | `en/…` (los **genera** `build.js`) |
 
 - Así Google y las IAs leen el inglés directamente (clave para búsquedas como *"tattoo studio Lanzarote"*).
 - El selector **ES / EN** es un enlace a la misma página en el otro idioma.
 - Cada página indica su versión en el otro idioma (`hreflang`) y su dirección oficial (`canonical`);
-  `build.js` escribe esas etiquetas en las 4 páginas (dominio configurado en `SITE` dentro de `build.js`).
+  `build.js` escribe esas etiquetas en todas las páginas (dominio configurado en `SITE` dentro de `build.js`).
 - Compatibilidad: `?lang=en` en la dirección, o entrar por un dominio `.com`, lleva a `/en/`.
 - La página 404 está solo en castellano, con enlace a `/en/`.
 
@@ -81,12 +88,18 @@ marcados con `data-i18n…` por los de `i18n.js`, pone el título y la descripci
 traduce la descripción de los datos estructurados (`ld.description`), genera los datos FAQ
 (entre los marcadores `i18n:faq-ld`, en castellano y en inglés), ajusta las rutas
 (`../assets/...`) y el selector de idioma. Las páginas generadas avisan arriba de que no se editan a mano.
+En las páginas legales, el cuerpo en inglés no sale de `i18n.js` (es texto largo): `build.js` lo copia de
+`legal/*.en.html` entre los marcadores `i18n:legal-body` (lista `BODY_EN` en `build.js`).
+
+**Cambiar los textos legales:** castellano → `aviso-legal.html` / `privacidad.html`; inglés →
+`legal/aviso-legal.en.html` / `legal/privacidad.en.html`. Cambia los dos, actualiza la fecha de
+"Última actualización" y ejecuta `node build.js`.
 
 Además genera tres archivos para buscadores e IAs (no se editan a mano):
 
 | Archivo | Para qué sirve |
 |---|---|
-| `sitemap.xml` | Lista las 4 páginas (castellano e inglés) con sus versiones de idioma, para Google y Bing. |
+| `sitemap.xml` | Lista las 4 páginas principales (inicio y galería, en castellano e inglés; las legales no, porque llevan `noindex` — lista `SITEMAP_PAGES`) con sus versiones de idioma, para Google y Bing. |
 | `robots.txt` | Permite la entrada a todos los buscadores y, de forma explícita, a los rastreadores de IA (ChatGPT, Claude, Perplexity, Gemini, Apple, Bing/Copilot, Common Crawl). Indica dónde está el sitemap. |
 | `llms.txt` | Resumen del estudio en Markdown para las IAs ([llmstxt.org](https://llmstxt.org)): datos clave, tatuadores, páginas y las preguntas frecuentes en los dos idiomas (sacadas de `i18n.js`). El email no se incluye a propósito (protección anti-bots). |
 
@@ -103,6 +116,15 @@ Además genera tres archivos para buscadores e IAs (no se editan a mano):
   abora.tattoo.art@gmail.com (el email que recibe el estudio va siempre en castellano).
   Todos los campos son obligatorios salvo el mensaje; cada campo muestra su propio error.
   Incluye un campo trampa anti-spam (`botcheck`).
+  Casilla obligatoria **"He leído y acepto la política de privacidad"** (con enlace) y debajo la
+  información básica de protección de datos en letra pequeña y discreta (responsable "Abora Tattoo", sin el
+  nombre del titular, que solo aparece en las páginas legales; finalidad, cesiones y derechos). Sin marcarla no se envía
+  y sale un error. El email que recibe el estudio incluye "Acepta la política de privacidad: Sí (fecha y hora)"
+  como prueba del consentimiento: **guarda esos emails** mientras dure la relación con el cliente.
+- **Aviso legal y política de privacidad:** `aviso-legal.html` y `privacidad.html` (+ `/en/`), enlazadas
+  desde el pie de todas las páginas. Llevan `noindex` (no interesan en Google). Titular: Carlos Abian
+  Trujillo Rodríguez, NIF 78769544H. Mencionan a los proveedores que tratan datos (Web3Forms, Gmail,
+  GitHub Pages, Google Fonts, WhatsApp): si se cambia alguno (p. ej. fuentes en local o analítica), actualizar la política.
 - **Reseñas de Google:** sección "Lo que dicen nuestros clientes" (antes del formulario) con la nota
   (⭐ 5,0 · 119 reseñas), 3 reseñas reales elegidas por el estudio (Angèlique R., Rosie C., Janire C.)
   y la propia nota enlazada a la ficha de Google Maps (sin botón, para no competir con "Pide cita"). En `/en/` se muestran traducidas e indicándolo
@@ -172,9 +194,11 @@ web bilingüe ES/EN con páginas reales en inglés (`/en/`, hreflang y canonical
 ## Pendiente
 
 **Antes de publicar (obligatorio)**
-- [ ] Aviso legal (faltan datos del titular: nombre o razón social, NIF y dirección fiscal).
-- [ ] Política de privacidad.
-- [ ] Casilla "He leído y acepto la política de privacidad" en el formulario.
+- [x] Aviso legal (`aviso-legal.html`, ES/EN).
+- [x] Política de privacidad (`privacidad.html`, ES/EN).
+- [x] Casilla "He leído y acepto la política de privacidad" en el formulario.
+- [ ] Confirmar el código postal del domicilio fiscal (puesto **35509**, Playa Honda) en las dos páginas legales (ES y `legal/*.en.html`).
+- [ ] Recomendado: que una gestoría o abogado revise los textos legales.
 - [ ] Aviso de cookies: **no hace falta** mientras la web no use cookies (sin Google Analytics ni píxeles).
 
 **Al publicar con el dominio (aboratattoo.es + aboratattoo.com)**
@@ -211,4 +235,4 @@ web bilingüe ES/EN con páginas reales en inglés (`/en/`, hreflang y canonical
 **Contenido y mejoras**
 - [ ] Fotos reales de la galería con su estilo (ahora son provisionales).
 - [ ] Revisar las fichas de los tatuadores y los textos (higiene, distancias, etc.).
-- [ ] Alojar las fuentes en local (ahora se cargan desde Google Fonts) y simplificar la CSP.
+- [ ] Alojar las fuentes en local (ahora se cargan desde Google Fonts) y simplificar la CSP (y quitar Google Fonts de la política de privacidad).

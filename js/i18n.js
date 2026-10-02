@@ -207,6 +207,17 @@ const TRANSLATIONS = {
     'footer.contact': 'Contacto',
     'footer.location': 'Lanzarote, España',
     'footer.rights': 'Todos los derechos reservados',
+
+    // Textos legales (aviso legal, privacidad y casilla del formulario)
+    'legalPage.title': "Aviso legal | Abora Tattoo",
+    'privacyPage.title': "Política de privacidad | Abora Tattoo",
+    'footer.legal': "Aviso legal",
+    'footer.privacy': "Política de privacidad",
+    'form.privacyBefore': "He leído y acepto la",
+    'form.privacyLink': "política de privacidad",
+    'form.legalInfo': "Responsable: Abora Tattoo. Finalidad: gestionar tu cita. No se ceden datos a terceros. Derechos: acceso, rectificación, supresión y otros.",
+    'form.legalMore': "Más información",
+    'error.privacy': "Para enviar la solicitud debes aceptar la política de privacidad.",
   },
 
   en: {
@@ -403,6 +414,17 @@ const TRANSLATIONS = {
     'footer.contact': 'Contact us',
     'footer.location': 'Lanzarote, Spain',
     'footer.rights': 'All rights reserved',
+
+    // Textos legales (aviso legal, privacidad y casilla del formulario)
+    'legalPage.title': "Legal notice | Abora Tattoo",
+    'privacyPage.title': "Privacy policy | Abora Tattoo",
+    'footer.legal': "Legal notice",
+    'footer.privacy': "Privacy policy",
+    'form.privacyBefore': "I have read and accept the",
+    'form.privacyLink': "privacy policy",
+    'form.legalInfo': "Controller: Abora Tattoo. Purpose: managing your appointment. No data is shared with third parties. Rights: access, rectification, erasure and more.",
+    'form.legalMore': "More information",
+    'error.privacy': "You must accept the privacy policy to send your request.",
   },
 };
 

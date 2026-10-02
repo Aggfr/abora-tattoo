@@ -3,7 +3,7 @@
    ---------------------------------------------------------
    Uso (desde la carpeta del proyecto):   node build.js
 
-   Toma las páginas en castellano (index.html, galeria.html) y los textos
+   Toma las páginas en castellano (index, galería, aviso legal, privacidad) y los textos
    de js/i18n.js, y crea en/index.html y en/galeria.html con todo el texto
    ya escrito en inglés, para que Google y las IAs lo lean directamente.
 
@@ -21,7 +21,11 @@ const path = require('path');
 const vm = require('vm');
 
 const SITE = 'https://aboratattoo.es';        // dominio principal
-const PAGES = ['index.html', 'galeria.html']; // páginas que se traducen
+const PAGES = ['index.html', 'galeria.html', 'aviso-legal.html', 'privacidad.html']; // páginas que se traducen
+const SITEMAP_PAGES = ['index.html', 'galeria.html'];  // las legales llevan noindex y no van al sitemap
+// Páginas cuyo contenido largo en inglés está escrito aparte (no en i18n.js):
+// el bloque <!-- i18n:legal-body --> se sustituye por el archivo indicado.
+const BODY_EN = { 'aviso-legal.html': 'legal/aviso-legal.en.html', 'privacidad.html': 'legal/privacidad.en.html' };
 const OUT_DIR = 'en';
 
 // ---------- Cargar los textos de js/i18n.js ----------
@@ -121,6 +125,14 @@ function translate(html, page) {
     return `<a class="lang-switch__btn" data-lang="${lang}" href="${href}"${rest}${lang === 'en' ? ' aria-current="true"' : ''}>`;
   });
 
+  // 7b. Contenido largo en inglés escrito aparte (páginas legales)
+  if (BODY_EN[page]) {
+    const body = fs.readFileSync(BODY_EN[page], 'utf8').replace(/^<!--[\s\S]*?-->\n/, '');
+    const re = /(<!-- i18n:legal-body[^>]*-->\n)[\s\S]*?(\n\s*<!-- \/i18n:legal-body -->)/;
+    if (!re.test(html)) problems.push(`${page}: falta el bloque i18n:legal-body`);
+    html = html.replace(re, (m, a, b) => a + body.replace(/\n$/, '') + b);
+  }
+
   // 8. Aviso de archivo generado + hreflang/canonical
   html = html.replace('<!DOCTYPE html>', '<!DOCTYPE html>\n<!-- ⚠️ ARCHIVO GENERADO por build.js a partir de ../' + page + ' y js/i18n.js — no lo edites a mano -->');
   return setFaqLd(setAlternates(html, 'en', page), EN);
@@ -150,7 +162,7 @@ const today = new Date().toISOString().slice(0, 10);
 const sitemap = ['<?xml version="1.0" encoding="UTF-8"?>',
   '<!-- Generado por build.js -->',
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'];
-for (const page of PAGES) for (const lang of ['es', 'en']) {
+for (const page of SITEMAP_PAGES) for (const lang of ['es', 'en']) {
   sitemap.push('  <url>',
     `    <loc>${url(lang, page)}</loc>`,
     `    <lastmod>${today}</lastmod>`,

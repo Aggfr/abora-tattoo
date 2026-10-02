@@ -1265,3 +1265,74 @@ html[lang="es"] .btn { text-transform: none; }
   .reviews { padding: 0 16px; gap: 36px; }
   .review { padding: 28px 22px 24px; }
 }
+
+
+/* =========================================================
+   TEXTOS LEGALES: pie, casilla del formulario y páginas legales
+   ========================================================= */
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.footer__legal { display: flex; gap: 20px; flex-wrap: wrap; font-size: 12px; }
+.footer__legal a { color: var(--color-muted); text-decoration: underline; text-underline-offset: 3px; }
+.footer__legal a:hover { color: var(--color-accent); }
+
+/* Casilla de aceptación */
+.form__consent { align-self: stretch; display: flex; flex-direction: column; gap: 8px; }
+.form__check { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: var(--color-text); }
+.form__check input {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+.form__check input.is-invalid { outline: 2px solid #ff6b6b; outline-offset: 2px; }
+.form__check label { cursor: pointer; }
+.form__check a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 3px; }
+/* Información básica de protección de datos: "letra pequeña", discreta */
+.form__legal { font-size: 11px; line-height: 1.5; color: rgba(216, 203, 203, 0.6); }
+.form__legal a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.form__legal a:hover, .form__legal a:focus-visible { color: var(--color-muted); }
+
+/* Páginas legales */
+.legal { padding: 64px 24px 120px; }
+.legal__inner {
+  width: 800px;
+  max-width: 100%;
+  margin: 0 auto;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-muted);
+}
+.legal__title {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(36px, 6vw, 56px);
+  line-height: 1.1;
+  color: var(--color-text);
+}
+.legal__updated { margin: 12px 0 32px; font-size: 14px; }
+.legal__inner h2 {
+  margin: 40px 0 12px;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--color-text);
+}
+.legal__inner p { margin-bottom: 12px; }
+.legal__inner ul { list-style: disc; padding-left: 22px; margin-bottom: 12px; }
+.legal__inner li { margin-bottom: 6px; }
+.legal__inner strong { font-weight: 500; color: var(--color-text); }
+.legal__inner a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 760px) {
+  .legal { padding: 40px 16px 72px; }
+  .footer__bottom { flex-direction: column; align-items: flex-start; }
+}

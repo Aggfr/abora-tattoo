@@ -526,6 +526,15 @@
               <label class="visually-hidden" for="f-message" data-i18n="form.message">Tell us more about your tattoo and which day you'd like to come in</label>
               <textarea class="field field--area" name="message" id="f-message" placeholder="Tell us more about your tattoo and which day you'd like to come in" data-i18n-placeholder="form.message"></textarea>
             </div>
+            <!-- Consentimiento (RGPD): casilla obligatoria + información básica de protección de datos -->
+            <div class="form__consent">
+              <div class="form__check">
+                <input type="checkbox" name="privacy" id="f-privacy" value="yes" aria-describedby="err-privacy" required>
+                <label for="f-privacy"><span data-i18n="form.privacyBefore">I have read and accept the</span> <a href="privacidad.html" target="_blank" data-i18n="form.privacyLink">privacy policy</a></label>
+              </div>
+              <p class="field-error" id="err-privacy" hidden></p>
+              <p class="form__legal"><span data-i18n="form.legalInfo">Controller: Abora Tattoo. Purpose: managing your appointment. No data is shared with third parties. Rights: access, rectification, erasure and more.</span> <a href="privacidad.html" target="_blank" data-i18n="form.legalMore">More information</a></p>
+            </div>
             <!-- Anti-spam: campo trampa invisible. Las personas no lo ven; los bots lo rellenan y su envío se descarta. -->
             <div class="form__hp" aria-hidden="true">
               <label for="f-botcheck">No rellenes este campo</label>
@@ -648,7 +657,13 @@
         </div>
         <img class="footer__logo" src="../assets/img/logo.png" alt="Abora Tattoo" width="100" height="100" loading="lazy">
       </div>
-      <p class="footer__copy">© <span id="year">2025</span> — <span data-i18n="footer.rights">All rights reserved</span></p>
+      <div class="footer__bottom">
+        <nav class="footer__legal" aria-label="Legal">
+          <a href="aviso-legal.html" data-i18n="footer.legal">Legal notice</a>
+          <a href="privacidad.html" data-i18n="footer.privacy">Privacy policy</a>
+        </nav>
+        <p class="footer__copy">© <span id="year">2025</span> — <span data-i18n="footer.rights">All rights reserved</span></p>
+      </div>
     </div>
   </footer>
 

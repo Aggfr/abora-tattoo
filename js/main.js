@@ -93,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'Franja horaria': data.get('slot') || '-',
       Mensaje: data.get('message') || '-',
       'Idioma de la web': document.documentElement.lang === 'en' ? 'Inglés' : 'Español',
+      'Acepta la política de privacidad': `Sí (${new Date().toLocaleString('es-ES', { timeZone: 'Atlantic/Canary' })})`,
     };
 
     submitBtn.disabled = true;
