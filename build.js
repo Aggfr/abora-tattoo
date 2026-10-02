@@ -7,6 +7,11 @@
    de js/i18n.js, y crea en/index.html y en/galeria.html con todo el texto
    ya escrito en inglés, para que Google y las IAs lo lean directamente.
 
+   También genera:
+     - sitemap.xml  → lista de páginas para Google/Bing (con sus versiones de idioma)
+     - robots.txt   → permite la entrada a buscadores y rastreadores de IA
+     - llms.txt     → resumen del estudio para las IAs (datos sacados de i18n.js)
+
    ⚠️  No edites los archivos de /en/ a mano: se sobrescriben cada vez.
        Cambia el castellano (HTML) o los textos (js/i18n.js) y vuelve a
        ejecutar `node build.js` antes de hacer commit.
@@ -140,10 +145,97 @@ for (const page of PAGES) {
   console.log(`✔ ${OUT_DIR}/${page}`);
 }
 
+// ---------- sitemap.xml ----------
+const today = new Date().toISOString().slice(0, 10);
+const sitemap = ['<?xml version="1.0" encoding="UTF-8"?>',
+  '<!-- Generado por build.js -->',
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'];
+for (const page of PAGES) for (const lang of ['es', 'en']) {
+  sitemap.push('  <url>',
+    `    <loc>${url(lang, page)}</loc>`,
+    `    <lastmod>${today}</lastmod>`,
+    `    <xhtml:link rel="alternate" hreflang="es" href="${url('es', page)}"/>`,
+    `    <xhtml:link rel="alternate" hreflang="en" href="${url('en', page)}"/>`,
+    `    <xhtml:link rel="alternate" hreflang="x-default" href="${url('es', page)}"/>`,
+    '  </url>');
+}
+sitemap.push('</urlset>', '');
+fs.writeFileSync('sitemap.xml', sitemap.join('\n'));
+console.log('✔ sitemap.xml');
+
+// ---------- robots.txt ----------
+// Se permite todo. Los rastreadores de IA se nombran a propósito para dejar clara la intención.
+const AI_BOTS = [
+  ['OpenAI (ChatGPT)', ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User']],
+  ['Anthropic (Claude)', ['ClaudeBot', 'Claude-SearchBot', 'Claude-User']],
+  ['Perplexity', ['PerplexityBot', 'Perplexity-User']],
+  ['Google (Gemini / AI Overviews)', ['Google-Extended']],
+  ['Apple (Apple Intelligence)', ['Applebot', 'Applebot-Extended']],
+  ['Microsoft (Bing / Copilot)', ['Bingbot']],
+  ['Common Crawl (lo usan muchos modelos)', ['CCBot']],
+];
+const robots = ['# robots.txt — Abora Tattoo (generado por build.js)',
+  '# Todos los buscadores y asistentes de IA pueden leer la web.', '',
+  'User-agent: *', 'Allow: /', ''];
+for (const [who, bots] of AI_BOTS) {
+  robots.push(`# ${who}`);
+  for (const bot of bots) robots.push(`User-agent: ${bot}`);
+  robots.push('Allow: /', '');
+}
+robots.push(`Sitemap: ${SITE}/sitemap.xml`, '');
+fs.writeFileSync('robots.txt', robots.join('\n'));
+console.log('✔ robots.txt');
+
+// ---------- llms.txt ----------
+// Formato propuesto en llmstxt.org: Markdown con un resumen y enlaces clave.
+const faq = (dict) => Object.keys(dict).map((k) => (k.match(/^faq\.q(\d+)$/) || [])[1]).filter(Boolean)
+  .map(Number).sort((a, b) => a - b).map((n) => `- **${dict[`faq.q${n}`]}** ${dict[`faq.a${n}`]}`);
+const TEAM = [['Kevin', 'kevin'], ['Abian Trujillo', 'abian'], ['German aka Farru', 'german'], ['Daniela Bryon', 'daniela'], [EN['team.new.name'], 'new']];
+const llms = [
+  '# Abora Tattoo',
+  '',
+  `> ${EN['ld.description']} Five resident artists, walk-ins welcome, English and Spanish spoken.`,
+  `> ${ES['ld.description']} Cinco tatuadores, se aceptan walk-ins, se habla castellano e inglés.`,
+  '',
+  '## Key facts',
+  '',
+  '- Name: Abora Tattoo (tattoo studio / estudio de tatuajes)',
+  '- Address: C. la Rosa, 10, 35508 Costa Teguise, Lanzarote, Las Palmas, Spain',
+  '- Opening hours: Monday–Friday 9:00–21:00 · Saturday by appointment · Sunday closed',
+  '- Phone / WhatsApp: +34 699 847 802 (also via the booking form on the website)',
+  '- Instagram: https://www.instagram.com/abora.tattoo.gallery.sl/',
+  '- Prices: priced per piece, minimum €70, free quote · cash only',
+  '- Booking: walk-ins accepted; appointments usually within a few days; deposit €20–50 (deducted, refundable with 24 h notice)',
+  '- Languages: Spanish and English',
+  '- Name origin: Abora was the sun god of the ancient Canary Islanders',
+  '',
+  '## Artists',
+  '',
+  ...TEAM.map(([name, key]) => `- ${name}: ${EN[`team.${key}.style`]}`),
+  '',
+  '## Pages',
+  '',
+  `- [Home (English)](${url('en', 'index.html')}): studio, team, values, booking form, location and FAQ`,
+  `- [Gallery (English)](${url('en', 'galeria.html')}): tattoo work filterable by style`,
+  `- [Inicio (castellano)](${url('es', 'index.html')}): estudio, equipo, formulario de cita, ubicación y preguntas frecuentes`,
+  `- [Galería (castellano)](${url('es', 'galeria.html')}): trabajos filtrados por estilo`,
+  '',
+  '## FAQ (English)',
+  '',
+  ...faq(EN),
+  '',
+  '## Preguntas frecuentes (castellano)',
+  '',
+  ...faq(ES),
+  '',
+];
+fs.writeFileSync('llms.txt', llms.join('\n'));
+console.log('✔ llms.txt');
+
 if (problems.length) {
   console.log('\n⚠️  Revisa esto:');
   problems.forEach((p) => console.log('   - ' + p));
   process.exitCode = 1;
 } else {
-  console.log('\nTodo correcto: versión en inglés actualizada.');
+  console.log('\nTodo correcto: versión en inglés, sitemap, robots y llms.txt actualizados.');
 }

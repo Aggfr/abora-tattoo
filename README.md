@@ -15,7 +15,8 @@ Hecha con HTML, CSS y JavaScript, sin librerías ni servidor. Diseño original e
 | Repositorio | https://github.com/Aggfr/abora-tattoo |
 
 Si cambia alguno, búscalo en **todos** los archivos (`index.html`, `galeria.html`, `404.html`,
-`js/main.js` y los datos estructurados del `<head>` de `index.html`).
+`js/main.js`, los datos estructurados del `<head>` de `index.html` y la sección *Key facts* de `build.js`
+— que genera `llms.txt`) y ejecuta `node build.js`.
 
 ## Estructura
 
@@ -27,7 +28,10 @@ abora-tattoo/
 ├── en/                 → ⚙️ versión en inglés GENERADA por build.js (no editar a mano)
 │   ├── index.html
 │   └── galeria.html
-├── build.js            → script que genera /en/ a partir del castellano + js/i18n.js
+├── build.js            → script que genera /en/, sitemap.xml, robots.txt y llms.txt
+├── sitemap.xml         → ⚙️ generado por build.js (lista de páginas para Google/Bing)
+├── robots.txt          → ⚙️ generado por build.js (permite buscadores y rastreadores de IA)
+├── llms.txt            → ⚙️ generado por build.js (resumen del estudio para las IAs)
 ├── css/
 │   └── styles.css      → estilos (variables de color y tipografía arriba del todo)
 ├── js/
@@ -76,6 +80,14 @@ marcados con `data-i18n…` por los de `i18n.js`, pone el título y la descripci
 traduce la descripción de los datos estructurados (`ld.description`), genera los datos FAQ
 (entre los marcadores `i18n:faq-ld`, en castellano y en inglés), ajusta las rutas
 (`../assets/...`) y el selector de idioma. Las páginas generadas avisan arriba de que no se editan a mano.
+
+Además genera tres archivos para buscadores e IAs (no se editan a mano):
+
+| Archivo | Para qué sirve |
+|---|---|
+| `sitemap.xml` | Lista las 4 páginas (castellano e inglés) con sus versiones de idioma, para Google y Bing. |
+| `robots.txt` | Permite la entrada a todos los buscadores y, de forma explícita, a los rastreadores de IA (ChatGPT, Claude, Perplexity, Gemini, Apple, Bing/Copilot, Common Crawl). Indica dónde está el sitemap. |
+| `llms.txt` | Resumen del estudio en Markdown para las IAs ([llmstxt.org](https://llmstxt.org)): datos clave, tatuadores, páginas y las preguntas frecuentes en los dos idiomas (sacadas de `i18n.js`). El email no se incluye a propósito (protección anti-bots). |
 
 ## Funcionalidades
 
@@ -161,7 +173,8 @@ web bilingüe ES/EN con páginas reales en inglés (`/en/`, hreflang y canonical
 - [ ] Activar GitHub Pages, archivo `CNAME` y DNS en Hostinger.
 - [ ] Forzar HTTPS ("Enforce HTTPS" en GitHub Pages).
 - [ ] `aboratattoo.com` → redirigir a `https://aboratattoo.es/en/` (en Hostinger).
-- [ ] `sitemap.xml` (con las 4 páginas: `/`, `/galeria.html`, `/en/`, `/en/galeria.html`) y `robots.txt` (permitiendo los rastreadores de IA).
+- [x] `sitemap.xml` y `robots.txt` (generados por `build.js`; listos para cuando el dominio funcione).
+- [ ] Enviar `https://aboratattoo.es/sitemap.xml` en Google Search Console y Bing Webmaster Tools.
 - [ ] Etiquetas Open Graph (vista previa en WhatsApp/redes) y `canonical`.
 - [ ] Añadir `url` e `image` a los datos estructurados.
 - [ ] Google Search Console: alta de la web y envío del sitemap.
@@ -172,7 +185,7 @@ web bilingüe ES/EN con páginas reales en inglés (`/en/`, hreflang y canonical
 - [x] Página en inglés real (`/en/`).
 - [x] Sección de preguntas frecuentes (ES/EN) con datos estructurados FAQ.
 - [ ] Textos más "citables" (idiomas, walk-ins, tiempos de cita, zonas de la isla).
-- [ ] `llms.txt` con un resumen del estudio.
+- [x] `llms.txt` con un resumen del estudio y `robots.txt` abierto a los rastreadores de IA.
 - [ ] Más datos estructurados: nota media de reseñas cuando las haya (idiomas, precio mínimo y pago ✅).
 - [ ] Alta en Bing Webmaster Tools (ChatGPT se apoya en Bing).
 

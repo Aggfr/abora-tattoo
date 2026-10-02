@@ -1,0 +1,41 @@
+# robots.txt — Abora Tattoo (generado por build.js)
+# Todos los buscadores y asistentes de IA pueden leer la web.
+
+User-agent: *
+Allow: /
+
+# OpenAI (ChatGPT)
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+Allow: /
+
+# Google (Gemini / AI Overviews)
+User-agent: Google-Extended
+Allow: /
+
+# Apple (Apple Intelligence)
+User-agent: Applebot
+User-agent: Applebot-Extended
+Allow: /
+
+# Microsoft (Bing / Copilot)
+User-agent: Bingbot
+Allow: /
+
+# Common Crawl (lo usan muchos modelos)
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://aboratattoo.es/sitemap.xml
