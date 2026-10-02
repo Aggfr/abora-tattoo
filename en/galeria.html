@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!-- ⚠️ ARCHIVO GENERADO por build.js a partir de ../galeria.html y js/i18n.js — no lo edites a mano -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src https://api.web3forms.com; form-action 'self'; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <!-- i18n:alternates (generado por build.js) -->
+  <link rel="canonical" href="https://aboratattoo.es/en/galeria.html">
+  <link rel="alternate" hreflang="es" href="https://aboratattoo.es/galeria.html">
+  <link rel="alternate" hreflang="en" href="https://aboratattoo.es/en/galeria.html">
+  <link rel="alternate" hreflang="x-default" href="https://aboratattoo.es/galeria.html">
+  <!-- /i18n:alternates -->
+  <meta name="description" content="Abora Tattoo's gallery in Costa Teguise, Lanzarote: realism, fineline, traditional, Japanese and more. Filter by style." data-i18n-content="galleryPage.description">
+  <title>Tattoo Gallery | Abora Tattoo – Lanzarote</title>
+  <link rel="icon" type="image/png" href="../assets/img/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lato:wght@400&family=Roboto+Flex:opsz,wght@8..144,500;8..144,700&family=Roboto+Serif:opsz,wght@8..144,500;8..144,700&family=Roboto:wdth,wght@75..100,300..600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-title-key="galleryPage.title">
+
+  <!-- ============ HEADER / NAV (versión compacta para páginas interiores) ============ -->
+  <header class="header header--page">
+    <nav class="nav" aria-label="Main" data-i18n-aria="nav.aria">
+      <ul class="nav__group">
+        <li><a href="index.html#team" data-i18n="nav.artists">Tattoo Artists</a></li>
+        <li><a href="galeria.html" class="is-active" aria-current="page" data-i18n="nav.gallery">Tattoo Gallery</a></li>
+      </ul>
+      <a href="index.html" class="nav__logo" aria-label="Abora Tattoo – Home" data-i18n-aria="nav.home">
+        <img src="../assets/img/logo.png" alt="Abora Tattoo" width="100" height="100">
+      </a>
+      <ul class="nav__group">
+        <li><a href="index.html#contact" data-i18n="nav.contact">Book now</a></li>
+        <li><a href="https://www.instagram.com/abora.tattoo.gallery.sl/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+
+      <!-- Selector de idioma: cada idioma tiene su propia página (/ y /en/). La versión /en/ la genera build.js -->
+      <div class="lang-switch" role="group" aria-label="Idioma / Language">
+        <a class="lang-switch__btn" data-lang="es" href="../galeria.html" hreflang="es" lang="es" aria-label="Español">ES</a>
+        <span class="lang-switch__sep" aria-hidden="true">/</span>
+        <a class="lang-switch__btn" data-lang="en" href="galeria.html" hreflang="en" lang="en" aria-label="English" aria-current="true">EN</a>
+      </div>
+
+      <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <a href="index.html#team" data-i18n="nav.artists">Tattoo Artists</a>
+      <a href="galeria.html" aria-current="page" data-i18n="nav.gallery">Tattoo Gallery</a>
+      <a href="index.html#contact" data-i18n="nav.contact">Book now</a>
+      <a href="https://www.instagram.com/abora.tattoo.gallery.sl/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </header>
+
+  <main class="gallery-page">
+    <h1 class="visually-hidden" data-i18n="galleryPage.h1">Abora Tattoo gallery in Lanzarote</h1>
+
+    <section class="gallery-page__inner" aria-labelledby="filter-title">
+      <div class="gallery-page__head">
+        <h2 class="gallery-page__title" id="filter-title" data-i18n="galleryPage.filterTitle">Filter by style</h2>
+        <div class="filters" role="group" aria-labelledby="filter-title">
+            <button type="button" class="filter is-active" data-filter="all" aria-pressed="true" data-i18n="galleryPage.all">All</button>
+            <button type="button" class="filter" data-filter="realism" aria-pressed="false" data-i18n="galleryPage.realism">Realism</button>
+            <button type="button" class="filter" data-filter="anime" aria-pressed="false" data-i18n="galleryPage.anime">Anime</button>
+            <button type="button" class="filter" data-filter="fineline" aria-pressed="false" data-i18n="galleryPage.fineline">Fineline</button>
+            <button type="button" class="filter" data-filter="traditional" aria-pressed="false" data-i18n="galleryPage.traditional">Traditional</button>
+            <button type="button" class="filter" data-filter="japanese" aria-pressed="false" data-i18n="galleryPage.japanese">Japanese</button>
+            <button type="button" class="filter" data-filter="others" aria-pressed="false" data-i18n="galleryPage.others">Others</button>
+        </div>
+      </div>
+
+      <!-- Fotos provisionales: sustitúyelas por los trabajos reales.
+           data-style indica el estilo para el filtro: realism, anime, fineline, traditional, japanese u others -->
+      <ul class="works" id="works">
+          <li class="work" data-style="realism">
+            <img src="../assets/img/gallery-03.jpg" alt="Realistic portrait tattoos on the arm" width="640" height="960" data-i18n-alt="gallery.alt03" loading="lazy">
+          </li>
+          <li class="work" data-style="fineline">
+            <img src="../assets/img/gallery-09.jpg" alt="Eye and barbed-wire tattoo on the hand" width="387" height="516" data-i18n-alt="gallery.alt09" loading="lazy">
+          </li>
+          <li class="work" data-style="japanese">
+            <img src="../assets/img/gallery-11.jpg" alt="Arms with colorful traditional tattoos and a dragon" width="640" height="960" data-i18n-alt="gallery.alt11" loading="lazy">
+          </li>
+          <li class="work" data-style="traditional">
+            <img src="../assets/img/gallery-01.jpg" alt="Hands and forearms with traditional tattoos, including an anchor" width="640" height="800" data-i18n-alt="gallery.alt01" loading="lazy">
+          </li>
+          <li class="work" data-style="realism">
+            <img src="../assets/img/gallery-08.jpg" alt="Black tattoo of a woman's face on the hand" width="640" height="960" data-i18n-alt="gallery.alt08" loading="lazy">
+          </li>
+          <li class="work" data-style="others">
+            <img src="../assets/img/gallery-02.jpg" alt="Black linework skull tattoo on the leg" width="640" height="800" data-i18n-alt="gallery.alt02" loading="lazy">
+          </li>
+          <li class="work" data-style="traditional">
+            <img src="../assets/img/gallery-07.jpg" alt="Legs with colorful traditional tattoos" width="640" height="800" data-i18n-alt="gallery.alt07" loading="lazy">
+          </li>
+          <li class="work" data-style="traditional">
+            <img src="../assets/img/gallery-05.jpg" alt="Torso and arms covered in black traditional tattoos" width="640" height="800" data-i18n-alt="gallery.alt05" loading="lazy">
+          </li>
+          <li class="work" data-style="others">
+            <img src="../assets/img/gallery-04.jpg" alt="Tattoo artist working on a full sleeve at the studio" width="640" height="427" data-i18n-alt="gallery.alt04" loading="lazy">
+          </li>
+          <li class="work" data-style="traditional">
+            <img src="../assets/img/gallery-10.jpg" alt="Tattooed legs against an orange background" width="640" height="427" data-i18n-alt="gallery.alt10" loading="lazy">
+          </li>
+      </ul>
+      <p class="works__empty" id="works-empty" hidden data-i18n="galleryPage.empty">Work in this style is coming soon.</p>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__cols">
+          <div class="footer__col">
+            <h4 data-i18n="footer.services">Services</h4>
+            <ul>
+              <li data-i18n="style.realism">Realism tattoo</li>
+              <li data-i18n="style.traditional">Traditional</li>
+              <li data-i18n="style.blackwork">Black work</li>
+              <li data-i18n="style.fineline">Fineline</li>
+              <li data-i18n="style.japanese">Japanese</li>
+            </ul>
+          </div>
+          <div class="footer__col footer__col--wide">
+            <h4 data-i18n="footer.contact">Contact us</h4>
+            <ul>
+              <li><a href="tel:+34699847802">+34 699 847 802</a></li>
+              <li><a class="js-email" data-user="abora.tattoo.art" data-domain="gmail.com" href="index.html#contact">abora.tattoo.art [arroba] gmail.com</a></li>
+              <li data-i18n="footer.location">Lanzarote, Spain</li>
+            </ul>
+          </div>
+        </div>
+        <img class="footer__logo" src="../assets/img/logo.png" alt="Abora Tattoo" width="100" height="100" loading="lazy">
+      </div>
+      <p class="footer__copy">© <span id="year">2025</span> — <span data-i18n="footer.rights">All rights reserved</span></p>
+    </div>
+  </footer>
+
+  <!-- Botón flotante de WhatsApp (el mensaje inicial se traduce en js/main.js) -->
+  <a class="whatsapp" href="https://wa.me/34699847802" target="_blank" rel="noopener" aria-label="Message us on WhatsApp" data-i18n-aria="whatsapp.aria">
+    <svg class="whatsapp__icon" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true" focusable="false">
+      <path d="M16 3C8.8 3 3 8.6 3 15.6c0 2.5.8 4.9 2.1 6.9L3.7 29l6.8-1.8c1.7.9 3.6 1.4 5.5 1.4 7.2 0 13-5.6 13-12.6S23.2 3 16 3Z" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
+      <path d="M11.4 9.6c.3-.3.7-.3 1-.1l1.6 2.1c.2.3.2.7 0 1l-.9 1.1c.8 1.6 2.1 2.9 3.7 3.7l1.1-.9c.3-.2.7-.2 1 0l2.1 1.6c.3.2.4.7.1 1l-.9 1.1c-.5.6-1.3.8-2 .6-3.5-1.1-6.2-3.8-7.3-7.3-.2-.7 0-1.5.6-2l.9-.9Z" fill="#fff"/>
+    </svg>
+    <span class="whatsapp__label" data-i18n="whatsapp.label">WhatsApp</span>
+  </a>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

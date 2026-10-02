@@ -24,6 +24,10 @@ abora-tattoo/
 ├── index.html          → página principal
 ├── galeria.html        → galería completa con filtro por estilo
 ├── 404.html            → página de error (GitHub Pages la usa sola si una dirección no existe)
+├── en/                 → ⚙️ versión en inglés GENERADA por build.js (no editar a mano)
+│   ├── index.html
+│   └── galeria.html
+├── build.js            → script que genera /en/ a partir del castellano + js/i18n.js
 ├── css/
 │   └── styles.css      → estilos (variables de color y tipografía arriba del todo)
 ├── js/
@@ -39,18 +43,34 @@ abora-tattoo/
 ## Cambiar textos
 
 Todos los textos están en **`js/i18n.js`**, cada uno en los dos idiomas (`es` y `en`).
-En el HTML, cada texto tiene una clave, por ejemplo `data-i18n="team.title"`;
-busca esa clave en `i18n.js` y cambia el texto ahí (en los dos idiomas).
+En el HTML, cada texto tiene una clave, por ejemplo `data-i18n="team.title"`.
 
-El texto que aparece escrito dentro de `index.html` es el castellano por defecto:
-si cambias un texto, cámbialo también en el HTML para que Google lo lea igual.
+1. Cambia el texto en `js/i18n.js` (en castellano **y** en inglés).
+2. Cambia también el castellano dentro de `index.html` / `galeria.html` (es lo que lee Google en `/`).
+3. Ejecuta **`node build.js`** para regenerar la versión en inglés (`/en/`).
 
-## Idiomas
+`build.js` avisa si el castellano del HTML no coincide con `i18n.js` o si falta alguna traducción.
 
-- Por defecto la web se abre en **castellano**.
-- El selector **ES / EN** del menú cambia toda la web y recuerda la elección.
-- Con `?lang=en` en la dirección se abre directamente en inglés
-  (lo usa el dominio `.com`, que redirige a `aboratattoo.es/?lang=en`).
+## Idiomas (castellano e inglés)
+
+La web tiene **dos versiones reales**, cada una con su dirección:
+
+| Idioma | Dirección | Archivos |
+|---|---|---|
+| Castellano (por defecto) | `aboratattoo.es/` y `/galeria.html` | `index.html`, `galeria.html` (se editan a mano) |
+| Inglés | `aboratattoo.es/en/` y `/en/galeria.html` | `en/…` (los **genera** `build.js`) |
+
+- Así Google y las IAs leen el inglés directamente (clave para búsquedas como *"tattoo studio Lanzarote"*).
+- El selector **ES / EN** es un enlace a la misma página en el otro idioma.
+- Cada página indica su versión en el otro idioma (`hreflang`) y su dirección oficial (`canonical`);
+  `build.js` escribe esas etiquetas en las 4 páginas (dominio configurado en `SITE` dentro de `build.js`).
+- Compatibilidad: `?lang=en` en la dirección, o entrar por un dominio `.com`, lleva a `/en/`.
+- La página 404 está solo en castellano, con enlace a `/en/`.
+
+**Cómo funciona `build.js`:** copia cada página en castellano y le cambia los textos y atributos
+marcados con `data-i18n…` por los de `i18n.js`, pone el título y la descripción en inglés,
+traduce la descripción de los datos estructurados (`ld.description`), ajusta las rutas
+(`../assets/...`) y el selector de idioma. Las páginas generadas avisan arriba de que no se editan a mano.
 
 ## Funcionalidades
 
@@ -102,8 +122,12 @@ Abre la carpeta en VS Code y usa la extensión **Live Server** (o abre `index.ht
 ## Guardar y publicar cambios
 
 ```bash
+node build.js
 git add . && git commit -m "Describe el cambio" && git push
 ```
+
+Ejecuta siempre `node build.js` antes del commit si has tocado HTML o textos,
+para que la versión en inglés quede al día. Buena práctica: **un cambio = un commit**.
 
 El repositorio está en GitHub (`Aggfr/abora-tattoo`). La web se publicará con GitHub Pages
 y el dominio **aboratattoo.es** (pendiente de configurar).
@@ -113,7 +137,7 @@ y el dominio **aboratattoo.es** (pendiente de configurar).
 ✅ Hecho: meta títulos y descripciones · datos estructurados (TattooParlor) · favicon · textos alternativos ·
 imágenes comprimidas (mapa en WebP) · carga optimizada · contraste de colores · responsive (móvil, tablet, ordenador) ·
 página 404 · enlaces internos sin errores · formulario anti-spam y con validación · botón de WhatsApp ·
-web bilingüe ES/EN · SEO local (Lanzarote, Costa Teguise).
+web bilingüe ES/EN con páginas reales en inglés (`/en/`, hreflang y canonical) · SEO local (Lanzarote, Costa Teguise).
 
 ## Pendiente
 
@@ -126,16 +150,26 @@ web bilingüe ES/EN · SEO local (Lanzarote, Costa Teguise).
 **Al publicar con el dominio (aboratattoo.es + aboratattoo.com)**
 - [ ] Activar GitHub Pages, archivo `CNAME` y DNS en Hostinger.
 - [ ] Forzar HTTPS ("Enforce HTTPS" en GitHub Pages).
-- [ ] `aboratattoo.com` → redirigir a `https://aboratattoo.es/?lang=en` (en Hostinger).
-- [ ] `sitemap.xml` y `robots.txt`.
+- [ ] `aboratattoo.com` → redirigir a `https://aboratattoo.es/en/` (en Hostinger).
+- [ ] `sitemap.xml` (con las 4 páginas: `/`, `/galeria.html`, `/en/`, `/en/galeria.html`) y `robots.txt` (permitiendo los rastreadores de IA).
 - [ ] Etiquetas Open Graph (vista previa en WhatsApp/redes) y `canonical`.
 - [ ] Añadir `url` e `image` a los datos estructurados.
 - [ ] Google Search Console: alta de la web y envío del sitemap.
 - [ ] Analítica sin cookies: Cloudflare Web Analytics (+ añadir su dominio a la CSP).
 - [ ] Limitar la clave de Web3Forms al dominio.
 
+**Optimización para IAs (GEO)**
+- [x] Página en inglés real (`/en/`).
+- [ ] Sección de preguntas frecuentes (ES/EN) con datos estructurados FAQ.
+- [ ] Textos más "citables" (idiomas, walk-ins, tiempos de cita, zonas de la isla).
+- [ ] `llms.txt` con un resumen del estudio.
+- [ ] Más datos estructurados (idiomas, estilos, rango de precios, nota de reseñas).
+- [ ] Alta en Bing Webmaster Tools (ChatGPT se apoya en Bing).
+
 **Fuera de la web**
 - [ ] Ficha de Google Business Profile (business.google.com) — lo que más pesa para salir en Google Maps.
+- [ ] Pedir reseñas a cada cliente (Google y TripAdvisor) mencionando Lanzarote / Costa Teguise.
+- [ ] Aparecer en directorios de tatuajes, guías de Lanzarote y blogs de viajes, con el mismo nombre, dirección y teléfono.
 
 **Contenido y mejoras**
 - [ ] Fotos reales de la galería con su estilo (ahora son provisionales).

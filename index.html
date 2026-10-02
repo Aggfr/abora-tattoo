@@ -7,6 +7,12 @@
        (y de Google Fonts), y el formulario solo puede enviar datos a Web3Forms. -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src https://api.web3forms.com; form-action 'self'; base-uri 'self'; object-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
+  <!-- i18n:alternates (generado por build.js) -->
+  <link rel="canonical" href="https://aboratattoo.es/">
+  <link rel="alternate" hreflang="es" href="https://aboratattoo.es/">
+  <link rel="alternate" hreflang="en" href="https://aboratattoo.es/en/">
+  <link rel="alternate" hreflang="x-default" href="https://aboratattoo.es/">
+  <!-- /i18n:alternates -->
   <meta name="description" content="Abora Tattoo, estudio de tatuajes en Costa Teguise, Lanzarote. Realismo, fineline, tradicional, black work y japonés. Pide cita con nuestros tatuadores." data-i18n-content="meta.description">
   <title>Estudio de tatuajes en Lanzarote | Abora Tattoo – Costa Teguise</title>
   <link rel="icon" type="image/png" href="assets/img/logo.png">
@@ -81,11 +87,11 @@
         <li><a href="https://www.instagram.com/abora.tattoo.gallery.sl/" target="_blank" rel="noopener">Instagram</a></li>
       </ul>
 
-      <!-- Selector de idioma -->
+      <!-- Selector de idioma: cada idioma tiene su propia página (/ y /en/). La versión /en/ la genera build.js -->
       <div class="lang-switch" role="group" aria-label="Idioma / Language">
-        <button type="button" class="lang-switch__btn" data-lang="es" aria-pressed="true" aria-label="Español">ES</button>
+        <a class="lang-switch__btn" data-lang="es" href="index.html" hreflang="es" lang="es" aria-current="true" aria-label="Español">ES</a>
         <span class="lang-switch__sep" aria-hidden="true">/</span>
-        <button type="button" class="lang-switch__btn" data-lang="en" aria-pressed="false" aria-label="English">EN</button>
+        <a class="lang-switch__btn" data-lang="en" href="en/index.html" hreflang="en" lang="en" aria-label="English">EN</a>
       </div>
 
       <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">

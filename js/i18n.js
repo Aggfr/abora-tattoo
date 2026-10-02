@@ -16,6 +16,7 @@ const TRANSLATIONS = {
   es: {
     'meta.title': 'Estudio de tatuajes en Lanzarote | Abora Tattoo – Costa Teguise',
     'meta.description': 'Abora Tattoo, estudio de tatuajes en Costa Teguise, Lanzarote. Realismo, fineline, tradicional, black work y japonés. Pide cita con nuestros tatuadores.',
+    'ld.description': "Estudio de tatuajes en Costa Teguise, Lanzarote. Realismo, fineline, tradicional americano, black work, dotwork y japonés.",
 
     'nav.aria': 'Principal',
     'nav.home': 'Abora Tattoo – Inicio',
@@ -172,6 +173,7 @@ const TRANSLATIONS = {
   en: {
     'meta.title': 'Tattoo Studio in Lanzarote | Abora Tattoo – Costa Teguise',
     'meta.description': 'Abora Tattoo, tattoo studio in Costa Teguise, Lanzarote. Realism, fineline, traditional, black work and Japanese styles. Book your appointment with our artists.',
+    'ld.description': "Tattoo studio in Costa Teguise, Lanzarote. Realism, fineline, American traditional, black work, dotwork and Japanese.",
 
     'nav.aria': 'Main',
     'nav.home': 'Abora Tattoo – Home',
@@ -327,15 +329,16 @@ const TRANSLATIONS = {
 };
 
 const DEFAULT_LANG = 'es';
-const LANG_STORAGE_KEY = 'abora-lang';
 
-/* Devuelve el texto de una clave en el idioma actual */
+/* Devuelve el texto de una clave en el idioma de la página */
 function t(key) {
   const lang = document.documentElement.lang in TRANSLATIONS ? document.documentElement.lang : DEFAULT_LANG;
   return TRANSLATIONS[lang][key] ?? TRANSLATIONS[DEFAULT_LANG][key] ?? key;
 }
 
-/* Aplica un idioma a toda la página */
+/* Aplica los textos de un idioma a la página.
+   Las páginas ya vienen escritas en su idioma (castellano en /, inglés en /en/),
+   así que esto solo asegura que todo coincide y avisa al resto del código. */
 function setLanguage(lang) {
   if (!(lang in TRANSLATIONS)) lang = DEFAULT_LANG;
   const dict = TRANSLATIONS[lang];
@@ -355,37 +358,25 @@ function setLanguage(lang) {
   // Cada página puede tener su propio título (atributo data-title-key en <body>)
   document.title = dict[document.body.dataset.titleKey || 'meta.title'];
 
-  // Estado de los botones ES / EN
-  document.querySelectorAll('.lang-switch__btn').forEach((btn) => {
-    btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
-  });
-
-  // Recordar la elección para la próxima visita
-  try { localStorage.setItem(LANG_STORAGE_KEY, lang); } catch (e) { /* sin almacenamiento */ }
-
   document.dispatchEvent(new CustomEvent('languagechange', { detail: { lang } }));
 }
 
-/* Idioma con el que se abre la web, por orden de prioridad:
-   1. ?lang=en o ?lang=es en la dirección  (p. ej. el .com redirige a aboratattoo.es/?lang=en)
-   2. Si se entra por un dominio .com → inglés
-   3. El idioma que el visitante eligió la última vez
-   4. Castellano por defecto */
-function getInitialLanguage() {
+/* Compatibilidad con enlaces antiguos y con el dominio .com:
+   ?lang=en (o entrar por un dominio .com) lleva a la versión /en/;
+   ?lang=es lleva a la versión en castellano. Usa el enlace del selector ES/EN. */
+function redirectIfOtherLanguageRequested() {
   const param = new URLSearchParams(window.location.search).get('lang');
-  if (param && param in TRANSLATIONS) return param;
-
-  if (window.location.hostname.endsWith('.com')) return 'en';
-
-  let saved = null;
-  try { saved = localStorage.getItem(LANG_STORAGE_KEY); } catch (e) { /* sin almacenamiento */ }
-  return saved || DEFAULT_LANG;
+  const current = document.documentElement.lang;
+  let wanted = param in TRANSLATIONS ? param : null;
+  if (!wanted && window.location.hostname.endsWith('.com')) wanted = 'en';
+  if (!wanted || wanted === current) return false;
+  const link = document.querySelector(`.lang-switch__btn[data-lang="${wanted}"]`);
+  if (!link) return false;
+  window.location.replace(link.href + window.location.hash);
+  return true;
 }
 
 function initLanguage() {
-  setLanguage(getInitialLanguage());
-
-  document.querySelectorAll('.lang-switch__btn').forEach((btn) => {
-    btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
-  });
+  if (redirectIfOtherLanguageRequested()) return;
+  setLanguage(document.documentElement.lang);
 }
