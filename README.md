@@ -197,7 +197,7 @@ web bilingüe ES/EN con páginas reales en inglés (`/en/`, hreflang y canonical
 - [x] Aviso legal (`aviso-legal.html`, ES/EN).
 - [x] Política de privacidad (`privacidad.html`, ES/EN).
 - [x] Casilla "He leído y acepto la política de privacidad" en el formulario.
-- [ ] Confirmar el código postal del domicilio fiscal (puesto **35509**, Playa Honda) en las dos páginas legales (ES y `legal/*.en.html`).
+- [x] Código postal del domicilio fiscal confirmado (35509, Playa Honda).
 - [ ] Recomendado: que una gestoría o abogado revise los textos legales.
 - [ ] Aviso de cookies: **no hace falta** mientras la web no use cookies (sin Google Analytics ni píxeles).
 
