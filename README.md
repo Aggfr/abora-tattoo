@@ -183,7 +183,7 @@ web bilingüe ES/EN con páginas reales en inglés (`/en/`, hreflang y canonical
 - [ ] `aboratattoo.com` → redirigir a `https://aboratattoo.es/en/` (en Hostinger).
 - [x] `sitemap.xml` y `robots.txt` (generados por `build.js`; listos para cuando el dominio funcione).
 - [ ] Enviar `https://aboratattoo.es/sitemap.xml` en Google Search Console y Bing Webmaster Tools.
-- [ ] Etiquetas Open Graph (vista previa en WhatsApp/redes) y `canonical`.
+- [ ] Etiquetas Open Graph (vista previa en WhatsApp/redes). (`canonical` y `hreflang` ✅)
 - [ ] Añadir `url` e `image` a los datos estructurados.
 - [ ] Google Search Console: alta de la web y envío del sitemap.
 - [ ] Analítica sin cookies: Cloudflare Web Analytics (+ añadir su dominio a la CSP).
@@ -194,7 +194,7 @@ web bilingüe ES/EN con páginas reales en inglés (`/en/`, hreflang y canonical
 - [x] Sección de preguntas frecuentes (ES/EN) con datos estructurados FAQ.
 - [ ] Textos más "citables" (idiomas, walk-ins, tiempos de cita, zonas de la isla).
 - [x] `llms.txt` con un resumen del estudio y `robots.txt` abierto a los rastreadores de IA.
-- [ ] Más datos estructurados: nota media de reseñas cuando las haya (idiomas, precio mínimo y pago ✅).
+- [x] Más datos estructurados: idiomas, precio mínimo, pago, horario y ficha de Google. (La nota de reseñas no se marca a propósito: Google no lo permite al propio negocio.)
 - [ ] Alta en Bing Webmaster Tools (ChatGPT se apoya en Bing).
 
 **Fuera de la web**
