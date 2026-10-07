@@ -194,12 +194,13 @@ para que la versión en inglés quede al día. Buena práctica: **un cambio = un
 El repositorio está en GitHub (`Aggfr/abora-tattoo`). La web se publicará con GitHub Pages
 y el dominio **aboratattoo.es** (pendiente de configurar).
 
-## Revisión de calidad (2 oct 2026)
+## Revisión de calidad (7 oct 2026)
 
 ✅ Hecho: meta títulos y descripciones · datos estructurados (TattooParlor con precio mínimo y pago, y FAQPage) · favicon · textos alternativos ·
-imágenes comprimidas (mapa en WebP) · carga optimizada · contraste de colores · responsive (móvil, tablet, ordenador) ·
+imágenes comprimidas (mapa y trabajos de la galería en WebP) · carga optimizada · contraste de colores · responsive (móvil, tablet, ordenador) ·
 página 404 · enlaces internos sin errores · formulario anti-spam y con validación · botón de WhatsApp ·
-web bilingüe ES/EN con páginas reales en inglés (`/en/`, hreflang y canonical) · SEO local (Lanzarote, Costa Teguise).
+web bilingüe ES/EN con páginas reales en inglés (`/en/`, hreflang y canonical) · SEO local (Lanzarote, Costa Teguise) ·
+aviso legal y política de privacidad (RGPD/LSSI) con casilla de consentimiento · 19 trabajos reales en la galería.
 
 ## Pendiente
 
