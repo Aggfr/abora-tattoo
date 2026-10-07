@@ -46,7 +46,8 @@ abora-tattoo/
 │   ├── i18n.js         → TODOS los textos de la web en castellano y en inglés
 │   └── main.js         → interacciones: menú, vídeo del hero, tarjetas, formulario, galería, WhatsApp
 └── assets/
-    ├── img/            → fotos (equipo, galería, historia, mapa, logo)
+    ├── img/            → fotos (equipo, mosaico del inicio gallery-XX.jpg, historia, mapa, logo)
+    │   └── works/      → trabajos reales de la galería en WebP (tradicional-XX, 760×950)
     ├── icons/          → iconos SVG
     ├── video/          → hero-scrub.mp4 (vídeo de la estatua)
     └── fonts/          → (vacía; para alojar las fuentes en local más adelante)
@@ -111,7 +112,8 @@ Además genera tres archivos para buscadores e IAs (no se editan a mano):
   En móvil no hay círculo: título arriba y estatua debajo.
 - **Equipo:** 5 tatuadores (Kevin, Abian, German, Daniela y Alex). Las fotos giran (flip) y muestran
   la ficha. Ratón: al pasar por encima. Móvil: al tocar. Teclado: Enter o espacio.
-- **Galería:** botón "Ver más trabajos" → `galeria.html`, con filtro por estilo.
+- **Galería:** mosaico del inicio (fotos del diseño original) y botón "Ver más trabajos" → `galeria.html`,
+  con los trabajos reales y filtro por estilo. Las fotos no indican el tatuador.
 - **Formulario de cita:** se envía con [Web3Forms](https://web3forms.com) y llega a
   abora.tattoo.art@gmail.com (el email que recibe el estudio va siempre en castellano).
   Todos los campos son obligatorios salvo el mensaje; cada campo muestra su propio error.
@@ -149,7 +151,15 @@ Además genera tres archivos para buscadores e IAs (no se editan a mano):
 Cada foto es un `<li class="work" data-style="...">`. El valor de `data-style` decide en qué filtro aparece:
 `realism`, `anime`, `fineline`, `traditional`, `japanese` u `others`.
 Para añadir un trabajo, copia un `<li>`, cambia la imagen, su estilo, `width`/`height` y el `alt`
-(descripción en castellano), y añade la descripción en los dos idiomas (`data-i18n-alt`) en `js/i18n.js`. Ahora mismo las fotos son provisionales (las de la portada).
+(descripción en castellano), y añade la descripción en los dos idiomas (`data-i18n-alt`) en `js/i18n.js`.
+
+**Estado (7 oct 2026):** 19 trabajos reales de tradicional (`assets/img/works/tradicional-01…19.webp`,
+textos `works.alt01…19`) y, al final, 6 fotos **provisionales** en los estilos que aún no tienen fotos reales
+(realismo, fineline, japonés y otros). Cuando lleguen fotos reales de esos estilos, sustituye las provisionales.
+
+**Cómo preparar fotos nuevas:** deja los originales en `fotos-nuevas/` (no se sube a GitHub, está en `.gitignore`).
+Cada foto se recorta a 4:5 centrada en el tatuaje, se reduce a 760×950 y se guarda en WebP (calidad 80, unos 50 KB).
+Revisa que no salga la cara del cliente sin su permiso.
 
 ## Añadir o cambiar un tatuador
 
@@ -233,6 +243,7 @@ web bilingüe ES/EN con páginas reales en inglés (`/en/`, hreflang y canonical
 - [ ] Aparecer en directorios de tatuajes, guías de Lanzarote y blogs de viajes, con el mismo nombre, dirección y teléfono.
 
 **Contenido y mejoras**
-- [ ] Fotos reales de la galería con su estilo (ahora son provisionales).
+- [x] Fotos reales de tradicional en la página de galería (19).
+- [ ] Fotos reales de realismo, anime, fineline, japonés y otros (ahora hay provisionales).
 - [ ] Revisar las fichas de los tatuadores y los textos (higiene, distancias, etc.).
 - [ ] Alojar las fuentes en local (ahora se cargan desde Google Fonts) y simplificar la CSP (y quitar Google Fonts de la política de privacidad).
