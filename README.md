@@ -149,7 +149,7 @@ Además genera tres archivos para buscadores e IAs (no se editan a mano):
 ## Galería (galeria.html)
 
 Cada foto es un `<li class="work" data-style="...">`. El valor de `data-style` decide en qué filtro aparece:
-`realism`, `anime`, `fineline`, `traditional`, `japanese` u `others`.
+`realism`, `anime`, `fineline`, `traditional` o `japanese`.
 Para añadir un trabajo, copia un `<li>`, cambia la imagen, su estilo, `width`/`height` y el `alt`
 (descripción en castellano), y añade la descripción en los dos idiomas (`data-i18n-alt`) en `js/i18n.js`.
 Los trabajos están **mezclados** en el HTML para que en «Todos» se alternen los estilos: al añadir fotos nuevas,
@@ -157,8 +157,8 @@ repártelas entre las demás en vez de ponerlas todas juntas (dentro de cada fil
 
 **Estado (14 oct 2026):** 68 trabajos reales — 19 de tradicional (`assets/img/works/tradicional-01…19.webp`,
 textos `works.alt01…19`), 27 de realismo (`realismo-01…27.webp`, textos `works.realism01…27`), 10 de fineline
-(`fineline-01…10.webp`, textos `works.fineline01…10`) y 12 de anime (`anime-01…12.webp`, textos `works.anime01…12`) — y, al final, 3 fotos **provisionales** en los estilos que
-aún no tienen fotos reales (japonés y otros). Cuando lleguen fotos reales de esos estilos, sustituye las provisionales.
+(`fineline-01…10.webp`, textos `works.fineline01…10`) y 12 de anime (`anime-01…12.webp`, textos `works.anime01…12`) — y, al final, 1 foto **provisional** de japonés,
+que aún no tiene fotos reales. Cuando lleguen, sustitúyela.
 
 **Cómo preparar fotos nuevas:** deja los originales en `fotos-nuevas/` (no se sube a GitHub, está en `.gitignore`).
 Cada foto se recorta a 4:5 centrada en el tatuaje, se reduce a 760×950 y se guarda en WebP (calidad 80, unos 50 KB).
@@ -251,6 +251,6 @@ aviso legal y política de privacidad (RGPD/LSSI) con casilla de consentimiento 
 - [x] Fotos reales de realismo en la página de galería (27).
 - [x] Fotos reales de fineline en la página de galería (10).
 - [x] Fotos reales de anime en la página de galería (12).
-- [ ] Fotos reales de japonés y otros (ahora hay provisionales).
+- [ ] Fotos reales de japonés (ahora hay una provisional).
 - [ ] Revisar las fichas de los tatuadores y los textos (higiene, distancias, etc.).
 - [ ] Alojar las fuentes en local (ahora se cargan desde Google Fonts) y simplificar la CSP (y quitar Google Fonts de la política de privacidad).

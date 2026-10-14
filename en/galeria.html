@@ -71,14 +71,13 @@
             <button type="button" class="filter" data-filter="fineline" aria-pressed="false" data-i18n="galleryPage.fineline">Fineline</button>
             <button type="button" class="filter" data-filter="traditional" aria-pressed="false" data-i18n="galleryPage.traditional">Traditional</button>
             <button type="button" class="filter" data-filter="japanese" aria-pressed="false" data-i18n="galleryPage.japanese">Japanese</button>
-            <button type="button" class="filter" data-filter="others" aria-pressed="false" data-i18n="galleryPage.others">Others</button>
         </div>
       </div>
 
       <!-- Trabajos reales (assets/img/works/, 760×950, WebP), mezclados para que en «Todos» se alternen los estilos
            (al añadir uno, colócalo repartido entre los demás, no todos juntos al final), y, al final, fotos PROVISIONALES
            (assets/img/gallery-XX.jpg) en los estilos que aún no tienen fotos reales: sustitúyelas cuando las haya.
-           data-style indica el estilo para el filtro: realism, anime, fineline, traditional, japanese u others -->
+           data-style indica el estilo para el filtro: realism, anime, fineline, traditional o japanese -->
       <ul class="works" id="works">
           <li class="work" data-style="realism">
             <img src="../assets/img/works/realismo-01.webp" alt="Black and grey realistic portrait of Poseidon with his trident on the forearm" width="760" height="950" data-i18n-alt="works.realism01" loading="lazy">
@@ -287,12 +286,6 @@
           <!-- Provisionales -->
           <li class="work" data-style="japanese">
             <img src="../assets/img/gallery-11.jpg" alt="Arms with colorful traditional tattoos and a dragon" width="640" height="960" data-i18n-alt="gallery.alt11" loading="lazy">
-          </li>
-          <li class="work" data-style="others">
-            <img src="../assets/img/gallery-02.jpg" alt="Black linework skull tattoo on the leg" width="640" height="800" data-i18n-alt="gallery.alt02" loading="lazy">
-          </li>
-          <li class="work" data-style="others">
-            <img src="../assets/img/gallery-04.jpg" alt="Tattoo artist working on a full sleeve at the studio" width="640" height="427" data-i18n-alt="gallery.alt04" loading="lazy">
           </li>
       </ul>
       <p class="works__empty" id="works-empty" hidden data-i18n="galleryPage.empty">Work in this style is coming soon.</p>

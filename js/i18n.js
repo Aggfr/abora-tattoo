@@ -165,7 +165,6 @@ const TRANSLATIONS = {
     'galleryPage.fineline': "Fineline",
     'galleryPage.traditional': "Tradicional",
     'galleryPage.japanese': "Japonés",
-    'galleryPage.others': "Otros",
     'galleryPage.empty': "Muy pronto añadiremos trabajos de este estilo.",
 
     'story.eyebrow': 'Nuestra historia',
@@ -440,7 +439,6 @@ const TRANSLATIONS = {
     'galleryPage.fineline': "Fineline",
     'galleryPage.traditional': "Traditional",
     'galleryPage.japanese': "Japanese",
-    'galleryPage.others': "Others",
     'galleryPage.empty': "Work in this style is coming soon.",
 
     'story.eyebrow': 'Our Story',

@@ -287,7 +287,7 @@ function initTeamCards() {
 }
 
 /* ---------- Galería (galeria.html): filtro por estilo ----------
-   Cada foto lleva data-style="realism|anime|fineline|traditional|japanese|others".
+   Cada foto lleva data-style="realism|anime|fineline|traditional|japanese".
    Al pulsar un filtro se muestran solo las fotos de ese estilo. */
 function initGalleryFilter() {
   const buttons = document.querySelectorAll('.filter');
