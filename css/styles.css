@@ -859,7 +859,7 @@ html[lang="es"] .btn { text-transform: none; }
   .mobile-menu a:hover { color: var(--color-accent); }
 
   /* Hero móvil: sin círculo, título centrado arriba y estatua centrada debajo */
-  .hero { padding: 120px 16px 72px; align-items: center; gap: 0; }
+  .hero { padding: 120px 16px 16px; align-items: center; gap: 0; }  /* abajo 16px (antes 72px): estatua más pegada a la siguiente sección */
   .hero__circle { display: none; }
   .hero__title-wrap::before { display: none; }
   .hero__title-wrap { width: auto; height: auto; position: relative; }
