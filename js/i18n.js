@@ -130,6 +130,16 @@ const TRANSLATIONS = {
     'works.realism25': "Crash Bandicoot en negro y gris en el antebrazo",
     'works.realism26': "Flores en negro sobre fondo negro en el antebrazo y la mano",
     'works.realism27': "Águila en negro y gris, de estilo realista, en el cuello",
+    'works.fineline01': "Varios tatuajes fineline en el muslo: un cangrejo, un cartón de leche con alas de diablo, un erizo y una figura con setas",
+    'works.fineline02': "Tres pequeños dragones fineline en negro y gris volando por el antebrazo",
+    'works.fineline03': "Figura de cuerpo entero en línea fina, sin rostro, en el brazo",
+    'works.fineline04': "Diablillo con tridente en línea fina en el muslo",
+    'works.fineline05': "Ratoncito de dibujos animados en línea fina en el brazo",
+    'works.fineline06': "Rama de flores y hojas fineline del hombro a la clavícula y por todo el brazo",
+    'works.fineline07': "Flores en línea con un jarrón en puntillismo, en la pierna",
+    'works.fineline08': "Plátano pelado con un tentáculo de pulpo, en línea fina, en la pierna",
+    'works.fineline09': "Dos elefantes en línea fina continua en el antebrazo",
+    'works.fineline10': "Rostro de mujer con melena y una flor, en negro y gris, en la mano",
     'gallery.button': 'Ver más trabajos',
 
     // Página de la galería (galeria.html)
@@ -383,6 +393,16 @@ const TRANSLATIONS = {
     'works.realism25': "Black and grey Crash Bandicoot on the forearm",
     'works.realism26': "Black flowers on a solid black background on the forearm and hand",
     'works.realism27': "Black and grey realistic eagle on the neck",
+    'works.fineline01': "Several fineline tattoos on the thigh: a crab, a milk carton with devil wings, a hedgehog and a figure with mushrooms",
+    'works.fineline02': "Three small black and grey fineline dragons flying up the forearm",
+    'works.fineline03': "Faceless full-body figure in fine line on the arm",
+    'works.fineline04': "Little devil with a trident in fine line on the thigh",
+    'works.fineline05': "Little cartoon mouse in fine line on the arm",
+    'works.fineline06': "Fineline branch of flowers and leaves from the shoulder to the collarbone and down the arm",
+    'works.fineline07': "Line-work flowers in a dotwork vase on the leg",
+    'works.fineline08': "Peeled banana with an octopus tentacle, in fine line, on the leg",
+    'works.fineline09': "Two elephants in a continuous fine line on the forearm",
+    'works.fineline10': "Black and grey woman's face with flowing hair and a flower on the hand",
     'gallery.button': 'See more work',
 
     // Página de la galería (galeria.html)
