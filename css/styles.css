@@ -838,7 +838,8 @@ html[lang="es"] .btn { text-transform: none; }
     -webkit-appearance: none;   /* Safari: sin estilo de botón del sistema */
     appearance: none;
   }
-  .nav__toggle span { display: block; height: 2px; background-color: currentColor; transition: transform .25s ease, opacity .25s ease; }
+  /* Ancho y color explícitos: Safari en iPhone no estira los <span> dentro de un <button> flex */
+  .nav__toggle span { display: block; flex: none; align-self: center; width: 24px; height: 2px; border-radius: 1px; background-color: #fff; transition: transform .25s ease, opacity .25s ease; }
   .nav__toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
   .nav__toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
   .nav__toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
