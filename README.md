@@ -152,6 +152,8 @@ Cada foto es un `<li class="work" data-style="...">`. El valor de `data-style` d
 `realism`, `anime`, `fineline`, `traditional`, `japanese` u `others`.
 Para añadir un trabajo, copia un `<li>`, cambia la imagen, su estilo, `width`/`height` y el `alt`
 (descripción en castellano), y añade la descripción en los dos idiomas (`data-i18n-alt`) en `js/i18n.js`.
+Los trabajos están **mezclados** en el HTML para que en «Todos» se alternen los estilos: al añadir fotos nuevas,
+repártelas entre las demás en vez de ponerlas todas juntas (dentro de cada filtro se mantiene su orden).
 
 **Estado (14 oct 2026):** 68 trabajos reales — 19 de tradicional (`assets/img/works/tradicional-01…19.webp`,
 textos `works.alt01…19`), 27 de realismo (`realismo-01…27.webp`, textos `works.realism01…27`), 10 de fineline
