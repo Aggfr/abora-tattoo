@@ -59,6 +59,33 @@ const alternatesBlock = (lang, page) => [
 const setAlternates = (html, lang, page) =>
   html.replace(/  <!-- i18n:alternates[\s\S]*?<!-- \/i18n:alternates -->/, alternatesBlock(lang, page));
 
+// Vista previa al compartir (WhatsApp, Instagram, Facebook, X) y para algunos buscadores de IA.
+// Título y descripción salen de i18n.js (las mismas claves que <title> y la meta description).
+const OG_IMAGE = `${SITE}/assets/img/og-image.jpg`;   // 1200×630
+function socialBlock(html, lang, page, dict) {
+  const titleKey = (html.match(/<body[^>]*data-title-key="([^"]+)"/) || [])[1] || 'meta.title';
+  const descKey = (html.match(/<meta name="description"[^>]*data-i18n-content="([^"]+)"/) || [])[1] || 'meta.description';
+  const t = escAttr(dict[titleKey]), d = escAttr(dict[descKey]);
+  return [
+    '  <!-- i18n:social (generado por build.js) -->',
+    '  <meta property="og:type" content="website">',
+    '  <meta property="og:site_name" content="Abora Tattoo">',
+    `  <meta property="og:title" content="${t}">`,
+    `  <meta property="og:description" content="${d}">`,
+    `  <meta property="og:url" content="${url(lang, page)}">`,
+    `  <meta property="og:image" content="${OG_IMAGE}">`,
+    '  <meta property="og:image:width" content="1200">',
+    '  <meta property="og:image:height" content="630">',
+    `  <meta property="og:image:alt" content="${escAttr(dict['og.imageAlt'])}">`,
+    `  <meta property="og:locale" content="${lang === 'en' ? 'en_GB' : 'es_ES'}">`,
+    `  <meta property="og:locale:alternate" content="${lang === 'en' ? 'es_ES' : 'en_GB'}">`,
+    '  <meta name="twitter:card" content="summary_large_image">',
+    '  <!-- /i18n:social -->',
+  ].join('\n');
+}
+const setSocial = (html, lang, page, dict) =>
+  html.replace(/  <!-- i18n:social[\s\S]*?<!-- \/i18n:social -->/, () => socialBlock(html, lang, page, dict));
+
 // Datos estructurados FAQ (FAQPage) a partir de las claves faq.qN / faq.aN de i18n.js.
 // Se escriben entre los marcadores <!-- i18n:faq-ld --> de cada página que los tenga.
 function faqLd(dict) {
@@ -135,7 +162,7 @@ function translate(html, page) {
 
   // 8. Aviso de archivo generado + hreflang/canonical
   html = html.replace('<!DOCTYPE html>', '<!DOCTYPE html>\n<!-- ⚠️ ARCHIVO GENERADO por build.js a partir de ../' + page + ' y js/i18n.js — no lo edites a mano -->');
-  return setFaqLd(setAlternates(html, 'en', page), EN);
+  return setSocial(setFaqLd(setAlternates(html, 'en', page), EN), 'en', page, EN);
 }
 
 // ---------- Generar ----------
@@ -148,8 +175,8 @@ for (const page of PAGES) {
     if (key in ES && ES[key] !== plain) problems.push(`${page}: el texto de "${key}" en el HTML no coincide con i18n.js`);
     return m;
   });
-  // Actualizar hreflang/canonical también en la versión en castellano
-  const esUpdated = setFaqLd(setAlternates(es, 'es', page), ES);
+  // Actualizar hreflang/canonical, FAQ y vista previa social también en la versión en castellano
+  const esUpdated = setSocial(setFaqLd(setAlternates(es, 'es', page), ES), 'es', page, ES);
   if (esUpdated !== es) fs.writeFileSync(page, esUpdated);
 
   const en = translate(esUpdated, page);

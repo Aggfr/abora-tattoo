@@ -16,6 +16,7 @@ const TRANSLATIONS = {
   es: {
     'meta.title': 'Estudio de tatuajes en Lanzarote | Abora Tattoo – Costa Teguise',
     'meta.description': 'Abora Tattoo, estudio de tatuajes en Costa Teguise, Lanzarote. Realismo, fineline, tradicional, black work y japonés. Pide cita con nuestros tatuadores.',
+    'og.imageAlt': "Tatuadores de Abora Tattoo en el estudio de Costa Teguise, Lanzarote",
     'ld.description': "Estudio de tatuajes en Costa Teguise, Lanzarote. Realismo, fineline, tradicional americano, black work, dotwork y japonés.",
 
     'nav.aria': 'Principal',
@@ -290,6 +291,7 @@ const TRANSLATIONS = {
   en: {
     'meta.title': 'Tattoo Studio in Lanzarote | Abora Tattoo – Costa Teguise',
     'meta.description': 'Abora Tattoo, tattoo studio in Costa Teguise, Lanzarote. Realism, fineline, traditional, black work and Japanese styles. Book your appointment with our artists.',
+    'og.imageAlt': "Abora Tattoo artists at the studio in Costa Teguise, Lanzarote",
     'ld.description': "Tattoo studio in Costa Teguise, Lanzarote. Realism, fineline, American traditional, black work, dotwork and Japanese.",
 
     'nav.aria': 'Main',
