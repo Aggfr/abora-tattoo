@@ -209,6 +209,25 @@ function initHeroScrub() {
 
   video.addEventListener('loadedmetadata', () => { metadataReady = true; });
 
+  // Safari en iPhone/iPad no pinta los fotogramas al cambiar currentTime hasta
+  // que el vídeo se ha reproducido al menos una vez. Se "desbloquea" con un
+  // play() + pause() inmediato (permitido porque el vídeo está silenciado).
+  // Si el navegador lo impide (p. ej. modo ahorro de batería), se reintenta
+  // con el primer toque o scroll del usuario.
+  let unlocked = false;
+  const unlock = () => {
+    if (unlocked) return;
+    const p = video.play();
+    if (p && p.then) {
+      p.then(() => { video.pause(); unlocked = true; lastSeekRatio = -1; }).catch(() => {});
+    } else {
+      video.pause(); unlocked = true;
+    }
+  };
+  unlock();
+  ['touchstart', 'scroll', 'click'].forEach((ev) =>
+    window.addEventListener(ev, unlock, { passive: true }));
+
   // No "inundar" el vídeo de seeks: si llega un objetivo nuevo mientras
   // se busca el anterior, se guarda y se aplica al terminar.
   const seekTo = (ratio) => {
