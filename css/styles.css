@@ -873,7 +873,7 @@ html[lang="es"] .btn { text-transform: none; }
   }
   .hero__subtitle { font-size: 14px; letter-spacing: 0.02em; margin-top: 10px; }
   .hero__statue {
-    width: min(78%, 360px);
+    width: min(100%, 460px);  /* estatua más grande en móvil (antes 78 %, máx. 360px) */
     margin-top: -12px;        /* acerca la estatua al título (el vídeo tiene margen negro arriba) */
   }
 
