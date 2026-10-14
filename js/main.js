@@ -187,91 +187,100 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-/* ---------- Video scrubbing del hero (el fotograma sigue al scroll) ----------
-   Al bajar por la página, el vídeo avanza fotograma a fotograma; al subir,
+/* ---------- Animación de la estatua del hero (sigue al scroll) ----------
+   Al bajar por la página, la estatua avanza fotograma a fotograma; al subir,
    retrocede. La animación termina un poco antes de que la estatua salga
-   de la pantalla. El vídeo tiene todos los fotogramas como keyframes para
-   que cada salto sea instantáneo. */
+   de la pantalla.
+   En lugar de mover el vídeo (los móviles, sobre todo iPhone, no pintan bien
+   los saltos de un <video>), se usan sus 97 fotogramas como imágenes WebP
+   (assets/video/frames/) dibujadas en un <canvas>. El <video> del HTML solo
+   sirve para mostrar el póster mientras cargan y como respaldo sin JavaScript.
+   Si cambias el vídeo, regenera los fotogramas:
+     ffmpeg -i assets/video/hero-scrub.mp4 -c:v libwebp -quality 72 assets/video/frames/f%03d.webp */
 function initHeroScrub() {
   const video = document.querySelector('.hero__video-scrub');
   if (!video) return;
 
+  const FRAMES = 97;
   const EASE = 0.15;        // suavizado del movimiento
   const END_OFFSET = 0.25;  // la animación acaba cuando el final de la estatua
                             // está al 25 % de la altura de la ventana
 
-  let targetRatio = 0;
-  let currentRatio = 0;
-  let lastSeekRatio = -1;
-  let metadataReady = video.readyState >= 1; // HAVE_METADATA
-  let seeking = false;
-  let pendingRatio = null;
-
-  video.addEventListener('loadedmetadata', () => { metadataReady = true; });
-
-  // Safari en iPhone/iPad no pinta los fotogramas al cambiar currentTime hasta
-  // que el vídeo se ha reproducido al menos una vez. Se "desbloquea" con un
-  // play() + pause() inmediato (permitido porque el vídeo está silenciado).
-  // Si el navegador lo impide (p. ej. modo ahorro de batería), se reintenta
-  // con el primer toque o scroll del usuario.
-  let unlocked = false;
-  const unlock = () => {
-    if (unlocked) return;
-    const p = video.play();
-    if (p && p.then) {
-      p.then(() => { video.pause(); unlocked = true; lastSeekRatio = -1; }).catch(() => {});
-    } else {
-      video.pause(); unlocked = true;
-    }
-  };
-  unlock();
-  ['touchstart', 'scroll', 'click'].forEach((ev) =>
-    window.addEventListener(ev, unlock, { passive: true }));
-
-  // No "inundar" el vídeo de seeks: si llega un objetivo nuevo mientras
-  // se busca el anterior, se guarda y se aplica al terminar.
-  const seekTo = (ratio) => {
-    if (!metadataReady || !video.duration) return;
-    const clamped = Math.min(Math.max(ratio, 0), 1);
-    if (seeking) { pendingRatio = clamped; return; }
-    seeking = true;
-    lastSeekRatio = clamped;
-    // Pequeño margen al final para no caer en "ended" con fotograma negro
-    video.currentTime = clamped * Math.max(video.duration - 0.05, 0);
-  };
-
-  video.addEventListener('seeked', () => {
-    seeking = false;
-    if (pendingRatio !== null) {
-      const next = pendingRatio;
-      pendingRatio = null;
-      seekTo(next);
-    }
-  });
-
-  // Con movimiento reducido se queda en el primer fotograma
+  // Con movimiento reducido se queda en el primer fotograma (el póster)
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+  // Ruta de los fotogramas a partir del vídeo (funciona igual en / y en /en/)
+  const source = video.querySelector('source');
+  const base = new URL('frames/', source ? source.src : video.currentSrc);
+  const frameUrl = (i) => new URL(`f${String(i + 1).padStart(3, '0')}.webp`, base).href;
+
+  const frames = new Array(FRAMES);
+  let canvas = null;
+  let ctx = null;
+  let drawn = -1;
+
+  // Dibuja el fotograma pedido o, si aún no ha cargado, el más cercano que sí
+  const draw = (index) => {
+    if (!ctx) return;
+    let i = index;
+    for (let d = 0; d < FRAMES; d++) {
+      if (frames[index - d]) { i = index - d; break; }
+      if (frames[index + d]) { i = index + d; break; }
+    }
+    if (!frames[i] || i === drawn) return;
+    ctx.drawImage(frames[i], 0, 0, canvas.width, canvas.height);
+    drawn = i;
+  };
+
+  const load = (i) => new Promise((resolve) => {
+    const img = new Image();
+    img.decoding = 'async';
+    img.onload = () => { frames[i] = img; resolve(); };
+    img.onerror = () => resolve();
+    img.src = frameUrl(i);
+  });
+
   // Progreso del scroll: 0 arriba del todo, 1 cuando la estatua ya casi ha salido
+  let targetRatio = 0;
   const updateTarget = () => {
-    const rect = video.getBoundingClientRect();
+    const el = canvas || video;
+    const rect = el.getBoundingClientRect();
     const statueBottom = rect.bottom + window.scrollY; // posición en la página
     const end = Math.max(statueBottom - window.innerHeight * END_OFFSET, 1);
     targetRatio = Math.min(Math.max(window.scrollY / end, 0), 1);
   };
 
-  window.addEventListener('scroll', updateTarget, { passive: true });
-  window.addEventListener('resize', updateTarget);
-  updateTarget();
-  currentRatio = targetRatio; // si se recarga a mitad de página, empieza ya en su sitio
+  // Primero el fotograma inicial: cuando está listo, el canvas sustituye al vídeo
+  load(0).then(() => {
+    if (!frames[0]) return; // sin fotogramas, se queda el póster
+    canvas = document.createElement('canvas');
+    canvas.width = frames[0].naturalWidth;
+    canvas.height = frames[0].naturalHeight;
+    canvas.className = video.className;
+    canvas.setAttribute('role', 'img');
+    canvas.setAttribute('aria-label', video.getAttribute('aria-label') || '');
+    ctx = canvas.getContext('2d');
+    video.replaceWith(canvas);
+    video.removeAttribute('preload');
 
-  const animate = () => {
-    currentRatio += (targetRatio - currentRatio) * EASE;
-    // Solo buscar si el cambio es apreciable (ahorra trabajo con la página quieta)
-    if (Math.abs(currentRatio - lastSeekRatio) > 0.002) seekTo(currentRatio);
+    updateTarget();
+    let currentRatio = targetRatio; // si se recarga a mitad de página, empieza ya en su sitio
+    draw(Math.round(currentRatio * (FRAMES - 1)));
+
+    // El resto de fotogramas, en orden, sin bloquear la página
+    (async () => { for (let i = 1; i < FRAMES; i++) await load(i); })();
+
+    window.addEventListener('scroll', updateTarget, { passive: true });
+    window.addEventListener('resize', updateTarget);
+
+    const animate = () => {
+      currentRatio += (targetRatio - currentRatio) * EASE;
+      if (Math.abs(targetRatio - currentRatio) < 0.0005) currentRatio = targetRatio;
+      draw(Math.round(currentRatio * (FRAMES - 1)));
+      requestAnimationFrame(animate);
+    };
     requestAnimationFrame(animate);
-  };
-  requestAnimationFrame(animate);
+  });
 }
 
 /* ---------- Tarjetas del equipo: flip al tocar / con el teclado ----------
