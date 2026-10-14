@@ -47,7 +47,7 @@ abora-tattoo/
 │   └── main.js         → interacciones: menú, vídeo del hero, tarjetas, formulario, galería, WhatsApp
 └── assets/
     ├── img/            → fotos (equipo, mosaico del inicio gallery-XX.jpg, historia, mapa, logo)
-    │   └── works/      → trabajos reales de la galería en WebP, 760×950 (tradicional-XX, realismo-XX, fineline-XX)
+    │   └── works/      → trabajos reales de la galería en WebP, 760×950 (tradicional-XX, realismo-XX, fineline-XX, anime-XX)
     ├── icons/          → iconos SVG
     ├── video/          → hero-scrub.mp4 (vídeo de la estatua)
     └── fonts/          → (vacía; para alojar las fuentes en local más adelante)
@@ -153,9 +153,9 @@ Cada foto es un `<li class="work" data-style="...">`. El valor de `data-style` d
 Para añadir un trabajo, copia un `<li>`, cambia la imagen, su estilo, `width`/`height` y el `alt`
 (descripción en castellano), y añade la descripción en los dos idiomas (`data-i18n-alt`) en `js/i18n.js`.
 
-**Estado (14 oct 2026):** 56 trabajos reales — 19 de tradicional (`assets/img/works/tradicional-01…19.webp`,
-textos `works.alt01…19`), 27 de realismo (`realismo-01…27.webp`, textos `works.realism01…27`) y 10 de fineline
-(`fineline-01…10.webp`, textos `works.fineline01…10`) — y, al final, 3 fotos **provisionales** en los estilos que
+**Estado (14 oct 2026):** 68 trabajos reales — 19 de tradicional (`assets/img/works/tradicional-01…19.webp`,
+textos `works.alt01…19`), 27 de realismo (`realismo-01…27.webp`, textos `works.realism01…27`), 10 de fineline
+(`fineline-01…10.webp`, textos `works.fineline01…10`) y 12 de anime (`anime-01…12.webp`, textos `works.anime01…12`) — y, al final, 3 fotos **provisionales** en los estilos que
 aún no tienen fotos reales (japonés y otros). Cuando lleguen fotos reales de esos estilos, sustituye las provisionales.
 
 **Cómo preparar fotos nuevas:** deja los originales en `fotos-nuevas/` (no se sube a GitHub, está en `.gitignore`).
@@ -201,7 +201,7 @@ y el dominio **aboratattoo.es** (pendiente de configurar).
 imágenes comprimidas (mapa y trabajos de la galería en WebP) · carga optimizada · contraste de colores · responsive (móvil, tablet, ordenador) ·
 página 404 · enlaces internos sin errores · formulario anti-spam y con validación · botón de WhatsApp ·
 web bilingüe ES/EN con páginas reales en inglés (`/en/`, hreflang y canonical) · SEO local (Lanzarote, Costa Teguise) ·
-aviso legal y política de privacidad (RGPD/LSSI) con casilla de consentimiento · 56 trabajos reales en la galería (tradicional, realismo y fineline).
+aviso legal y política de privacidad (RGPD/LSSI) con casilla de consentimiento · 68 trabajos reales en la galería (tradicional, realismo, fineline y anime).
 
 ## Pendiente
 
@@ -248,6 +248,7 @@ aviso legal y política de privacidad (RGPD/LSSI) con casilla de consentimiento 
 - [x] Fotos reales de tradicional en la página de galería (19).
 - [x] Fotos reales de realismo en la página de galería (27).
 - [x] Fotos reales de fineline en la página de galería (10).
-- [ ] Fotos reales de anime, japonés y otros (ahora hay provisionales).
+- [x] Fotos reales de anime en la página de galería (12).
+- [ ] Fotos reales de japonés y otros (ahora hay provisionales).
 - [ ] Revisar las fichas de los tatuadores y los textos (higiene, distancias, etc.).
 - [ ] Alojar las fuentes en local (ahora se cargan desde Google Fonts) y simplificar la CSP (y quitar Google Fonts de la política de privacidad).
